@@ -57,14 +57,14 @@ service_web_1 exited with code 1
 
 みたいなエラーが起きたら
 
-src/app/config/webpacer.ymlを修正。
+src/app/config/webpacer.ymlを修正。___check_yarn_integrity: false___(56行目) に変更
 ```
 development:
   <<: *default
   compile: true
 
   # Verifies that correct packages and versions are installed by inspecting package.json, yarn.lock, and node_modules
-  check_yarn_integrity: true
+  check_yarn_integrity: false
 
   # Reference: https://webpack.js.org/configuration/dev-server/
   dev_server:
@@ -87,7 +87,13 @@ development:
 ```
 
 そうするととりあえず立ち上がるようになるから
-src配下で
+
+```
+docker exec -it service_web_1 bash
+```
+
+でコンテナ内に侵入。
+その後
 ```
 bin/rails webpacker:install
 ```
