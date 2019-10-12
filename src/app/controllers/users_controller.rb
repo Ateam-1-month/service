@@ -22,6 +22,7 @@ class UsersController < ApplicationController
       response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
         http.request(req)
       end
+      flash[:success] = "まだ本登録はできていません.メールをご確認ください"
       redirect_to '/users/new'
     else
       render 'new'
