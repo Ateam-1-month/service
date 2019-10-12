@@ -1,25 +1,34 @@
 class SandboxController < ApplicationController
 
   def index
-    @greeting = "Hi!!!!"
+    @user = User.new
   end
 
   def create
-    logger.debug params[:email].to_yaml
-    logger.debug params[:token].to_yaml
-    uri = URI.parse("https://c-bonds-styk.herokuapp.com/ateam/mail/sender")
-    req = Net::HTTP::Post.new(uri)
-    req.body = {"email" => params[:email], "token" => params[:token]}.to_json
 
-    req_options = {
-      use_ssl: uri.scheme = "https" 
-    }
+    @user = User.new(user_params)
 
-    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-      http.request(req)
+    if @user.save
+      uri = URI.parse("https://c-bonds-styk.herokuapp.com/ateam/mail/sender")
+      req = Net::HTTP::Post.new(uri)
+      req.body = {"email" => @user.email, "token" => "http://localhost:3000/account_activations/#{@user.activation_token}/edit?email=#{CGI.escape(@user.email)}" }.to_json
+  
+      req_options = {
+        use_ssl: uri.scheme = "https" 
+      }
+  
+      response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+        http.request(req)
+      end
+      redirect_to '/'
+    else
+      render 'index'
     end
+  end
 
-    redirect_to '/'
+  private
+  def user_params
+    params.require(:user).permit(:email, :password, :password_confirmation)
   end
 
 end

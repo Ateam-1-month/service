@@ -3,4 +3,9 @@ Rails.application.routes.draw do
 
   get '/sandbox/sandbox', to: 'sandbox#index'
   post '/sandbox/sandbox/send', to: 'sandbox#create'
+
+  get '/users/new', to: 'users#new'
+  post '/users', to: 'users#create'
+
+  resources :account_activations, only: [:edit]
 end
