@@ -11,17 +11,17 @@ class UsersController < ApplicationController
     app = "http://a.intern.ate.am:3000"
 
     if @user.save
-      # uri = URI.parse("https://c-bonds-styk.herokuapp.com/ateam/mail/sender")
-      # req = Net::HTTP::Post.new(uri)
-      # req.body = {"email" => @user.email, "token" => "#{develop}/account_activations/#{@user.activation_token}/edit?email=#{CGI.escape(@user.email)}" }.to_json
+      uri = URI.parse("https://c-bonds-styk.herokuapp.com/ateam/mail/sender")
+      req = Net::HTTP::Post.new(uri)
+      req.body = {"email" => @user.email, "token" => "#{develop}/account_activations/#{@user.activation_token}/edit?email=#{CGI.escape(@user.email)}" }.to_json
   
-      # req_options = {
-      #   use_ssl: uri.scheme = "https" 
-      # }
+      req_options = {
+        use_ssl: uri.scheme = "https" 
+      }
   
-      # response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-      #   http.request(req)
-      # end
+      response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
+        http.request(req)
+      end
       redirect_to '/users/new'
     else
       render 'new'
