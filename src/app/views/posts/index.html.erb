@@ -1,11 +1,51 @@
-<%= form_with url: "/users", model: @user, local: true do |f| %>
-    <%= render 'shared/error_messages' %>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-    <%= f.label :password_confirmation, "Confirmation" %>
-    <%= f.password_field :password_confirmation %>
+<% @sectors.each do |sector| %>
+  <%= sector.name %>
+<% end %>
 
-    <%= f.submit "Create my account"%>
+<% @workContents.each do |workContent| %>
+  <%= workContent.name %>
+<% end %>
+
+<% @posts.each do |post| %>
+  <%= post.company.name %>
+  <%= post.title %>
+  <% post.sectors.each do |sector| %>
+    <%= sector.name %>
+  <% end %>
+  <%= post.period %>
+  <%= post.content %>
+  <%= post.salary %>
+<% end %>
+
+<% @recommendedPosts.each do |post| %>
+  <%= post.company.name %>
+  <%= post.title %>
+  <% post.sectors.each do |sector| %>
+    <%= sector.name %>
+  <% end %>
+  <%= post.period %>
+  <%= post.content %>
+  <%= post.salary %>
+<% end %>
+
+<% @popularPosts.each do |post| %>
+  <%= post.company.name %>
+  <%= post.title %>
+  <% post.sectors.each do |sector| %>
+    <%= sector.name %>
+  <% end %>
+  <%= post.period %>
+  <%= post.content %>
+  <%= post.salary %>
+<% end %>
+
+<% @newPosts.each do |post| %>
+  <%= post.company.name %>
+  <%= post.title %>
+  <% post.sectors.each do |sector| %>
+    <%= sector.name %>
+  <% end %>
+  <%= post.period %>
+  <%= post.content %>
+  <%= post.salary %>
 <% end %>
