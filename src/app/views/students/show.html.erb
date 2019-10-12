@@ -1,0 +1,43 @@
+<h1>プロフィール</h1>
+<p><%= @student.image %></p>
+<p><%= @student.first_name %></p>
+<p><%= @student.last_name %></p>
+<p><%= @student.first_name_kana %></p>
+<p><%= @student.last_name_kana %></p>
+<p><%= @student.gender %></p>
+<p><%= @student.age %></p>
+<p><%= @student.prefecture %></p>
+<p><%= @student.university %></p>
+<p><%= @student.faculty %></p>
+
+<h1>業種</h1>
+<% @student.sectors.each do |sector| %>
+  <p><%= sector.name %></p>
+<% end %>
+
+<h1>業務内容</h1>
+<% @student.work_contents.each do |work_content| %>
+  <p><%= work_content.name %></p>
+<% end %>
+
+<h1>スキル一覧</h1>
+<% @student.skills.each do |skill| %>
+  <p><%= skill.name %></p>
+  <p><%= skill.level %></p>
+  <p><%= skill.content %></p>
+<% end %>
+
+<h1>アルバイト・インターン歴</h1>
+<% @student.careers.each do |career| %>
+  <p><%= career.name %></p>
+  <p><%= career.start_date %></p>
+  <p><%= career.end_date %></p>
+  <p><%= career.role %></p>
+  <p><%= career.content %></p>
+<% end %>
+
+
+<h1>アピールポイント</h1>
+<% @student.appeals.each do |appeal| %>
+  <p><%= appeal.content %></p>
+<% end %>
