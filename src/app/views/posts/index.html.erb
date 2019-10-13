@@ -1,0 +1,69 @@
+業種
+<div>
+<% @sectors.each do |sector| %>
+  <%= sector.name %>
+<% end %>
+</div>
+
+業務内容
+<div>
+<% @workContents.each do |workContent| %>
+  <%= workContent.name %>
+<% end %>
+</div>
+
+上のやつ
+<div>
+<% @posts.each do |post| %>
+  <%= post.company.name %>
+  <%= post.title %>
+  <% post.sectors.each do |sector| %>
+    <%= sector.name %>
+  <% end %>
+  <%= post.period %>
+  <%= post.content %>
+  <%= post.salary %>
+<% end %>
+</div>
+
+オススメ
+<div>
+<% @recommendedPosts.each do |post| %>
+  <%= post.company.name %>
+  <%= post.title %>
+  <% post.sectors.each do |sector| %>
+    <%= sector.name %>
+  <% end %>
+  <%= post.period %>
+  <%= post.content %>
+  <%= post.salary %>
+<% end %>
+</div>
+
+人気
+<div>
+<% @popularPosts.each do |post| %>
+  <%= post.company.name %>
+  <%= post.title %>
+  <% post.sectors.each do |sector| %>
+    <%= sector.name %>
+  <% end %>
+  <%= post.period %>
+  <%= post.content %>
+  <%= post.salary %>
+<% end %>
+</div>
+
+新規
+<div>
+<% @newPosts.each do |post| %>
+  <%= post.company.name %>
+  <%= post.title %>
+  <% post.sectors.each do |sector| %>
+    <%= sector.name %>
+  <% end %>
+  <%= post.period %>
+  <%= post.content %>
+  <%= post.salary %>
+<% end %>
+</div>
