@@ -4,7 +4,8 @@ Rails.application.routes.draw do
   get '/sandbox/sandbox', to: 'sandbox#index'
   post '/sandbox/sandbox/send', to: 'sandbox#create'
 
-  get '/users/new', to: 'users#new'
+  get '/students/users/new', to: 'users#student_new'
+  get '/companies/users/new', to: 'users#company_new'
   post '/users', to: 'users#create'
 
   get '/login', to: 'sessions#new'
@@ -13,5 +14,7 @@ Rails.application.routes.draw do
 
   get '/posts/index', to: 'posts#index'
 
+  resources :students
+  resources :companies
   resources :account_activations, only: [:edit]
 end

@@ -1,12 +1,21 @@
 class UsersController < ApplicationController
 
-  def new
+  def student_new
+    @user = User.new
+  end
+
+  def company_new
     @user = User.new
   end
 
   def create
 
     @user = User.new(user_params)
+    logger.debug('###############')
+    logger.debug(@user)
+    logger.debug(user_params)
+    logger.debug('###############')
+
     develop = "http://localhost:3000"
     app = "http://a.intern.ate.am:3000"
 
@@ -23,15 +32,19 @@ class UsersController < ApplicationController
         http.request(req)
       end
       flash[:success] = "まだ本登録はできていません.メールをご確認ください"
-      redirect_to '/users/new'
+      redirect_to '/'
     else
-      render 'new'
+      if @user.is_company
+        render 'company_new'
+      else
+        render 'student_new'
+      end
     end
   end
 
   private
   def user_params
-    params.require(:user).permit(:email, :password, :password_confirmation)
+    params.require(:user).permit(:email, :password, :password_confirmation, :is_company, :is_student)
   end
 
 end
