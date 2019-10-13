@@ -1,0 +1,15 @@
+<div>
+  <ul id="nav">
+    <li><%= link_to "募集を見る", '#' %></li>
+    <li>
+      <%= form_with url: "#" do |f| %>
+        <%= f.text_field :search, placeholder: "会社や業務を探す" %>
+        <%= f.submit %>
+      <% end %>
+    </li>
+    <li><span class="fa fa-calendar-o" aria-hidden="true"></span></li>
+    <li><span class="fa fa-envelope" aria-hidden="true"></span></li>
+    <li><span class="fa fa-cog"></span></li>
+    <li><%= link_to "マイページ", "/students/#{current_user.student.id}" %></li>
+  </ul>
+</div>
