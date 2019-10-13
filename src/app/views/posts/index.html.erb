@@ -15,55 +15,74 @@
 上のやつ
 <div>
 <% @posts.each do |post| %>
+  <div>
   <%= post.company.name %>
   <%= post.title %>
+  <div>
   <% post.sectors.each do |sector| %>
     <%= sector.name %>
   <% end %>
+  </div>
   <%= post.period %>
   <%= post.content %>
   <%= post.salary %>
+  </div>
 <% end %>
 </div>
 
 オススメ
 <div>
 <% @recommendedPosts.each do |post| %>
+  <div>
   <%= post.company.name %>
   <%= post.title %>
+  <div>
   <% post.sectors.each do |sector| %>
     <%= sector.name %>
   <% end %>
+  </div>
   <%= post.period %>
   <%= post.content %>
   <%= post.salary %>
+  </div>
 <% end %>
+<%= link_to "もっとみる", "/posts/list" %>
 </div>
 
 人気
 <div>
 <% @popularPosts.each do |post| %>
+  <div>
   <%= post.company.name %>
   <%= post.title %>
+  <div>
   <% post.sectors.each do |sector| %>
     <%= sector.name %>
   <% end %>
+  </div>
   <%= post.period %>
   <%= post.content %>
   <%= post.salary %>
+  </div>
 <% end %>
+<%= link_to "もっとみる", "/posts/list?sortOrder=1" %>
 </div>
 
 新規
 <div>
 <% @newPosts.each do |post| %>
+  <div>
   <%= post.company.name %>
   <%= post.title %>
+  <div>
   <% post.sectors.each do |sector| %>
     <%= sector.name %>
   <% end %>
+  </div>
   <%= post.period %>
   <%= post.content %>
   <%= post.salary %>
+  </div>
 <% end %>
+<%= link_to "もっとみる", "/posts/list?sortOrder=2" %>
 </div>

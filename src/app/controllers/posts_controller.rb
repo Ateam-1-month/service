@@ -48,4 +48,22 @@ class PostsController < ApplicationController
 
     @posts
   end
+
+  def list
+    # 並び順
+    sortOrder = params[:sortOrder].to_i
+
+    if sortOrder == 1
+      # 人気
+      @posts = Post.all()
+    elsif sortOrder == 2
+      # 新規
+      @posts = Post.order(created_at: :desc)
+    else
+      # 指定なしまたはオススメ
+      @posts = getRecommendedPosts()
+    end
+
+    @posts
+  end
 end
