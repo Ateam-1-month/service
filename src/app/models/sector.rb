@@ -1,4 +1,5 @@
 class Sector < ApplicationRecord
-  belongs_to :student_sector
-  belongs_to :post_sector
+  has_many :student_sectors
+  has_many :company_sectors
+  has_many :post_sectors
 end
