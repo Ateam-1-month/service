@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
   get '/posts/index', to: 'posts#index'
+  get '/posts/search', to: 'posts#search'
+  get 'posts/list', to: 'posts#list'
 
   resources :students
   resources :companies

@@ -1,69 +1,88 @@
-業種
-<div>
-<% @sectors.each do |sector| %>
-  <%= sector.name %>
+<%= form_with url: "/posts/search", method: :get, local: true do |f| %>
+  業種
+  <% @sectors.each do |sector| %>
+    <%= f.check_box :sector_id, {}, sector.id, nil %>
+    <%= f.label :sector_name, sector.name %>
+  <% end %>
+  企業分野
+  <% @fields.each do |field| %>
+    <%= f.check_box :field_id, {}, field.id, nil %>
+    <%= f.label :field_name, field.name %>
+  <% end %>
+  <%= f.submit '検索' %>
 <% end %>
-</div>
-
-業務内容
-<div>
-<% @workContents.each do |workContent| %>
-  <%= workContent.name %>
-<% end %>
-</div>
 
 上のやつ
 <div>
 <% @posts.each do |post| %>
+  <div>
   <%= post.company.name %>
   <%= post.title %>
+  <div>
   <% post.sectors.each do |sector| %>
     <%= sector.name %>
   <% end %>
+  </div>
   <%= post.period %>
   <%= post.content %>
   <%= post.salary %>
+  </div>
 <% end %>
 </div>
 
 オススメ
 <div>
 <% @recommendedPosts.each do |post| %>
+  <div>
   <%= post.company.name %>
   <%= post.title %>
+  <div>
   <% post.sectors.each do |sector| %>
     <%= sector.name %>
   <% end %>
+  </div>
   <%= post.period %>
   <%= post.content %>
   <%= post.salary %>
+  </div>
 <% end %>
+<%= link_to "もっとみる", "/posts/list" %>
 </div>
 
 人気
 <div>
 <% @popularPosts.each do |post| %>
+  <div>
   <%= post.company.name %>
   <%= post.title %>
+  <div>
   <% post.sectors.each do |sector| %>
     <%= sector.name %>
   <% end %>
+  </div>
   <%= post.period %>
   <%= post.content %>
   <%= post.salary %>
+  </div>
 <% end %>
+<%= link_to "もっとみる", "/posts/list?sortOrder=1" %>
 </div>
 
 新規
 <div>
 <% @newPosts.each do |post| %>
+  <div>
   <%= post.company.name %>
   <%= post.title %>
+  <div>
   <% post.sectors.each do |sector| %>
     <%= sector.name %>
   <% end %>
+  </div>
   <%= post.period %>
   <%= post.content %>
   <%= post.salary %>
+  </div>
 <% end %>
+<%= link_to "もっとみる", "/posts/list?sortOrder=2" %>
 </div>
