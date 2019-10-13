@@ -10,7 +10,7 @@ class AccountActivationsController < ApplicationController
       redirect_to '/users/new'
     else
       flash[:danger] = "有効期限が切れています.もう一度登録を行ってください."
-      redirect_to `/users/new`
+      redirect_to '/users/new'
     end
   end
 end
