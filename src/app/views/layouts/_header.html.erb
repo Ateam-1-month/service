@@ -10,6 +10,8 @@
     <li><span class="fa fa-calendar-o" aria-hidden="true"></span></li>
     <li><span class="fa fa-envelope" aria-hidden="true"></span></li>
     <li><span class="fa fa-cog"></span></li>
-    <li><%= link_to "マイページ", "/students/#{current_user.student.id}" %></li>
+    <% if current_user && current_user.student %>
+      <li><%= link_to "マイページ", "/students/#{current_user.student.id}" %></li>
+    <% end %>
   </ul>
 </div>

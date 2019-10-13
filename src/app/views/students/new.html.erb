@@ -1,1 +1,24 @@
-students/new
+<%= form_with url: "/students", model: @student, local: true do |f| %>
+    <%= render 'shared/error_messages', obj: @student %>
+    <%= f.label :last_name, "性" %>
+    <%= f.text_field :last_name %>
+    <%= f.label :first_name, "名" %>
+    <%= f.text_field :first_name %>
+    <%= f.label :last_name_kana, "性(かな)" %>
+    <%= f.text_field :last_name_kana %>
+    <%= f.label :first_name_kana, "名(かな)" %>
+    <%= f.text_field :first_name_kana %>
+    <%= f.label :gender %>
+    <%= f.number_field :gender %>
+    <%= f.label :age %>
+    <%= f.number_field :age %>
+    <%= f.label :prefecture, "現在住んでいる県名" %>
+    <%= f.text_field :prefecture %>
+    <%= f.label :university, "大学名" %>
+    <%= f.text_field :university %>
+    <%= f.label :faculty, "学部名" %>
+    <%= f.text_field :faculty %>
+    <%= f.label :image, "画像(あとで変更する)" %>
+    <%= f.text_field :image %>
+    <%= f.submit "Create my account"%>
+<% end %>
