@@ -18,6 +18,6 @@ class PostsController < ApplicationController
     @popularPosts = Post.first(10)
 
     # 新規
-    @newPosts = Post.first(10).order(create_at: :desc)
+    @newPosts = Post.order(created_at: :desc).first(10)
   end
 end
