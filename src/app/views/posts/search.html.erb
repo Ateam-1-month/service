@@ -1,0 +1,13 @@
+検索結果
+<div>
+<% @posts.each do |post| %>
+  <%= post.company.name %>
+  <%= post.title %>
+  <% post.sectors.each do |sector| %>
+    <%= sector.name %>
+  <% end %>
+  <%= post.period %>
+  <%= post.content %>
+  <%= post.salary %>
+<% end %>
+</div>

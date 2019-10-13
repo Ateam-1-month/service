@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_12_075631) do
+ActiveRecord::Schema.define(version: 2019_10_13_190041) do
 
   create_table "appeals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "student_id", null: false
@@ -39,6 +39,21 @@ ActiveRecord::Schema.define(version: 2019_10_12_075631) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_companies_on_user_id"
+  end
+
+  create_table "fields", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "post_fields", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "field_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["field_id"], name: "index_post_fields_on_field_id"
+    t.index ["post_id"], name: "index_post_fields_on_post_id"
   end
 
   create_table "post_sectors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -120,8 +135,8 @@ ActiveRecord::Schema.define(version: 2019_10_12_075631) do
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email"
-    t.boolean "is_company"
-    t.boolean "is_student"
+    t.boolean "is_company", default: false
+    t.boolean "is_student", default: false
     t.string "password_digest"
     t.string "activation_digest"
     t.boolean "activated", default: false
@@ -139,6 +154,8 @@ ActiveRecord::Schema.define(version: 2019_10_12_075631) do
   add_foreign_key "appeals", "students"
   add_foreign_key "careers", "students"
   add_foreign_key "companies", "users"
+  add_foreign_key "post_fields", "fields"
+  add_foreign_key "post_fields", "posts"
   add_foreign_key "post_sectors", "posts"
   add_foreign_key "post_sectors", "sectors"
   add_foreign_key "posts", "companies"
