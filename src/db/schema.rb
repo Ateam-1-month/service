@@ -35,6 +35,8 @@ ActiveRecord::Schema.define(version: 2019_10_13_190041) do
   create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
+    t.string "url"
+    t.string "address"
     t.string "image"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -54,6 +56,15 @@ ActiveRecord::Schema.define(version: 2019_10_13_190041) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["field_id"], name: "index_post_fields_on_field_id"
     t.index ["post_id"], name: "index_post_fields_on_post_id"
+  end
+
+  create_table "company_sectors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.bigint "sector_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_sectors_on_company_id"
+    t.index ["sector_id"], name: "index_company_sectors_on_sector_id"
   end
 
   create_table "post_sectors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -80,6 +91,16 @@ ActiveRecord::Schema.define(version: 2019_10_13_190041) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["company_id"], name: "index_posts_on_company_id"
+  end
+
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.string "title"
+    t.text "content"
+    t.integer "evaluation"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_reviews_on_company_id"
   end
 
   create_table "sectors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -133,6 +154,15 @@ ActiveRecord::Schema.define(version: 2019_10_13_190041) do
     t.index ["user_id"], name: "index_students_on_user_id"
   end
 
+  create_table "summaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.string "title"
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_summaries_on_company_id"
+  end
+
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email"
     t.boolean "is_company", default: false
@@ -156,13 +186,17 @@ ActiveRecord::Schema.define(version: 2019_10_13_190041) do
   add_foreign_key "companies", "users"
   add_foreign_key "post_fields", "fields"
   add_foreign_key "post_fields", "posts"
+  add_foreign_key "company_sectors", "companies"
+  add_foreign_key "company_sectors", "sectors"
   add_foreign_key "post_sectors", "posts"
   add_foreign_key "post_sectors", "sectors"
   add_foreign_key "posts", "companies"
+  add_foreign_key "reviews", "companies"
   add_foreign_key "skills", "students"
   add_foreign_key "student_sectors", "sectors"
   add_foreign_key "student_sectors", "students"
   add_foreign_key "student_work_contents", "students"
   add_foreign_key "student_work_contents", "work_contents"
   add_foreign_key "students", "users"
+  add_foreign_key "summaries", "companies"
 end
