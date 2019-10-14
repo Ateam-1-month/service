@@ -1,0 +1,88 @@
+<%= image_tag "http://lorempixel.com/400/300/business/#{@post.id/10+1}", :size => '600x400' %>
+<br>
+募集タイトル
+<%= @post.title %>
+<br>
+
+担当者電話番号
+<%= @post.tel_number %>
+<br>
+
+担当者名
+<%= @post.first_name %><%= @post.last_name %>
+<br>
+
+担当者名（かな）
+<%= @post.first_name_kana %><%= @post.last_name_kana %>
+<br>
+
+就業期間
+<%= @post.period %>
+<br>
+
+募集内容
+<%= @post.content %>
+<br>
+
+給与体制
+<%= @post.salary %>
+<br>
+
+投稿日時
+<%= @post.created_at.strftime('%Y年%m月%d日') %>
+<br>
+
+更新日時
+<%= @post.updated_at.strftime('%Y年%m月%d日') %>
+<br>
+<br>
+<br>
+
+
+
+企業情報
+<br>
+
+企業img
+<%= image_tag "http://lorempixel.com/400/300/business/#{@post.id/10+1}", :size => '50x50' %>
+<br>
+
+企業名前
+<%= @post.company.name %>
+<br>
+
+企業サイト
+<%= @post.company.url %>
+<br>
+
+企業住所
+<%= @post.company.address %>
+<br>
+
+
+企業説明
+<br>
+<% @post.company.summaries.each do |summary| %>
+  <%= summary.title %>
+  <br>
+  <%= summary.content %>
+  <br>
+<% end %>
+<br>
+<br>
+<br>
+
+企業へのユーザーレビュー
+<br>
+<% @post.company.reviews.each do |review| %>
+  <%= review.title %>
+  <br>
+  <%= review.content %>
+  <br>
+  <%= review.evaluation %>
+  <br>
+<% end %>
+
+
+
+
