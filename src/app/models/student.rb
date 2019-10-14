@@ -8,6 +8,9 @@ class Student < ApplicationRecord
   has_many :student_work_contents
   has_many :work_contents, through: :student_work_contents
 
+  has_many :applies
+  has_many :posts, through: :applies
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :first_name_kana, presence: true
