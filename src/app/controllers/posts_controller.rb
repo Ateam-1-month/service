@@ -5,9 +5,6 @@ class PostsController < ApplicationController
     # 業種一覧
     @sectors = Sector.all()
 
-    # 業務内容一覧
-    @fields = Field.all()
-
     # 一番上のやつ
     @posts = Post.first(5)
 
@@ -28,19 +25,16 @@ class PostsController < ApplicationController
     # 業種
     sectors = Sector.where(id: params[:sector_id])
 
-    # 企業分野
-    fields = Field.where(id: params[:field_id])
-
     # 検索結果
     @posts = []
 
-    if sectors.empty? && fields.empty?
+    if sectors.empty?
       # 検索条件がなければ全募集
       @posts = posts
     elsif
       posts.each {|post|
         # 検索条件に一致しているものがあれば追加
-        if sectors.any? {|i| post.sectors.include?(i)} || fields.any? {|i| post.fields.include?(i)}
+        if sectors.any? {|i| post.sectors.include?(i)}
           @posts.push(post)
         end
       }

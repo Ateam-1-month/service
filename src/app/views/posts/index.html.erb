@@ -4,11 +4,6 @@
     <%= f.check_box :sector_id, {}, sector.id, nil %>
     <%= f.label :sector_name, sector.name %>
   <% end %>
-  企業分野
-  <% @fields.each do |field| %>
-    <%= f.check_box :field_id, {}, field.id, nil %>
-    <%= f.label :field_name, field.name %>
-  <% end %>
   <%= f.submit '検索' %>
 <% end %>
 
