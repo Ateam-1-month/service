@@ -43,6 +43,15 @@ ActiveRecord::Schema.define(version: 2019_10_13_190041) do
     t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
+  create_table "company_sectors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "company_id", null: false
+    t.bigint "sector_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_company_sectors_on_company_id"
+    t.index ["sector_id"], name: "index_company_sectors_on_sector_id"
+  end
+
   create_table "fields", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -56,15 +65,6 @@ ActiveRecord::Schema.define(version: 2019_10_13_190041) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["field_id"], name: "index_post_fields_on_field_id"
     t.index ["post_id"], name: "index_post_fields_on_post_id"
-  end
-
-  create_table "company_sectors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
-    t.bigint "company_id", null: false
-    t.bigint "sector_id", null: false
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.index ["company_id"], name: "index_company_sectors_on_company_id"
-    t.index ["sector_id"], name: "index_company_sectors_on_sector_id"
   end
 
   create_table "post_sectors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -184,10 +184,10 @@ ActiveRecord::Schema.define(version: 2019_10_13_190041) do
   add_foreign_key "appeals", "students"
   add_foreign_key "careers", "students"
   add_foreign_key "companies", "users"
-  add_foreign_key "post_fields", "fields"
-  add_foreign_key "post_fields", "posts"
   add_foreign_key "company_sectors", "companies"
   add_foreign_key "company_sectors", "sectors"
+  add_foreign_key "post_fields", "fields"
+  add_foreign_key "post_fields", "posts"
   add_foreign_key "post_sectors", "posts"
   add_foreign_key "post_sectors", "sectors"
   add_foreign_key "posts", "companies"
