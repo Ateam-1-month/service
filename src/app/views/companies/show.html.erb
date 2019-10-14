@@ -1,1 +1,52 @@
-company/show
+<div>
+<%= @company.name %>
+<%= @company.url %>
+<%= @company.address %>
+</div>
+<div>
+<%= image_tag 'http://lorempixel.com/400/300/business/' %>
+</div>
+<div>
+業種
+<% @company.sectors.each do |sector| %>
+  <%= sector.name %>
+<% end %>
+</div>
+<div>
+<% @company.summaries.each do |summary| %>
+  <div>
+  <%= summary.title %>
+  <%= summary.content %>
+  </div>
+<% end %>
+</div>
+<div>
+募集中の業務
+</div>
+<div>
+<% @company.posts.each do |post| %>
+  <div>
+  <%= image_tag 'http://lorempixel.com/400/300/business/' %>
+  <% post.sectors.each do |sector| %>
+    <%= sector.name %>
+  <% end %>
+  <%= post.title %>
+  <%= post.period %>
+  <%= post.content %>
+  <%= post.salary %>
+  <%= post.company.name %>
+  </div>
+<% end %>
+</div>
+<div>
+学生レビュー
+</div>
+<div>
+<% @company.reviews.each do |review| %>
+  <div>
+  <%= review.title %>
+  <%= review.content %>
+  <%= review.evaluation %>
+  </div>
+<% end %>
+</div>

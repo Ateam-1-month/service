@@ -16,6 +16,8 @@ Rails.application.routes.draw do
   get '/posts/search', to: 'posts#search'
   get 'posts/list', to: 'posts#list'
 
+  get 'companies/show', to: 'companies#show'
+
   resources :students
   resources :companies
   resources :account_activations, only: [:edit]

@@ -3,6 +3,7 @@ class Company < ApplicationRecord
   has_many :posts
   has_many :reviews
   has_many :summaries
+  has_many :company_sectors
   has_many :sectors, through: :company_sectors
 
   validates :name, presence: true
