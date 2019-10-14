@@ -1,0 +1,21 @@
+<div>
+<% posts.each do |post| %>
+  <div>
+  <%= image_tag 'http://lorempixel.com/400/300/business/' %>
+  </div>
+  <div>
+  <%= post.company.name %>
+  <%= post.title %>
+  <div>
+  <% post.sectors.each do |sector| %>
+    <%= sector.name %>
+  <% end %>
+  </div>
+  <%= post.period %>
+  <%= post.content %>
+  <%= post.salary %>
+  </div>
+    <%= button_to "詳細を見る", "show", { method: :get, params: {id: post.id} } %>
+    <%= button_to "気になる" %>
+<% end %>
+</div>

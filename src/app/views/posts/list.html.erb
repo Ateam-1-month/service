@@ -3,18 +3,4 @@
   <%= f.select :sortOrder, {おすすめ順: 0, 人気順: 1, 新しい順: 2}, {include_blank: '並び順'}, onchange: "this.form.submit();" %>
 <% end %>
 <div>
-<% @posts.each do |post| %>
-  <div>
-  <%= post.company.name %>
-  <%= post.title %>
-  <div>
-  <% post.sectors.each do |sector| %>
-    <%= sector.name %>
-  <% end %>
-  </div>
-  <%= post.period %>
-  <%= post.content %>
-  <%= post.salary %>
-  </div>
-<% end %>
-</div>
+<%= render '/shared/posts', posts: @posts %>
