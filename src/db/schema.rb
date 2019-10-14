@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_13_190041) do
+ActiveRecord::Schema.define(version: 2019_10_14_081516) do
 
   create_table "appeals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "student_id", null: false
@@ -18,6 +18,15 @@ ActiveRecord::Schema.define(version: 2019_10_13_190041) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["student_id"], name: "index_appeals_on_student_id"
+  end
+
+  create_table "applies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "student_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_applies_on_post_id"
+    t.index ["student_id"], name: "index_applies_on_student_id"
   end
 
   create_table "careers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -182,6 +191,8 @@ ActiveRecord::Schema.define(version: 2019_10_13_190041) do
   end
 
   add_foreign_key "appeals", "students"
+  add_foreign_key "applies", "posts"
+  add_foreign_key "applies", "students"
   add_foreign_key "careers", "students"
   add_foreign_key "companies", "users"
   add_foreign_key "company_sectors", "companies"
