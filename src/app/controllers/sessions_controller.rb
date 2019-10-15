@@ -34,6 +34,6 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
-    redirect_to '/'
+    redirect_to '/login'
   end
 end

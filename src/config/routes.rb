@@ -16,8 +16,14 @@ Rails.application.routes.draw do
   get '/posts/search', to: 'posts#search'
   get 'posts/list', to: 'posts#list'
   get 'posts/:id', to: 'posts#show'
+  get '/posts/new', to: 'posts#new'
+  post '/posts', to: 'posts#update'
+  get '/posts/:id/edit', to: 'posts#edit'
+  post '/posts/:id', to: 'posts#update'
 
   post 'apply', to: 'applies#create'
+
+  get '/companies/home', to: 'companies#home'
 
   resources :students
   resources :companies
