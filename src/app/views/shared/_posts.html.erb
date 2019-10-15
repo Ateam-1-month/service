@@ -16,7 +16,7 @@
       <%= post.salary %>
     </div>
     
-    <%= link_to "詳細を見る", "/posts/#{post.id}" %>
+    <%= button_to "詳細を見る", "/posts/#{post.id}", method: :get %>
     <% if current_user && current_user.is_student %>
       <%= button_to "気になる" %>
     <% else %>
