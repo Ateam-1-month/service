@@ -1,7 +1,7 @@
 <div>
   <% posts.each do |post| %>
     <div>
-      <%= image_tag 'http://lorempixel.com/400/300/business/' %>
+      <%= image_tag "http://lorempixel.com/400/300/business/#{post.id/10+1}" %>
     </div>
     <div>
       <%= post.company.name %>
@@ -15,7 +15,14 @@
       <%= post.content %>
       <%= post.salary %>
     </div>
+    
     <%= link_to "詳細を見る", "/posts/#{post.id}" %>
-    <%= button_to "気になる" %>
+    <% if current_user && current_user.is_student %>
+      <%= button_to "気になる" %>
+    <% else %>
+      <% if current_user.company.posts.include?(post) %>
+        <%= link_to "内容を編集する", "/posts/#{post.id}/edit" %>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
