@@ -13,6 +13,18 @@
 <% end %>
 </div>
 <div>
+ 事業内容
+  <% @company.business_contents.each do |business_content| %>
+    <%= business_content.name %>
+  <% end %>
+</div>
+<div>
+  主な業務内容
+  <% @company.work_contents.each do |work_content| %>
+    <%= work_content.name %>
+  <% end %>
+</div>
+<div>
 <% @company.summaries.each do |summary| %>
   <div>
   <%= summary.title %>
