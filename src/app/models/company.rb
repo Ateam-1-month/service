@@ -5,6 +5,8 @@ class Company < ApplicationRecord
   has_many :summaries
   has_many :company_sectors
   has_many :sectors, through: :company_sectors
+  has_many :company_work_contents
+  has_many :work_contents, through: :company_work_contents
 
   validates :name, presence: true
   validates :address, presence: true
