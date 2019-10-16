@@ -1,0 +1,14 @@
+<%= link_to "+新規募集を作成", "/posts/new" %>
+<p>公開中の募集一覧</p>
+<%= render '/shared/posts', posts: current_user.company.posts %>
+
+
+<h1>左のナビゲーション</h1>
+<p>募集情報の管理</p>
+<p>スカウト中の学生</p>
+<p>フォローした学生</p>
+<p>フォローされた学生</p>
+<p>ご利用中のプラン</p>
+<p>請求先情報</p>
+<p>各種設定</p>
+<p><%= link_to "Log out", logout_path, method: :delete %></p>
