@@ -25,6 +25,8 @@ Rails.application.routes.draw do
 
   get '/companies/home', to: 'companies#home'
 
+  get 'companies/show', to: 'companies#show'
+
   resources :students
   resources :companies
   resources :account_activations, only: [:edit]
