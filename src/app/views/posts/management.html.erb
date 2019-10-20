@@ -8,7 +8,7 @@
 閲覧者数 202人<br>
 応募者一覧<br>
 <% @post.students.each do |student| %>
-  <%= image_tag "http://lorempixel.com/400/300/business/#{student.id/10+1}", :size => '100x100' %>
+  <%= image_tag "https://i.pravatar.cc/100?img=#{student.id/10+1}", :size => '100x100' %>
   <%= student.first_name %><%= student.last_name %> 4 お気に入り 2 業務経験<br>
   <%= student.age %> 歳/<%= student.gender ? '男性' : '女性' %><br>
   <%= student.university %> <%= student.faculty %>
