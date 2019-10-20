@@ -14,3 +14,5 @@ end
 (1..50).each do |num|
   WorkContent.create!(name: "業務内容#{num}")
 end
+
+# Post.create!(company_id: 1, tel_number: '090-6453-1999', first_name: '佐藤', last_name: '裕紀', first_name_kana: 'さとう', last_name_kana: 'ゆうき', image: 'image', title: '募集タイトル', period: '1週間', content: 'content11', salary: '時給換算')

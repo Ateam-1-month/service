@@ -73,6 +73,10 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def management
+    @post = Post.find(params[:id])
+  end
+
   def create
 
   end

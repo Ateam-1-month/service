@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_16_154204) do
+ActiveRecord::Schema.define(version: 2019_10_20_081653) do
 
   create_table "appeals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "student_id", null: false
@@ -107,6 +107,15 @@ ActiveRecord::Schema.define(version: 2019_10_16_154204) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_post_sectors_on_post_id"
     t.index ["sector_id"], name: "index_post_sectors_on_sector_id"
+  end
+
+  create_table "post_work_contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "post_id", null: false
+    t.bigint "work_content_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["post_id"], name: "index_post_work_contents_on_post_id"
+    t.index ["work_content_id"], name: "index_post_work_contents_on_work_content_id"
   end
 
   create_table "posts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
@@ -229,6 +238,8 @@ ActiveRecord::Schema.define(version: 2019_10_16_154204) do
   add_foreign_key "post_fields", "posts"
   add_foreign_key "post_sectors", "posts"
   add_foreign_key "post_sectors", "sectors"
+  add_foreign_key "post_work_contents", "posts"
+  add_foreign_key "post_work_contents", "work_contents"
   add_foreign_key "posts", "companies"
   add_foreign_key "reviews", "companies"
   add_foreign_key "skills", "students"
