@@ -1,0 +1,6 @@
+募集一覧
+<%= form_with url: "/posts/list", method: :get, local: true do |f| %>
+  <%= f.select :sortOrder, {おすすめ順: 0, 人気順: 1, 新しい順: 2}, {include_blank: '並び順'}, onchange: "this.form.submit();" %>
+<% end %>
+<div>
+<%= render '/shared/posts', posts: @posts %>

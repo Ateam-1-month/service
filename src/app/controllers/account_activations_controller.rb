@@ -6,10 +6,19 @@ class AccountActivationsController < ApplicationController
       user.update_attribute(:activated,    true)
       user.update_attribute(:activated_at, Time.zone.now)
       flash[:success] = "アカウントの有効化に成功しました."
-      redirect_to '/users/new'
+      log_in user
+      if user.is_student
+        redirect_to '/students/new'
+      else
+        redirect_to '/companies/new'
+      end
     else
       flash[:danger] = "有効期限が切れています.もう一度登録を行ってください."
-      redirect_to `/users/new`
+      if user.is_student
+        redirect_to '/students/users/new'
+      else
+        redirect_to '/companies/users/new'
+      end
     end
   end
 end

@@ -1,4 +1,6 @@
 class User < ApplicationRecord
+  has_one :student
+  has_one :company
   attr_accessor :activation_token
   before_save :downcase_email
   before_create :create_activation_digest
