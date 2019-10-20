@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_20_081653) do
+ActiveRecord::Schema.define(version: 2019_10_20_123443) do
 
   create_table "appeals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "student_id", null: false
@@ -151,6 +151,14 @@ ActiveRecord::Schema.define(version: 2019_10_20_081653) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "self_introductions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
+    t.bigint "student_id", null: false
+    t.text "content"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["student_id"], name: "index_self_introductions_on_student_id"
+  end
+
   create_table "skills", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "student_id", null: false
     t.string "name"
@@ -242,6 +250,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_081653) do
   add_foreign_key "post_work_contents", "work_contents"
   add_foreign_key "posts", "companies"
   add_foreign_key "reviews", "companies"
+  add_foreign_key "self_introductions", "students"
   add_foreign_key "skills", "students"
   add_foreign_key "student_sectors", "sectors"
   add_foreign_key "student_sectors", "students"
