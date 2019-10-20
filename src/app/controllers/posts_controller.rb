@@ -1,6 +1,10 @@
 class PostsController < ApplicationController
   include PostsHelper
 
+  before_action -> {
+    logged_in_user || company_user?
+  }, only: [:new, :create, :edit, :update, :destroy]
+
   def index
     # 業種一覧
     @sectors = Sector.all()
@@ -69,6 +73,10 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
+  def management
+    @post = Post.find(params[:id])
+  end
+
   def create
 
   end
@@ -78,6 +86,10 @@ class PostsController < ApplicationController
   end
 
   def update
+
+  end
+
+  def destroy
 
   end
 end
