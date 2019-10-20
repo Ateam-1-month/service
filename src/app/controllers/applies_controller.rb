@@ -1,4 +1,8 @@
 class AppliesController < ApplicationController
+  before_action -> {
+    logged_in_user || student_user?
+  }, only: [:create]
+  
   def create
     apply = Apply.new(post_id: params[:post_id], student_id: params[:student_id])
     if apply.save

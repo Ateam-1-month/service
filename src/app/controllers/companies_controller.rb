@@ -1,4 +1,8 @@
 class CompaniesController < ApplicationController
+  before_action -> {
+    logged_in_user || student_user?
+  }, only: [:new, :create, :edit, :update, :destroy]
+  
   def new
     @company = Company.new
   end
@@ -13,12 +17,24 @@ class CompaniesController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
   def show
     @company = Company.find(params[:id])
   end
 
   def home
     
+  end
+
+  def update
+
+  end
+
+  def destroy
+
   end
 
   private
