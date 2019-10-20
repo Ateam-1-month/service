@@ -1,17 +1,27 @@
-<div>
-  <ul id="nav">
-    <li><%= link_to "募集を見る", '#' %></li>
-    <li>
-      <%= form_with url: "#" do |f| %>
-        <%= f.text_field :search, placeholder: "会社や業務を探す" %>
-        <%= f.submit %>
-      <% end %>
-    </li>
-    <li><span class="fa fa-calendar-o" aria-hidden="true"></span></li>
-    <li><span class="fa fa-envelope" aria-hidden="true"></span></li>
-    <li><span class="fa fa-cog"></span></li>
-    <% if current_user && current_user.student %>
-      <li><%= link_to "マイページ", "/students/#{current_user.student.id}" %></li>
-    <% end %>
-  </ul>
-</div>
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+	<div class="header-container">
+		<img alt="SAPPO" src="logo.png">
+        <li><!--サーチバー-->
+        <%= form_with url: "#" do |f| %><%= f.text_field :search, placeholder: "ワードで検索する" %><%= button_tag sanitize('<i class="fa fa-search"></i>'), :type => "submit" %><%end %></li>
+        <ul class="link-search">
+            <li>
+                <a href="search"><p>募集を探す</p></a>
+            </li>
+            <li>
+                <a href="search"><p>企業を探す</p></a>
+            </li>
+        </ul>
+        <ul class="header-icon-container">
+            <li><a href="#"><i class="fa fa-calendar-o" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-question-circle" aria-hidden="true"></i></a></li>
+            <li><a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a></li>
+        </ul>
+	</div>
+</body>
+</html>

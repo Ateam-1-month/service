@@ -1,14 +1,65 @@
+<%= render 'shared/user_menu' %>
 <%= link_to "+新規募集を作成", "/posts/new" %>
-<p>公開中の募集一覧</p>
-<%= render '/shared/posts', posts: current_user.company.posts %>
+<div class="contents">
+    <button class="yellow-button">
+        <i class="fas fa-plus"></i>
+        <p>新規募集を作成</p>
+    </button>
+    <h2>公開中の募集一覧</h2>
+    <ul>
+        <li>すべて(5)</li>
+        <li>募集中(2)</li>
+        <li>募集停止中(1)</li>
+        <li>下書き(1)</li>
+        <li>募集終了(1)</li>
+    </ul>
+    <ul>
+        <li class="recruitment-thumbnail">
+            <div>
+                <p>募集中</p>
+                <h3>中長期で資料作成などの事務作業募集！</h3>
+                <div>   
+                    <button>内容を編集する</button>
+                    <button>募集ページを見る</button>
+                </div>
+            </div>
+            <div>
+                <img src="" alt="img">
+                <ul>
+                    <li><p class="zenre-tag">資料作成</p></li>
+                    <li><p class="zenre-tag">リサーチ</p></li>
+                    <li><p class="zenre-tag">web運用</p></li>
+                </ul>
+                <ul>
+                    <li>
+                        <p>募集期間：</p>
+                        <p>2週間〜</p>
+                    </li>
+                    <li>
+                        <p>業務内容：</p>
+                        <p>web制作に関するリサーチ業務や資料の作成</p>
+                    </li>
+                    <li>
+                        <p>給与体制：</p>
+                        <p>1万円/案件</p>
+                    </li>
+                </ul>
+            </div>
+            <ul>
+                <li>
+                    <p>応募者数</p>
+                    <p>6人</p>
+                </li>
+                <li>
+                    <p>ブックマーク数</p>
+                    <p>8人</p>
+                </li>
+                <li>
+                    <p>閲覧者数</p>
+                    <p>32人</p>
+                </li>
+            </ul>
+        </li>
+    </ul>
+</div>
 
-
-<h1>左のナビゲーション</h1>
-<p>募集情報の管理</p>
-<p>スカウト中の学生</p>
-<p>フォローした学生</p>
-<p>フォローされた学生</p>
-<p>ご利用中のプラン</p>
-<p>請求先情報</p>
-<p>各種設定</p>
-<p><%= link_to "Log out", logout_path, method: :delete %></p>
