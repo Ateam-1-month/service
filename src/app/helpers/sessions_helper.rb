@@ -18,7 +18,7 @@ module SessionsHelper
 
   def log_out
     session.delete(:user_id)
-    @current_uer = nil
+    @current_user = nil
   end
 
    # ログイン済みユーザーかどうか確認
@@ -27,5 +27,22 @@ module SessionsHelper
       flash[:danger] = "Please log in."
       redirect_to login_url
     end
-  end  
+    false
+  end
+
+  # 会社アカウントか確認
+  def company_user?
+    unless !current_user.company.nil?
+      flash[:danger] = "your account is student."
+      redirect_to '/posts/index'
+    end
+  end
+
+  # 学生アカウントか確認
+  def student_user?
+    unless !current_user.student.nil?
+      flash[:danger] = "your account is company."
+      redirect_to '/companies/home'
+    end
+  end
 end
