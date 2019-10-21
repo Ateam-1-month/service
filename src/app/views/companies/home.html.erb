@@ -1,14 +1,69 @@
+<% if current_user && current_user.is_company %>
+    <%= render 'shared/user_menu' %>
+<% end %>
 <%= link_to "+新規募集を作成", "/posts/new" %>
-<p>公開中の募集一覧</p>
-<%= render '/shared/posts', posts: current_user.company.posts %>
+<div class="company-contents">
+    <button class="yellow-button">
+        <i class="fas fa-plus"></i>
+        <p>新規募集を作成</p>
+    </button>
+    <h2>公開中の募集一覧</h2>
+    <ul>
+        <li>すべて(5)</li>
+        <li>募集中(2)</li>
+        <li>募集停止中(1)</li>
+        <li>下書き(1)</li>
+        <li>募集終了(1)</li>
+    </ul>
+    <% @posts.each do |post| %>
+        <ul>
+            <li class="recruitment-thumbnail">
+                <div>
+                    <p>募集中</p>
+                    <h3><%= post.title %></h3>
+                    <div>   
+                        <%= link_to '内容を編集する', "/posts/#{post.id}/edit" %>
+                        <%= link_to '募集ページを見る', "/posts/#{post.id}" %>
+                    </div>
+                </div>
+                <div>
+                    <%= image_tag "http://lorempixel.com/400/300/business/#{post.id/10+1}", :size => '350x250' %>
+                    <ul>
+                        <% post.work_contents.each do |work_content| %>
+                            <li><p class="zenre-tag"><%= work_content.name %></p></li>
+                        <% end %>
+                    </ul>
+                    <ul>
+                        <li>
+                            <p>募集期間：</p>
+                            <p><%= post.period %></p>
+                        </li>
+                        <li>
+                            <p>業務内容：</p>
+                            <p><%= post.content.slice(0..15) %></p>
+                        </li>
+                        <li>
+                            <p>給与体制：</p>
+                            <p><%= post.salary %></p>
+                        </li>
+                    </ul>
+                </div>
+                <ul>
+                    <li>
+                        <p>応募者数</p>
+                        <p><%= post.applies.count %>人</p>
+                    </li>
+                    <li>
+                        <p>ブックマーク数</p>
+                        <p>8人</p>
+                    </li>
+                    <li>
+                        <p>閲覧者数</p>
+                        <p>32人</p>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    <% end %>
+</div>
 
-
-<h1>左のナビゲーション</h1>
-<p>募集情報の管理</p>
-<p>スカウト中の学生</p>
-<p>フォローした学生</p>
-<p>フォローされた学生</p>
-<p>ご利用中のプラン</p>
-<p>請求先情報</p>
-<p>各種設定</p>
-<p><%= link_to "Log out", logout_path, method: :delete %></p>

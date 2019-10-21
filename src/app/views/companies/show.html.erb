@@ -1,64 +1,81 @@
-<div>
-<%= @company.name %>
-<%= @company.url %>
-<%= @company.address %>
-</div>
-<div>
-<%= image_tag 'http://lorempixel.com/400/300/business/' %>
-</div>
-<div>
-業種
-<% @company.sectors.each do |sector| %>
-  <%= sector.name %>
-<% end %>
-</div>
-<div>
- 事業内容
-  <% @company.business_contents.each do |business_content| %>
-    <%= business_content.name %>
-  <% end %>
-</div>
-<div>
-  主な業務内容
-  <% @company.work_contents.each do |work_content| %>
-    <%= work_content.name %>
-  <% end %>
-</div>
-<div>
-<% @company.summaries.each do |summary| %>
-  <div>
-  <%= summary.title %>
-  <%= summary.content %>
-  </div>
-<% end %>
-</div>
-<div>
-募集中の業務
-</div>
-<div>
-<% @company.posts.each do |post| %>
-  <div>
-  <%= image_tag 'http://lorempixel.com/400/300/business/' %>
-  <% post.sectors.each do |sector| %>
-    <%= sector.name %>
-  <% end %>
-  <%= post.title %>
-  <%= post.period %>
-  <%= post.content %>
-  <%= post.salary %>
-  <%= post.company.name %>
-  </div>
-<% end %>
-</div>
-<div>
-学生レビュー
-</div>
-<div>
-<% @company.reviews.each do |review| %>
-  <div>
-  <%= review.title %>
-  <%= review.content %>
-  <%= review.evaluation %>
-  </div>
-<% end %>
+<!--会社詳細ページ-->
+<%= render 'shared/user_menu' %>
+<div class="company-contents">
+    <div>
+        <div class="company-profile">
+            <%= @company.name %>
+            <%= @company.url %>
+            <%= @company.address %>
+        </div>
+        <button class="yellow-button">企業をフォローする</button>
+    </div>
+    <div>
+        <%= image_tag 'http://lorempixel.com/400/300/business/' %>
+    </div>
+    <ul>
+        <li>
+            <p>業種</p>
+            <p>
+            <p>
+                <% @company.sectors.each do |sector| %>
+                <%= sector.name %>
+                <% end %>
+            </p>
+        </li>
+        <li>
+            <p>事業内容</p>
+            <p>
+                <% @company.business_contents.each do |business_content| %>
+                    <%= business_content.name %>
+                <% end %>
+            </p>
+        </li>
+        <li>
+            <p>主な業務内容</p>
+            <p>
+                <% @company.work_contents.each do |work_content| %>
+                    <%= work_content.name %>
+                <% end %>
+            </p>
+        </li>
+    </ul>
+
+    <div>
+        <% @company.summaries.each do |summary| %>
+        <div>
+            <h3><%= summary.title %></h3>
+            <p><%= summary.content %></p>
+        </div>
+        <% end %>
+    </div>
+    <div>
+        <h3>募集中の業務</h3>
+        <% @company.posts.each do |post| %>
+        <div　class="post-box">
+            <%= image_tag 'http://lorempixel.com/400/300/business/' %>
+            <% post.sectors.each do |sector| %>
+                <%= sector.name %>
+            <% end %>
+            <%= post.company.name %>
+            <%= post.title %>
+            <%= post.period %>
+            <%= post.content %>
+            <%= post.salary %>
+        </div>
+        <% end %>
+    </div>
+    <% if current_user && current_user.is_student %>
+      <div>
+          <h3>学生レビュー</h3>
+          <div>
+              <% @company.reviews.each do |review| %>
+              <div>
+              <%= review.evaluation %>
+              <%= review.title %>
+              <%= review.content %>
+          </div>
+          <% end %>
+          </div>
+      </div>
+    <% end %>
 </div>

@@ -1,7 +1,7 @@
 class CompaniesController < ApplicationController
   before_action -> {
-    logged_in_user || student_user?
-  }, only: [:new, :create, :edit, :update, :destroy]
+    logged_in_user || company_user?
+  }, only: [:new, :create, :edit, :update, :destroy, :home]
   
   def new
     @company = Company.new
@@ -26,7 +26,7 @@ class CompaniesController < ApplicationController
   end
 
   def home
-    
+    @posts = current_user.company.posts
   end
 
   def update

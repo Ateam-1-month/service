@@ -43,7 +43,7 @@ end
 # 学生アカウント
 (1..10).each do |num|
   User.create!(email: "test_student#{num}@gmail.com", password: 'password', password_confirmation: 'password', is_company: false, is_student: true, activated: true, activated_at: Time.zone.now)
-  Student.create!(user_id: num, image: "image_#{num}", first_name: firstName[num-1], last_name: lastName[num-1], first_name_kana: firstNameKana[num-1], last_name_kana: lastNameKana[num-1], gender: num%2, age: rand(2), prefecture: "Ateam県", university: 'Bteam大学', faculty: 'Cteam学部')
+  Student.create!(user_id: num, image: "image_#{num}", first_name: firstName[num-1], last_name: lastName[num-1], first_name_kana: firstNameKana[num-1], last_name_kana: lastNameKana[num-1], gender: num%2, age: 20, prefecture: "Ateam県", university: 'Bteam大学', faculty: 'Cteam学部')
 end
 
 # 会社アカウント
