@@ -1,83 +1,210 @@
-<%= form_with url: "/posts/search", method: :get, local: true do |f| %>
-  業種
-  <% @sectors.each do |sector| %>
-    <%= f.check_box :sector_id, {}, sector.id, nil %>
-    <%= f.label :sector_name, sector.name %>
-  <% end %>
-  <%= f.submit '検索' %>
-<% end %>
+<div class="student-contents">
+    <!--プロモート募集-->
+    <div class="post-box-container">
+        <% @posts.each do |post| %>
+        <div class="post-box">
+            <%= image_tag 'http://lorempixel.com/400/300/business/' ,class:"post-img"%>
+            <%post.sectors.each do |sector| %>
+            <!--<%= sector.name %>　謎のやつ　消していいやつ？-->
+            <%end %>
+            <div class="post-text-box">
+                <h4><%= post.company.name %></h4>
+                <h3><%= post.title %></h3>
+                <div class="post-tag">
+                    <!--応募タグ-->
+                    <i aria-hidden="true" class="fas fa-tag"></i>
+                    <ul>
+                        <li>リサーチ</li>
+                        <li>資料作成</li>
+                        <li>web運用</li>
+                    </ul>
+                </div>
+                <ul>
+                    <li class="post-summary">
+                        <p>就業期間：</p>
+                        <p><%= post.period %></p>
+                    </li>
+                    <li class="post-summary">
+                        <p>業務内容：</p>
+                        <p><%= post.content %></p>
+                    </li>
+                    <li class="post-summary">
+                        <p>給与体制：</p>
+                        <p><%= post.salary %></p>
+                    </li>
+                </ul>
+                <p>掲載終了まで後10日</p>
+                <ul>
+                    <li><button class="normal-button">詳細を見る</button></li>
+                    <li><button class="yellow-button">
+                        <i aria-hidden="true" class="far fa-bookmark"></i>
+                        気になる
+                    </button></li>
+                </ul>
+            </div>
+        </div>
+        <% end %>
+    </div>
+    <div class="home-main-contents">
+        <!--検索バー-->
+        <div class="search-form-container">
+            <%= form_with url: "/posts/search", method: :get, local: true do |f| %>
+            業種
+            <% @sectors.each do |sector| %>
+                <%= f.check_box :sector_id, {}, sector.id, nil %>
+                <%= f.label :sector_name, sector.name %>
+            <% end %>
+            <%= f.submit '検索' %>
+            <% end %>
+            <button class="normal-button">詳しく検索する</button>
+        </div>
+        <div><!--おすすめ〜新着募集のまとめ-->
+            <!--オススメ-->
+            <div class="post-box-container">
+                <% @recommendedPosts.each do |post| %>
+                <div class="post-box">
+                    <%= image_tag 'http://lorempixel.com/400/300/business/' ,class:"post-img"%>
+                    <%post.sectors.each do |sector| %>
+                    <!--<%= sector.name %>　謎のやつ　消していいやつ？-->
+                    <%end %>
+                    <div class="post-text-box">
+                        <h4><%= post.company.name %></h4>
+                        <h3><%= post.title %></h3>
+                        <div class="post-tag">
+                            <!--応募タグ-->
+                            <i aria-hidden="true" class="fas fa-tag"></i>
+                            <ul>
+                                <li>リサーチ</li>
+                                <li>資料作成</li>
+                                <li>web運用</li>
+                            </ul>
+                        </div>
+                        <ul>
+                            <li class="post-summary">
+                                <p>就業期間：</p>
+                                <p><%= post.period %></p>
+                            </li>
+                            <li class="post-summary">
+                                <p>業務内容：</p>
+                                <p><%= post.content %></p>
+                            </li>
+                            <li class="post-summary">
+                                <p>給与体制：</p>
+                                <p><%= post.salary %></p>
+                            </li>
+                        </ul>
+                        <p>掲載終了まで後10日</p>
+                        <ul>
+                            <li><button class="normal-button">詳細を見る</button></li>
+                            <li><button class="yellow-button">
+                                <i aria-hidden="true" class="far fa-bookmark"></i>
+                                気になる
+                            </button></li>
+                        </ul>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+            <a href="/posts/list"><button class="yellow-button">もっとみる</button></a>
+            <!--<%= link_to "もっと見る", "/posts/list" %>ボタンにしたかったけど良くわかんなかったから上の感じに書き直した-->
 
-上のやつ
-<div>
-<% @posts.each do |post| %>
-  <div>
-  <%= post.company.name %>
-  <%= post.title %>
-  <div>
-  <% post.sectors.each do |sector| %>
-    <%= sector.name %>
-  <% end %>
-  </div>
-  <%= post.period %>
-  <%= post.content %>
-  <%= post.salary %>
-  </div>
-<% end %>
-</div>
+            <!--人気-->
+            <div class="post-box-container">
+                <% @popularPosts.each do |post| %>
+                <div class="post-box">
+                    <%= image_tag 'http://lorempixel.com/400/300/business/' ,class:"post-img"%>
+                    <%post.sectors.each do |sector| %>
+                    <!--<%= sector.name %>　謎のやつ　消していいやつ？-->
+                    <%end %>
+                    <div class="post-text-box">
+                        <h4><%= post.company.name %></h4>
+                        <h3><%= post.title %></h3>
+                        <div class="post-tag">
+                            <!--応募タグ-->
+                            <i aria-hidden="true" class="fas fa-tag"></i>
+                            <ul>
+                                <li>リサーチ</li>
+                                <li>資料作成</li>
+                                <li>web運用</li>
+                            </ul>
+                        </div>
+                        <ul>
+                            <li class="post-summary">
+                                <p>就業期間：</p>
+                                <p><%= post.period %></p>
+                            </li>
+                            <li class="post-summary">
+                                <p>業務内容：</p>
+                                <p><%= post.content %></p>
+                            </li>
+                            <li class="post-summary">
+                                <p>給与体制：</p>
+                                <p><%= post.salary %></p>
+                            </li>
+                        </ul>
+                        <p>掲載終了まで後10日</p>
+                        <ul>
+                            <li><button class="normal-button">詳細を見る</button></li>
+                            <li><button class="yellow-button">
+                                <i aria-hidden="true" class="far fa-bookmark"></i>
+                                気になる
+                            </button></li>
+                        </ul>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+            <a href="/posts/list"><button class="yellow-button">もっとみる</button></a>
+            <!--<%= link_to "もっと見る", "/posts/list" %>ボタンにしたかったけど良くわかんなかったから上の感じに書き直した-->
 
-オススメ
-<div>
-<% @recommendedPosts.each do |post| %>
-  <div>
-  <%= post.company.name %>
-  <%= post.title %>
-  <div>
-  <% post.sectors.each do |sector| %>
-    <%= sector.name %>
-  <% end %>
-  </div>
-  <%= post.period %>
-  <%= post.content %>
-  <%= post.salary %>
-  </div>
-<% end %>
-<%= link_to "もっとみる", "/posts/list" %>
-</div>
-
-人気
-<div>
-<% @popularPosts.each do |post| %>
-  <div>
-  <%= post.company.name %>
-  <%= post.title %>
-  <div>
-  <% post.sectors.each do |sector| %>
-    <%= sector.name %>
-  <% end %>
-  </div>
-  <%= post.period %>
-  <%= post.content %>
-  <%= post.salary %>
-  </div>
-<% end %>
-<%= link_to "もっとみる", "/posts/list?sortOrder=1" %>
-</div>
-
-新規
-<div>
-<% @newPosts.each do |post| %>
-  <div>
-  <%= post.company.name %>
-  <%= post.title %>
-  <div>
-  <% post.sectors.each do |sector| %>
-    <%= sector.name %>
-  <% end %>
-  </div>
-  <%= post.period %>
-  <%= post.content %>
-  <%= post.salary %>
-  </div>
-<% end %>
-<%= link_to "もっとみる", "/posts/list?sortOrder=2" %>
+            <!--新規-->
+            <div class="post-box-container">
+                <% @newPosts.each do |post| %>
+                <div class="post-box">
+                    <%= image_tag 'http://lorempixel.com/400/300/business/' ,class:"post-img"%>
+                    <%post.sectors.each do |sector| %>
+                    <!--<%= sector.name %>　謎のやつ　消していいやつ？-->
+                    <%end %>
+                    <div class="post-text-box">
+                        <h4><%= post.company.name %></h4>
+                        <h3><%= post.title %></h3>
+                        <div class="post-tag">
+                            <!--応募タグ-->
+                            <i aria-hidden="true" class="fas fa-tag"></i>
+                            <ul>
+                                <li>リサーチ</li>
+                                <li>資料作成</li>
+                                <li>web運用</li>
+                            </ul>
+                        </div>
+                        <ul>
+                            <li class="post-summary">
+                                <p>就業期間：</p>
+                                <p><%= post.period %></p>
+                            </li>
+                            <li class="post-summary">
+                                <p>業務内容：</p>
+                                <p><%= post.content %></p>
+                            </li>
+                            <li class="post-summary">
+                                <p>給与体制：</p>
+                                <p><%= post.salary %></p>
+                            </li>
+                        </ul>
+                        <p>掲載終了まで後10日</p>
+                        <ul>
+                            <li><button class="normal-button">詳細を見る</button></li>
+                            <li><button class="yellow-button">
+                                <i aria-hidden="true" class="far fa-bookmark"></i>
+                                気になる
+                            </button></li>
+                        </ul>
+                    </div>
+                </div>
+                <% end %>
+            </div>
+            <a href="/posts/list"><button class="yellow-button">もっとみる</button></a>
+            <!--<%= link_to "もっと見る", "/posts/list" %>ボタンにしたかったけど良くわかんなかったから上の感じに書き直した-->
+        </div>
+    </div>
 </div>

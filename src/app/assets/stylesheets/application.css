@@ -13,7 +13,7 @@
 *= require_tree .
 *= require_self
 */
-
+/* 全体共通 */
 body {
 	margin: 0;
 	background-color: white;
@@ -50,6 +50,20 @@ li {
 i {
 	color: #464E58;
 }
+.yellow-button {
+	background-color: #FFE202;
+	box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
+}
+.normal-button {
+	background-color: white;
+	border: solid 1px #8C9298;
+}
+button {
+	display: flex;
+	align-items: center;
+	border-radius: 2em;
+	padding: 0.5em 1em 0.5em 1em;
+}
 /* 学生 */
 .student-contents {
     box-sizing: border-box;
@@ -69,20 +83,11 @@ i {
 	/* height: auto;
     width: calc(100vw - 300px); */
 }
-.yellow-button {
-	background-color: #FFE202;
-	box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
+/* 企業詳細 */
+.company-zenre-container{
+    display: flex;
 }
-.normal-button {
-	background-color: white;
-	border: solid 1px #8C9298;
-}
-button {
-	display: flex;
-	align-items: center;
-	border-radius: 2em;
-	padding: 0.5em 1em 0.5em 1em;
-}
+
 /* ヘッダー */
 
 .header-container {
@@ -166,4 +171,40 @@ button {
 .post-box{
     display: flex;
     flex-direction: column;
+    border: solid 0.5px #8C9298;
+    width: 47%;
+    height: auto;
+}
+.post-img{
+    width: 100%;
+    height: auto;
+}
+.post-text-box{
+    padding: 30px;
+}
+.post-summary{
+    display: flex;
+}
+.post-tag{
+    display: flex;
+}
+/* 学生ホーム */
+.post-box-container{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    overflow: hidden;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+.home-main-contents{
+    display: flex;
+}
+.search-menu-container{
+    width: 350px;
+}
+
+/* 募集一覧 */
+.post-list-contents{
+    display: flex;
 }
