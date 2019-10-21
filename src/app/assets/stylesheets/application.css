@@ -15,110 +15,155 @@
 */
 
 body {
-    margin: 0;
-    background-color: white;
-    color: #464E58;
+	margin: 0;
+	background-color: white;
+	color: #464E58;
 }
-p{
-    font-size: 16px;
-    margin: 0;
+input{
+    padding: 0;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    background: none;
 }
-h4{
-    font-size: 0.8em;
-    font-weight: normal;
-    color: #8C9298;
+p {
+	font-size: 16px;
+	margin: 0;
 }
-a{
-    text-decoration: none;
-    color: #464E58;
+h4 {
+	font-size: 0.8em;
+	font-weight: normal;
+	color: #8C9298;
 }
-ul{
+a {
+	text-decoration: none;
+	color: #464E58;
+}
+ul {
     list-style: none;
+    padding: 0;
+    margin: 0;
 }
-li{
-    list-style: none;
+li {
+	list-style: none;
 }
-i{
-    color: #464E58;
+i {
+	color: #464E58;
 }
-.contents{
-    width: 100%;
-    margin-top: 60px;
-    margin-left: 300px;
-    padding: 40px;
-    /* height: auto;
+/* 学生 */
+.student-contents {
+    box-sizing: border-box;
+	width: 100%;
+	margin-top: 60px;
+	padding: 40px;
+	/* height: auto;
     width: calc(100vw - 300px); */
 }
-.yellow-button{
-    background-color: #FFE202;
-    box-shadow: 0 0 2px 0 rgba(0,0,0,0.2);
+/* 企業 */
+.company-contents {
+    box-sizing: border-box;
+	width: calc(100vw - 300px);
+	margin-top: 60px;
+	margin-left: 300px;
+	padding: 40px;
+	/* height: auto;
+    width: calc(100vw - 300px); */
 }
-.normal-button{
-    background-color: white;
-    border: solid 1px #8C9298;
+.yellow-button {
+	background-color: #FFE202;
+	box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
 }
-button{
-    display: flex;
-    align-items: center;
-    border-radius: 2em;
-    padding: 0.5em 1em 0.5em 1em;
+.normal-button {
+	background-color: white;
+	border: solid 1px #8C9298;
+}
+button {
+	display: flex;
+	align-items: center;
+	border-radius: 2em;
+	padding: 0.5em 1em 0.5em 1em;
 }
 /* ヘッダー */
-.header-container{
-    position: fixed;
+
+.header-container {
+	position: fixed;
     justify-content: space-around;
-    min-width: 980px;
-    z-index: 1000;
-    height: 60px;
-    width: 100%;
+    align-items: center;
+    top: 0;
+	min-width: 980px;
+	z-index: 1000;
+	height: 60px;
+	width: 100%;
+	display: flex;
+	background-color: white;
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+}
+.header-search-bar{
     display: flex;
-    background-color: white;
-    box-shadow: 0 0 4px 0 rgba(0,0,0,0.2);
-}
-.header-icon-container{
-    display: flex;
-}
-.link-search{
-    display: flex;
-}
-/* usermenu */
-.menu-icon{
-    float: left;
-}
-.menu-text{
-    float: left;
-}
-.user-menu-container{
-    top: 60px;
-    position: fixed;
-    z-index: 900;
-    background: white;
-    width: 300px;
-    border-right: solid 1px #8C9298;
-}
-/* ホーム画面 */
-.recruitment-thumbnail{
+    background-color: #F4F4F4;
+    border-radius: 0.5em;
+    padding: 0.3em;
+    justify-content: space-between;
     border: solid 0.5px #8C9298;
 }
+.header-search-button{
+    background: none;
+    border: none;
+}
+.header-icon-container {
+	display: flex;
+}
+.link-search {
+	display: flex;
+}
+.header-icon{
+    font-size: 30px;
+}
+/* usermenu */
 
+.menu-icon {
+	float: left;
+}
+.menu-text {
+	float: left;
+}
+.user-menu-container {
+	top: 60px;
+	position: fixed;
+	z-index: 900;
+	background: white;
+	width: 300px;
+	border-right: solid 1px #8C9298;
+}
+/* ホーム画面 */
+
+.recruitment-thumbnail {
+	border: solid 0.5px #8C9298;
+}
 /* フッター */
-.footer{
-    width: 100%;
-    height: 140px;
+
+.footer {
+	width: 100%;
+	height: 140px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-top: solid 0.5px #8C9298;
+}
+.footer-link-container {
+	padding: 0;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+}
+.footer-service-logo {
+	margin-right: 140px;
+}
+.footer-link {
+	margin-right: 80px;
+}
+/* 企業詳細ページ */
+.post-box{
     display: flex;
-    align-items: center;
-    justify-content: center;
-    border-top: solid 0.5px #8C9298;
-}
-.footer-link-container{
-    padding: 0;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-}
-.footer-service-logo{
-    margin-right: 140px;
-}
-.footer-link{
-    margin-right: 80px;
+    flex-direction: column;
 }
