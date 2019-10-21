@@ -64,17 +64,18 @@
         </div>
         <% end %>
     </div>
-    <div>
-        <h3>学生レビュー</h3>
-        <div>
-            <% @company.reviews.each do |review| %>
-            <div>
-            <%= review.evaluation %>
-            <%= review.title %>
-            <%= review.content %>
-        </div>
-        <% end %>
-        </div>
-    </div>
-    
+    <% if current_user && current_user.is_student %>
+      <div>
+          <h3>学生レビュー</h3>
+          <div>
+              <% @company.reviews.each do |review| %>
+              <div>
+              <%= review.evaluation %>
+              <%= review.title %>
+              <%= review.content %>
+          </div>
+          <% end %>
+          </div>
+      </div>
+    <% end %>
 </div>
