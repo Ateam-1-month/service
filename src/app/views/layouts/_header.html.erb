@@ -1,7 +1,13 @@
 <div class="header-container">
-	<img alt="SAPPO" src="#">
-    <li><!--サーチバー-->
-    <%= form_with url: "#" do |f| %><%= f.text_field :search, placeholder: "ワードで検索する" %><%= button_tag sanitize('<i class="fa fa-search"></i>'), :type => "submit" %><%end %></li>
+	<img alt="uniwork" src="/assets/logotype/uniwork-logotype.png">
+    <!--サーチバー-->
+    <div>
+        <%= form_with(url: "#", class: "header-search-bar") do |f| %>
+        <%= f.text_field :search, placeholder: "ワードで検索する"  %>
+        <%= button_tag sanitize('<i class="fa fa-search"></i>'), :type => "submit" ,class:'header-search-button' %>
+        <%end %>
+    </div>
+    
     <ul class="link-search">
         <li>
             <a href="search"><p>募集を探す</p></a>
@@ -11,9 +17,9 @@
         </li>
     </ul>
     <ul class="header-icon-container">
-        <li><a href="#"><i class="fa fa-calendar-o" aria-hidden="true"></i></a></li>
-        <li><a href="#"><i class="fa fa-commenting-o" aria-hidden="true"></i></a></li>
-        <li><a href="#"><i class="fa fa-question-circle" aria-hidden="true"></i></a></li>
-        <li><a href="#"><i class="fa fa-user-circle-o" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="header-icon fa fa-calendar-o" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="header-icon fa fa-commenting-o" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="header-icon fa fa-question-circle" aria-hidden="true"></i></a></li>
+        <li><a href="#"><i class="header-icon fa fa-user-circle-o" aria-hidden="true"></i></a></li>
     </ul>
 </div>
