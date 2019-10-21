@@ -1,6 +1,26 @@
-募集一覧
-<%= form_with url: "/posts/list", method: :get, local: true do |f| %>
-  <%= f.select :sortOrder, {おすすめ順: 0, 人気順: 1, 新しい順: 2}, {include_blank: '並び順'}, onchange: "this.form.submit();" %>
-<% end %>
-<div>
-<%= render '/shared/posts', posts: @posts %>
+<!--募集一覧-->
+<div class="student-contents">
+    <!--検索バー-->
+    <div class="post-list-contents">
+    <!--検索バー-->
+        <div class="search-form-container">
+            <%= form_with url: "/posts/search", method: :get, local: true do |f| %>
+            業種
+            <% @sectors.each do |sector| %>
+                <%= f.check_box :sector_id, {}, sector.id, nil %>
+                <%= f.label :sector_name, sector.name %>
+            <% end %>
+            <%= f.submit '検索' %>
+            <% end %>
+            <button class="normal-button">詳しく検索する</button>
+        </div>
+        <div><!--並べ替えのやつ-->
+            <%= form_with url: "/posts/list", method: :get, local: true do |f| %>
+            <%= f.select :sortOrder, {おすすめ順: 0, 人気順: 1, 新しい順: 2}, {include_blank: '並び順'}, onchange: "this.form.submit();" %>
+            <% end %>
+        </div>
+        <div>
+        <%= render '/shared/posts', posts: @posts %>
+        <!--ページ繊維-->
+    </div>
+</div>

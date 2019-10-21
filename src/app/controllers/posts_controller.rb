@@ -50,6 +50,7 @@ class PostsController < ApplicationController
   def list
     # 並び順
     sortOrder = params[:sortOrder].to_i
+    @sectors = Sector.all
 
     if sortOrder == 1
       # 人気
