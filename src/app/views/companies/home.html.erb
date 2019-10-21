@@ -1,4 +1,6 @@
-<%= render 'shared/user_menu' %>
+<% if current_user && current_user.is_company %>
+    <%= render 'shared/user_menu' %>
+<% end %>
 <%= link_to "+新規募集を作成", "/posts/new" %>
 <div class="company-contents">
     <button class="yellow-button">
@@ -13,53 +15,55 @@
         <li>下書き(1)</li>
         <li>募集終了(1)</li>
     </ul>
-    <ul>
-        <li class="recruitment-thumbnail">
-            <div>
-                <p>募集中</p>
-                <h3>中長期で資料作成などの事務作業募集！</h3>
-                <div>   
-                    <button>内容を編集する</button>
-                    <button>募集ページを見る</button>
+    <% @posts.each do |post| %>
+        <ul>
+            <li class="recruitment-thumbnail">
+                <div>
+                    <p>募集中</p>
+                    <h3><%= post.title %></h3>
+                    <div>   
+                        <%= link_to '内容を編集する', "/posts/#{post.id}/edit" %>
+                        <%= link_to '募集ページを見る', "/posts/#{post.id}" %>
+                    </div>
                 </div>
-            </div>
-            <div>
-                <img src="" alt="img">
+                <div>
+                    <%= image_tag "http://lorempixel.com/400/300/business/#{post.id/10+1}", :size => '350x250' %>
+                    <ul>
+                        <% post.work_contents.each do |work_content| %>
+                            <li><p class="zenre-tag"><%= work_content.name %></p></li>
+                        <% end %>
+                    </ul>
+                    <ul>
+                        <li>
+                            <p>募集期間：</p>
+                            <p><%= post.period %></p>
+                        </li>
+                        <li>
+                            <p>業務内容：</p>
+                            <p><%= post.content.slice(0..15) %></p>
+                        </li>
+                        <li>
+                            <p>給与体制：</p>
+                            <p><%= post.salary %></p>
+                        </li>
+                    </ul>
+                </div>
                 <ul>
-                    <li><p class="zenre-tag">資料作成</p></li>
-                    <li><p class="zenre-tag">リサーチ</p></li>
-                    <li><p class="zenre-tag">web運用</p></li>
-                </ul>
-                <ul>
                     <li>
-                        <p>募集期間：</p>
-                        <p>2週間〜</p>
+                        <p>応募者数</p>
+                        <p><%= post.applies.count %>人</p>
                     </li>
                     <li>
-                        <p>業務内容：</p>
-                        <p>web制作に関するリサーチ業務や資料の作成</p>
+                        <p>ブックマーク数</p>
+                        <p>8人</p>
                     </li>
                     <li>
-                        <p>給与体制：</p>
-                        <p>1万円/案件</p>
+                        <p>閲覧者数</p>
+                        <p>32人</p>
                     </li>
                 </ul>
-            </div>
-            <ul>
-                <li>
-                    <p>応募者数</p>
-                    <p>6人</p>
-                </li>
-                <li>
-                    <p>ブックマーク数</p>
-                    <p>8人</p>
-                </li>
-                <li>
-                    <p>閲覧者数</p>
-                    <p>32人</p>
-                </li>
-            </ul>
-        </li>
-    </ul>
+            </li>
+        </ul>
+    <% end %>
 </div>
 
