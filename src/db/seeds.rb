@@ -54,12 +54,12 @@ end
 
 # appeal ポイント
 (1..30).each do |num|
-  Appeal.create!(student_id: num/10+1, content: "私は「縁の下の力持ち」型リーダーです。周りのメンバーが力を最大限発揮できるように、自ら積極的に動くことができます。#{num}")
+  Appeal.create!(student_id: num%10+1, content: "私は「縁の下の力持ち」型リーダーです。周りのメンバーが力を最大限発揮できるように、自ら積極的に動くことができます。#{num}")
 end
 
 # career 
 (1..30).each do |num|
-  Career.create!(student_id: num/10+1, name: "カフェ　アルパジョン #{num}号店", start_date: Time.zone.now.ago(3.month), end_date: Time.zone.now, role: "キッチンアルバイト", content: "いっぱい頑張りました.")
+  Career.create!(student_id: num%10+1, name: "カフェ　アルパジョン #{num}号店", start_date: Time.zone.now.ago(3.month), end_date: Time.zone.now, role: "キッチンアルバイト", content: "いっぱい頑張りました.")
 end
 
 #　自己紹介
@@ -69,7 +69,7 @@ end
 
 # 学生スキル
 (1..30).each do |num|
-  Skill.create!(student_id:num/10+1, name: "Excel#{num}", level: 5-rand(3), content: "#{num}年使っています")
+  Skill.create!(student_id:num%10+1, name: "Excel#{num}", level: 5-rand(3), content: "#{num}年使っています")
 end
 
 # student_sector
