@@ -40,7 +40,68 @@
 
 <div class="company-contents">
     <% if current_user && current_user.is_company %>
-        <!--企業ログインの場合は上のプロフが消えてこっちにプロフが入ります（あとで組みます）-->
+        <!--企業ログインの場合は上のプロフが消えてこっちにプロフが入ります-->
+        <div class="student-prof-header">
+            <div><%= image_tag "https://i.pravatar.cc/100?img=#{@student.id%10+1}", :size => '120x120'  %></div>
+            <div>
+                <p><%= @student.last_name %></p>
+                <p><%= @student.first_name %></p>
+            </div>
+            <div>
+                <p><%= @student.last_name_kana %></p>
+                <p><%= @student.first_name_kana %></p>
+            </div>
+            <div>
+                <p>フォロワー</p>
+                <p>5社</p>
+                <div>
+                    <img src="#" alt="company-logo">
+                    <img src="#" alt="company-logo">
+                    <img src="#" alt="company-logo">
+                    <img src="#" alt="company-logo">
+                    <img src="#" alt="company-logo">
+                </div>
+            </div>
+            <div>
+                <button class="normal-button">フォローする</button>
+                <button class="normal-button">スカウトする</button>
+                <button　class="yellow-button important-button">メッセージを送る</button>
+            </div>
+        </div>
+        <h3>プロフィール</h3>
+        <div>
+            <div>
+                <ul class="flex">
+                    <li><p><%= @student.prefecture %></p></li>
+                    <li><p><%= @student.gender %></p></li>
+                    <li><p><%= @student.age %></p></li>
+                </ul>
+                <ul class="flex">
+                    <li><p><%= @student.university %></p></li>
+                    <li><p><%= @student.faculty %></p></li>
+                </ul>
+            </div>
+            <div class="flex">
+                <div>
+                    <p>希望する業種</p>
+                    <p>希望する業務内容</p>
+                </div>
+                <div>
+                    <!--業種-->
+                    <ul class="flex">
+                        <% @student.sectors.each do |sector| %>
+                            <li><p><%= sector.name %></p></li>
+                        <% end %>
+                    </ul>
+                    <!--業務内容-->
+                    <ul class="flex">
+                        <% @student.work_contents.each do |work_content| %>
+                            <li><p><%= work_content.name %></p></li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        </div>
     <% end %>
     <div>
         <div>
@@ -134,8 +195,62 @@
         <div>
             <div>
                 <h3>学生への企業からのレビュー</h3>
+                <!--データベースないので打ち込みです-->
+                <div class="company-revue-card">
+                    <div class="flex">
+                        <img src="#" alt="企業ロゴ">
+                        <div>
+                            <p>株式会社ZZZ</p>
+                            <div class="flex">
+                                <p>業務内容</p>
+                                <p>リサーチ・資料制作</p>
+                            </div>
+                            <div class="flex">
+                                <p>就業期間</p>
+                                <p>2週間</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p>事務所移転やイベントの設営撤去。主に商品や什器の運搬、設置。派遣先により時間や休憩は違いました。短時間の仕事で休憩のないときもありました。逆に待機時間がすごく長くあり、退屈した派遣先もありました。新規店舗に什器を搬入する際には夜中に働いたこともあります。</p>
+                    <ul class="flex"><!--評価ボタン-->
+                        <li class="flex">
+                            <i aria-hidden="true" class="fas fa-thumbs-up"></i>
+                            <h4>5</h4>
+                        </li>
+                        <li class="flex">
+                            <i aria-hidden="true" class="fas fa-ban"></i>
+                            <h4>違反報告する</h4>
+                        </li>
+                    </ul>
+                </div>
+                <div class="company-revue-card">
+                    <div class="flex">
+                        <img src="#" alt="企業ロゴ">
+                        <div>
+                            <p>株式会社ZZZ</p>
+                            <div class="flex">
+                                <p>業務内容</p>
+                                <p>リサーチ・資料制作</p>
+                            </div>
+                            <div class="flex">
+                                <p>就業期間</p>
+                                <p>2週間</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p>事務所移転やイベントの設営撤去。主に商品や什器の運搬、設置。派遣先により時間や休憩は違いました。短時間の仕事で休憩のないときもありました。逆に待機時間がすごく長くあり、退屈した派遣先もありました。新規店舗に什器を搬入する際には夜中に働いたこともあります。</p>
+                    <ul class="flex"><!--評価ボタン-->
+                        <li class="flex">
+                            <i aria-hidden="true" class="fas fa-thumbs-up"></i>
+                            <h4>5</h4>
+                        </li>
+                        <li class="flex">
+                            <i aria-hidden="true" class="fas fa-ban"></i>
+                            <h4>違反報告する</h4>
+                        </li>
+                    </ul>
+                </div>
             </div>
-            <!--ここあとで作ります-->
         </div>
     <% end %>
 </div>
