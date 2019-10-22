@@ -4,33 +4,33 @@
         　<p>応募済みの募集です</p>
         <% end %>
     </div>
-    <div>
-        <h3><%= @post.title %></h3>
-        <h4><%= @post.company.name %></h4>
+    <div class="post-detail-content">
+        <h3 class="inline-block"><%= @post.title %></h3>
+        <h4 class="inline-block"><%= @post.company.name %></h4>
     </div>
     <%= image_tag "http://lorempixel.com/400/300/business/#{@post.id%10+1}", :size => '600x400' %>
-    <div>
+    <div class="post-detail-content">
         <i aria-hidden="true" class="fas fa-tag"></i>
         <% @post.work_contents.each do |work_content| %>
             <%= work_content.name %>
         <% end %>
     </div>
-    <ul>
-        <li><p>就業期間</p><p><%= @post.period %></p></li>
-        <li><p>給与体制</p><p><%= @post.salary %></p></li>
+    <ul class="post-detail-content">
+        <li class="post-summary"><p>就業期間：</p><p><%= @post.period %></p></li>
+        <li class="post-summary"><p>給与体制：</p><p><%= @post.salary %></p></li>
     </ul>
     <div><!--ここら辺は打ち込みでOK??-->
-        <div> 
+        <div class="post-detail-content">
             <h3>業務内容</h3>
             <p>募集内容</p><p><%= @post.content %></p>
         </div>
-        <div> 
+        <div class="post-detail-content">
             <h3>必要経験・スキル</h3>
             <p>ネットでの検索<br>
                 PCで資料を制作できるスキル（WordやPowerPoint、KeyNoteなど）
             </p>
         </div>
-        <div> 
+        <div class="post-detail-content">
             <h3>あるといい経験・スキル</h3>
             <p>事務経験</p>
         </div>
@@ -66,44 +66,54 @@
     <!--ここから下は企業情報-->
     <h3>企業情報</h3>
     <div>
-        <p><%= @post.company.name %></p>
-        <i aria-hidden="true" class="fas fa-globe"></i><p><%= @post.company.url %></p>
-        <i aria-hidden="true" class="fas fa-map-marker-alt"></i><p><%= @post.company.address %></p>
-        <div>
-            <%= image_tag "http://lorempixel.com/400/300/business/#{@post.id%10+1}", :size => '50x50' %>
-            <div>
-                <ul>
-                    <li><p>業種</p></li>
-                    <li><p>事業内容</p></li>
-                    <li><p>主な業務内容</p></li>
-                </ul>
-                <ul>
-                    <li><p>web/IT</p></li>
-                    <li><p>ホームページ制作事業・システム開発事業・インターネットメディア事業・インターネット広告代理事業</p></li>
-                    <li><p>リサーチ・資料作成・メール対応・web運用</p></li>
-                </ul>
-                
+        <div class="mb-3">
+            <p class="mr-5 inline-block"><%= @post.company.name %></p>
+            <i aria-hidden="true" class="fas fa-globe inline-block"></i><p class="mr-5 inline-block"><%= @post.company.url %></p>
+            <i aria-hidden="true" class="fas fa-map-marker-alt inline-block"></i><p class="mr-5 inline-block"><%= @post.company.address %></p>
+        </div>
+        <div class="row">
+            <div class="col-5 inline-block">
+                <%= image_tag "http://lorempixel.com/400/300/business/#{@post.id%10+1}", :size => '500x300' %>
+            </div>
+            <div class="col-6 inline-block">
+                <div class="post-detail-content">
+                    <div class="col-3 inline-block"><p>業種</p></div>
+                    <div class="col-8 inline-block"><p>web/IT</p></div>
+                </div>
+                <div class="post-detail-content">
+                    <div class="col-3 inline-block"><p>事業内容</p></div>
+                    <div class="col-8 inline-block"><p>ホームページ制作事業・システム開発事業・インターネットメディア事業・インターネット広告代理事業</p></div>
+                </div>
+                <div class="post-detail-content">
+                    <div class="col-3 inline-block"><p>主な業務内容</p></div>
+                    <div class="col-8 inline-block"><p>リサーチ・資料作成・メール対応・web運用</p></div>
+                </div>
             </div>
         </div>
-        <h3>事業概要</h3>
-        <p>
-            <%= @post.company.bussiness_summary %>
-        </p>
-        <button class="yellow-button">企業をフォローする</button>
+        <div class="post-detail-content">
+            <h3>事業概要</h3>
+            <p><%= @post.company.bussiness_summary %></p>
+        </div>
+        <div class="center">
+            <button class="yellow-button">企業をフォローする</button>
+        </div>
     </div>
     <h3>企業へのユーザーレビュー</h3>
     <div>
-        <div><!--ここで一枚-->
+        <div class="review-box"><!--ここで一枚-->
             <% @post.company.reviews.each do |review| %>
-            <%= review.title %>
-            <%= review.content %>
-            <ul><!--評価ボタン-->
-                <li><i aria-hidden="true" class="fas fa-thumbs-up"></i><h4><%= review.evaluation %></h4></li>
-                <li><i aria-hidden="true" class="fas fa-ban"></i><h4>違反報告する</h4></li>
-            </ul>
+            <h5><%= review.title %></h5>
+            <p><%= review.content %></p>
+            <div class="col-8 inline-block"></div>
+            <div class="inline-block"><!--評価ボタン-->
+                <i aria-hidden="true" class="fas fa-thumbs-up inline-block"></i><h4 class="mr-3 inline-block"><%= review.evaluation %></h4>
+                <i aria-hidden="true" class="fas fa-ban inline-block"></i><h4 class="inline-block">違反報告する</h4>
+            </div>
             <% end %>
         </div>
-        <button class="normal-button">もっと見る</button>
+        <div class="center">
+            <button class="normal-button">もっと見る</button>
+        </div>
     </div>
 </div>
 
