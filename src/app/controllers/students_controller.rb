@@ -27,6 +27,7 @@ class StudentsController < ApplicationController
   #マイページ
   def show
     @student = Student.find(params[:id])
+    @career = Career.new
   end
 
   def edit
@@ -39,6 +40,10 @@ class StudentsController < ApplicationController
 
   def destroy
 
+  end
+
+  def top
+    
   end
 
   private

@@ -26,7 +26,14 @@ Rails.application.routes.draw do
 
   get '/companies/home', to: 'companies#home'
 
+  # ダミーページルーティング
+  get '/students/top', to: 'students#top'
+  get '/companies/mail', to: 'companies#mail'
+  get '/companies/message', to: 'companies#message'
+
   resources :students
   resources :companies
+  resources :careers, only: [:create]
+  resources :summaries, only: [:new, :create]
   resources :account_activations, only: [:edit]
 end

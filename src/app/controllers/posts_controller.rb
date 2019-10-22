@@ -31,6 +31,7 @@ class PostsController < ApplicationController
 
     # 検索結果
     @posts = []
+    @sectors = Sector.all
 
     if sectors.empty?
       # 検索条件がなければ全募集

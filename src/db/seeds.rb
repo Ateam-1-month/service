@@ -49,17 +49,17 @@ end
 # 会社アカウント
 (1..10).each do |num|
   User.create!(email: "test_company#{num+10}@gmail.com", password: 'password', password_confirmation: 'password', is_company: true, is_student: false, activated: true, activated_at: Time.zone.now)
-  Company.create!(user_id: num+10, url: "http://test.company#{num}", address: companyAddress[num-1], name: companyName[num-1], image: "image_#{num+10}")
+  Company.create!(user_id: num+10, bussiness_summary: "事業概要#{num}" ,url: "http://test.company#{num}", address: companyAddress[num-1], name: companyName[num-1], image: "image_#{num+10}")
 end
 
 # appeal ポイント
 (1..30).each do |num|
-  Appeal.create!(student_id: num/10+1, content: "私は「縁の下の力持ち」型リーダーです。周りのメンバーが力を最大限発揮できるように、自ら積極的に動くことができます。#{num}")
+  Appeal.create!(student_id: num%10+1, content: "私は「縁の下の力持ち」型リーダーです。周りのメンバーが力を最大限発揮できるように、自ら積極的に動くことができます。#{num}")
 end
 
 # career 
 (1..30).each do |num|
-  Career.create!(student_id: num/10+1, name: "カフェ　アルパジョン #{num}号店", start_date: Time.zone.now.ago(3.month), end_date: Time.zone.now, role: "キッチンアルバイト", content: "いっぱい頑張りました.")
+  Career.create!(student_id: num%10+1, name: "カフェ　アルパジョン #{num}号店", start_date: Time.zone.now.ago(3.month), end_date: Time.zone.now, role: "キッチンアルバイト", content: "いっぱい頑張りました.")
 end
 
 #　自己紹介
@@ -69,7 +69,7 @@ end
 
 # 学生スキル
 (1..30).each do |num|
-  Skill.create!(student_id:num/10+1, name: "Excel#{num}", level: rand(3), content: "#{num}年使っています")
+  Skill.create!(student_id:num%10+1, name: "Excel#{num}", level: 5-rand(3), content: "#{num}年使っています")
 end
 
 # student_sector

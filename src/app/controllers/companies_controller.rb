@@ -23,6 +23,7 @@ class CompaniesController < ApplicationController
 
   def show
     @company = Company.find(params[:id])
+    @summary = Summary.new
   end
 
   def home
@@ -35,6 +36,14 @@ class CompaniesController < ApplicationController
 
   def destroy
 
+  end
+  
+  def mail
+
+  end
+
+  def message
+    
   end
 
   private

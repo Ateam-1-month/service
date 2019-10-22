@@ -1,96 +1,109 @@
-<%= image_tag "http://lorempixel.com/400/300/business/#{@post.id/10+1}", :size => '600x400' %>
-<br>
-募集タイトル
-<%= @post.title %>
-<br>
-
-担当者電話番号
-<%= @post.tel_number %>
-<br>
-
-担当者名
-<%= @post.first_name %><%= @post.last_name %>
-<br>
-
-担当者名（かな）
-<%= @post.first_name_kana %><%= @post.last_name_kana %>
-<br>
-
-就業期間
-<%= @post.period %>
-<br>
-
-募集内容
-<%= @post.content %>
-<br>
-
-給与体制
-<%= @post.salary %>
-<br>
-
-投稿日時
-<%= @post.created_at.strftime('%Y年%m月%d日') %>
-<br>
-
-更新日時
-<%= @post.updated_at.strftime('%Y年%m月%d日') %>
-<br>
-<br>
-<br>
-
-<% if current_user && current_user.is_student %>
-　<% if current_user.student.posts.include?(@post) %>
-    <p>応募ずみ</p>
-  <% else %>
-    <%= link_to '応募する', apply_path(student_id: current_user.student.id, post_id: @post.id ,authenticity_token: form_authenticity_token), method: :post %>    
-  <% end %>
-<% end %>
-
-
-
-企業情報
-<br>
-
-企業img
-<%= image_tag "http://lorempixel.com/400/300/business/#{@post.id/10+1}", :size => '50x50' %>
-<br>
-
-企業名前
-<%= @post.company.name %>
-<br>
-
-企業サイト
-<%= @post.company.url %>
-<br>
-
-企業住所
-<%= @post.company.address %>
-<br>
-
-
-企業説明
-<br>
-<% @post.company.summaries.each do |summary| %>
-  <%= summary.title %>
-  <br>
-  <%= summary.content %>
-  <br>
-<% end %>
-<br>
-<br>
-<br>
-
-企業へのユーザーレビュー
-<br>
-<% @post.company.reviews.each do |review| %>
-  <%= review.title %>
-  <br>
-  <%= review.content %>
-  <br>
-  <%= review.evaluation %>
-  <br>
-<% end %>
-
-
-
+<div class="student-contents">
+    <div><!--ここのデザインあとで考えるね-->
+        <% if current_user && current_user.is_student %>
+        　<p>応募済みの募集です</p>
+        <% end %>
+    </div>
+    <div>
+        <h3><%= @post.title %></h3>
+        <h4><%= @post.company.name %></h4>
+    </div>
+    <%= image_tag "http://lorempixel.com/400/300/business/#{@post.id%10+1}", :size => '600x400' %>
+    <div>
+        <i aria-hidden="true" class="fas fa-tag"></i>
+        <% @post.work_contents.each do |work_content| %>
+            <%= work_content.name %>
+        <% end %>
+    </div>
+    <ul>
+        <li><p>就業期間</p><p><%= @post.period %></p></li>
+        <li><p>給与体制</p><p><%= @post.salary %></p></li>
+    </ul>
+    <div><!--ここら辺は打ち込みでOK??-->
+        <div> 
+            <h3>業務内容</h3>
+            <p>募集内容</p><p><%= @post.content %></p>
+        </div>
+        <div> 
+            <h3>必要経験・スキル</h3>
+            <p>ネットでの検索<br>
+                PCで資料を制作できるスキル（WordやPowerPoint、KeyNoteなど）
+            </p>
+        </div>
+        <div> 
+            <h3>あるといい経験・スキル</h3>
+            <p>事務経験</p>
+        </div>
+    </div>
+    <div>
+        <ul>
+            <li>
+                <p>担当者電話番号</p>
+                <p><%= @post.tel_number %></p>
+            </li>
+            <li>
+                <p>担当者名</p>
+                <p><%= @post.first_name %><%= @post.last_name %></p>
+            </li>
+            <!--担当者名（かな）<%= @post.first_name_kana %><%= @post.last_name_kana %>-->
+        </ul>
+        <ul>
+            <li><p>投稿日時</p><p><%= @post.created_at.strftime('%Y年%m月%d日') %></p></li>
+            <li><p>更新日時</p><p><%= @post.updated_at.strftime('%Y年%m月%d日') %></p></li>
+        </ul>
+    </div>
+    <div>
+        <% if current_user && current_user.is_student %>
+        　  <% if current_user.student.posts.include?(@post) %>
+                <button class="negative-button">応募を取り消す</button>
+            <% else %>
+                <!--ここのボタンあとで適用お願いします-->
+                <button>気になるする</button><!--仮置きです-->
+                <%= link_to '応募する', apply_path(student_id: current_user.student.id, post_id: @post.id ,authenticity_token: form_authenticity_token), method: :post %>    
+            <% end %>
+        <% end %>
+    </div>
+    <!--ここから下は企業情報-->
+    <h3>企業情報</h3>
+    <div>
+        <p><%= @post.company.name %></p>
+        <i aria-hidden="true" class="fas fa-globe"></i><p><%= @post.company.url %></p>
+        <i aria-hidden="true" class="fas fa-map-marker-alt"></i><p><%= @post.company.address %></p>
+        <div>
+            <%= image_tag "http://lorempixel.com/400/300/business/#{@post.id%10+1}", :size => '50x50' %>
+            <div>
+                <ul>
+                    <li><p>業種</p></li>
+                    <li><p>事業内容</p></li>
+                    <li><p>主な業務内容</p></li>
+                </ul>
+                <ul>
+                    <li><p>web/IT</p></li>
+                    <li><p>ホームページ制作事業・システム開発事業・インターネットメディア事業・インターネット広告代理事業</p></li>
+                    <li><p>リサーチ・資料作成・メール対応・web運用</p></li>
+                </ul>
+                
+            </div>
+        </div>
+        <h3>事業概要</h3>
+        <p>
+            <%= @post.company.bussiness_summary %>
+        </p>
+        <button class="yellow-button">企業をフォローする</button>
+    </div>
+    <h3>企業へのユーザーレビュー</h3>
+    <div>
+        <div><!--ここで一枚-->
+            <% @post.company.reviews.each do |review| %>
+            <%= review.title %>
+            <%= review.content %>
+            <ul><!--評価ボタン-->
+                <li><i aria-hidden="true" class="fas fa-thumbs-up"></i><h4><%= review.evaluation %></h4></li>
+                <li><i aria-hidden="true" class="fas fa-ban"></i><h4>違反報告する</h4></li>
+            </ul>
+            <% end %>
+        </div>
+        <button class="normal-button">もっと見る</button>
+    </div>
+</div>
 

@@ -1,13 +1,14 @@
 <!--会社詳細ページ-->
-<%= render 'shared/user_menu' %>
-
+<% if current_user && current_user.is_company %>
+  <%= render 'shared/user_menu' %>  
+<% end %>
 <div class="company-contents">
 	<div>
 		<div class="company-profile">
       <img src="#" alt="企業ロゴ">
-			<%= @company.name %><%= @company.url %><%= @company.address %>
+			<%= @company.name %>    <%= @company.url %>    <%= @company.address %>
 		</div>
-    <button class="yellow-button">企業をフォローする</button>
+        <button class="yellow-button">企業をフォローする</button>
 	</div>
 	<div>
 		<%= image_tag 'http://lorempixel.com/400/300/business/' %>
@@ -42,7 +43,11 @@
       </li>
     </ul>
   </div>
-	<div>
+  <div>
+    <h3>事業概要</h3>
+    <%= @company.bussiness_summary %>
+  </div>
+	<div class="company-summaries">
 		<% @company.summaries.each do |summary| %>
 			<div>
 				<h3><%= summary.title %></h3>
@@ -50,6 +55,18 @@
 			</div>
     <% end %>
 	</div>
+
+  <% if current_user && current_user.is_company && (current_user.company.id == @company.id) %> 
+    <div class="summary-edit">
+      <%= form_with model: @summary do |f| %>
+        <%= f.text_field :title %>
+        <%= f.text_field :content %>
+        <%= f.hidden_field :company_id, :value => @company.id %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  <% end %> 
+
 	<div>
 		<h3>募集中の業務</h3>
     <% @company.posts.each do |post| %>

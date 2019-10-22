@@ -1,45 +1,276 @@
-<div class="contents">
-    <h3>プロフィール</h3>
-    <p><%= @student.image %></p>
-    <p><%= @student.first_name %></p>
-    <p><%= @student.last_name %></p>
-    <p><%= @student.first_name_kana %></p>
-    <p><%= @student.last_name_kana %></p>
-    <p><%= @student.gender %></p>
-    <p><%= @student.age %></p>
-    <p><%= @student.prefecture %></p>
-    <p><%= @student.university %></p>
-    <p><%= @student.faculty %></p>
 
-    <h3>業種</h3>
-    <% @student.sectors.each do |sector| %>
-    <p><%= sector.name %></p>
+<!--企業からの時は企業のメニューバー、学生からの時はプロフィールメニューバーが表示されます（横幅同じ）-->
+<% if current_user && current_user.is_company %>
+    <%= render 'shared/user_menu' %>
+<% end %>
+<% if current_user && current_user.is_student %>
+    <div class="student-prof-menu">
+        <div class="student-prof-contents"><!--簡易プロフィール-->
+            <div>
+                <p><%= @student.last_name %></p>
+                <p><%= @student.first_name %></p>
+                <p><%= @student.last_name_kana %></p>
+                <p><%= @student.first_name_kana %></p>
+                <p><%= @student.gender ? '男性' : '女性' %></p>
+                <p><%= @student.age %>歳</p>
+                <p>岩手県</p>
+                <p><%= @student.university %></p>
+                <p><%= @student.faculty %></p>
+            </div>
+            <!--自分用メモ:余裕あったらhoverで画像編集できそうなUI入れたい-->
+            <div><%= image_tag "https://i.pravatar.cc/100?img=#{@student.id%10+1}", :size => '120x120'  %></div>
+            <button class="-button">編集</button>
+        </div>
+        <div class="student-prof-contents">
+            <h3>希望する業種</h3>
+            <% @student.sectors.each do |sector| %>
+            <p><%= sector.name %></p>
+            <% end %>
+            <button class="gray-button">編集</button>
+        </div>
+        <div class="student-prof-contents">
+            <h3>希望する業務内容</h3>
+            <% @student.work_contents.each do |work_content| %>
+            <p><%= work_content.name %></p>
+            <% end %>
+            <button class="gray-button">編集</button>
+        </div>
+    </div>
+<% end %>
+
+<div class="company-contents">
+    <% if current_user && current_user.is_company %>
+        <!--企業ログインの場合は上のプロフが消えてこっちにプロフが入ります-->
+        <div class="student-prof-header">
+            <div><%= image_tag "https://i.pravatar.cc/100?img=#{@student.id%10+1}", :size => '120x120'  %></div>
+            <div>
+                <p><%= @student.last_name %></p>
+                <p><%= @student.first_name %></p>
+            </div>
+            <div>
+                <p><%= @student.last_name_kana %></p>
+                <p><%= @student.first_name_kana %></p>
+            </div>
+            <div>
+                <p>フォロワー</p>
+                <p>5社</p>
+                <div>
+                    <img src="#" alt="company-logo">
+                    <img src="#" alt="company-logo">
+                    <img src="#" alt="company-logo">
+                    <img src="#" alt="company-logo">
+                    <img src="#" alt="company-logo">
+                </div>
+            </div>
+            <div>
+                <button class="normal-button">フォローする</button>
+                <button class="normal-button">スカウトする</button>
+                <button　class="yellow-button important-button">メッセージを送る</button>
+            </div>
+        </div>
+        <h3>プロフィール</h3>
+        <div>
+            <div>
+                <ul class="flex">
+                    <li><p><%= @student.prefecture %></p></li>
+                    <li><p><%= @student.gender %></p></li>
+                    <li><p><%= @student.age %></p></li>
+                </ul>
+                <ul class="flex">
+                    <li><p><%= @student.university %></p></li>
+                    <li><p><%= @student.faculty %></p></li>
+                </ul>
+            </div>
+            <div class="flex">
+                <div>
+                    <p>希望する業種</p>
+                    <p>希望する業務内容</p>
+                </div>
+                <div>
+                    <!--業種-->
+                    <ul class="flex">
+                        <% @student.sectors.each do |sector| %>
+                            <li><p><%= sector.name %></p></li>
+                        <% end %>
+                    </ul>
+                    <!--業務内容-->
+                    <ul class="flex">
+                        <% @student.work_contents.each do |work_content| %>
+                            <li><p><%= work_content.name %></p></li>
+                        <% end %>
+                    </ul>
+                </div>
+            </div>
+        </div>
     <% end %>
+    <div>
+        <div>
+            <h3>アピールポイント</h3>
+            <!--編集ボタン右上部に固定-->
+            <% if current_user && current_user.is_student %>
+                <button　class="students-edit-button">
+                    <i class="fas fa-pen"></i>
+                    編集する
+                </button>
+            <% end %>
+        </div>
+        <div>
+            <% @student.appeals.each do |appeal| %>
+            <p><%= appeal.content %></p>
+            <% end %>
+        </div>
+    </div>
+    <div>
+        <div>
+            <h3>アルバイト・インターン歴</h3>
+            <!--編集ボタン右上部に固定-->
+            <% if current_user && current_user.is_student %>
+                <button　class="students-edit-button">
+                    <i class="fas fa-pen"></i>
+                    編集する
+                </button>
+            <% end %>
+        </div>
+        <div class="career-container">
+            <% @student.careers.each do |career| %>
+                <div>
+                    <p><%= career.name %></p>
+                    <p><%= career.start_date %></p>
+                    <p><%= career.end_date %></p>
+                    <p><%= career.role %></p>
+                    <p><%= career.content %></p>
+                </div>
+            <% end %>
+        </div>
+        <div class="career-edit-continer">
+            <% if current_user && current_user.is_student && (current_user.student.id == @student.id) %>
+                <!--コンテンツ追加ボタン-->
+                <button class="history-button"><i aria-hidden="true" class="fas fa-plus"></i></button>
+                <div class="career-form" style="display:none;">
+                    <%= form_with model: @career do |f| %>
+                        <%= f.label :name, '勤務先' %>
+                        <%= f.text_field :name %>
+                        <%= f.label :role, '役割' %>
+                        <%= f.text_field :role %>
+                        <%= f.label :content, '内容' %>
+                        <%= f.text_field :content %>
+                        <%= f.label :start_date, '開始日' %>
+                        <%= f.date_select :start_date, discard_day:true %>
+                        <%= f.label :end_date, '終了日' %>
+                        <%= f.date_select :end_date, discard_day:true %>
+                        <%= f.hidden_field :student_id, :value => @student.id %>
+                        <%= f.submit "登録" %>
+                    <% end %>
+                    <button class="history-button-cancel">キャンセル</button>
+                </div>
+            <% end %>
+        </div>
+    </div>
 
-    <h3>業務内容</h3>
-    <% @student.work_contents.each do |work_content| %>
-    <p><%= work_content.name %></p>
-    <% end %>
+    <div>
+        <div>
+            <h3>スキル</h3>
+            <!--編集ボタン右上部に固定-->
+            <% if current_user && current_user.is_student %>
+                <button　class="students-edit-button">
+                    <i class="fas fa-pen"></i>
+                    編集する
+                </button>
+            <% end %>
+        </div>
+        <div>
+            <% @student.skills.each do |skill| %>
+            <div class="each-skill-container">
+                <p><%= skill.name %></p>
+                <div>
+                    <div>
+                        <% skill.level.times do %>
+                            <i class="fas fa-star"></i>
+                            <% end %>
+                            <% (5-skill.level).times do %>
+                            <i class="far fa-star"></i>
+                        <% end %>
+                    </div>
+                    <p><%= skill.content %></p>
+                </div>
+            </div>
+            <% end %>
+        </div>
+    </div>
 
-    <h3>スキル一覧</h3>
-    <% @student.skills.each do |skill| %>
-    <p><%= skill.name %></p>
-    <p><%= skill.level %></p>
-    <p><%= skill.content %></p>
-    <% end %>
-
-    <h3>アルバイト・インターン歴</h3>
-    <% @student.careers.each do |career| %>
-    <p><%= career.name %></p>
-    <p><%= career.start_date %></p>
-    <p><%= career.end_date %></p>
-    <p><%= career.role %></p>
-    <p><%= career.content %></p>
-    <% end %>
-
-
-    <h3>アピールポイント</h3>
-    <% @student.appeals.each do |appeal| %>
-    <p><%= appeal.content %></p>
+    <div>
+        <div>
+            <h3>スケジュール</h3>
+            <!--編集ボタン右上部に固定-->
+            <% if current_user && current_user.is_student %>
+                <button　class="students-edit-button">
+                    <i class="fas fa-pen"></i>
+                    編集する
+                </button>
+            <% end %>
+        </div>
+        <!--ここ余裕あったらhtml,css組みます(table嫌いだ)　なければ画像挿入します-->
+    </div>
+    <% if current_user && current_user.is_company %>
+        <div>
+            <div>
+                <h3>学生への企業からのレビュー</h3>
+                <!--データベースないので打ち込みです-->
+                <div class="company-revue-card">
+                    <div class="flex">
+                        <img src="#" alt="企業ロゴ">
+                        <div>
+                            <p>株式会社ZZZ</p>
+                            <div class="flex">
+                                <p>業務内容</p>
+                                <p>リサーチ・資料制作</p>
+                            </div>
+                            <div class="flex">
+                                <p>就業期間</p>
+                                <p>2週間</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p>事務所移転やイベントの設営撤去。主に商品や什器の運搬、設置。派遣先により時間や休憩は違いました。短時間の仕事で休憩のないときもありました。逆に待機時間がすごく長くあり、退屈した派遣先もありました。新規店舗に什器を搬入する際には夜中に働いたこともあります。</p>
+                    <ul class="flex"><!--評価ボタン-->
+                        <li class="flex">
+                            <i aria-hidden="true" class="fas fa-thumbs-up"></i>
+                            <h4>5</h4>
+                        </li>
+                        <li class="flex">
+                            <i aria-hidden="true" class="fas fa-ban"></i>
+                            <h4>違反報告する</h4>
+                        </li>
+                    </ul>
+                </div>
+                <div class="company-revue-card">
+                    <div class="flex">
+                        <img src="#" alt="企業ロゴ">
+                        <div>
+                            <p>株式会社ZZZ</p>
+                            <div class="flex">
+                                <p>業務内容</p>
+                                <p>リサーチ・資料制作</p>
+                            </div>
+                            <div class="flex">
+                                <p>就業期間</p>
+                                <p>2週間</p>
+                            </div>
+                        </div>
+                    </div>
+                    <p>事務所移転やイベントの設営撤去。主に商品や什器の運搬、設置。派遣先により時間や休憩は違いました。短時間の仕事で休憩のないときもありました。逆に待機時間がすごく長くあり、退屈した派遣先もありました。新規店舗に什器を搬入する際には夜中に働いたこともあります。</p>
+                    <ul class="flex"><!--評価ボタン-->
+                        <li class="flex">
+                            <i aria-hidden="true" class="fas fa-thumbs-up"></i>
+                            <h4>5</h4>
+                        </li>
+                        <li class="flex">
+                            <i aria-hidden="true" class="fas fa-ban"></i>
+                            <h4>違反報告する</h4>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     <% end %>
 </div>
