@@ -50,16 +50,38 @@ li {
 i {
 	color: #464E58;
 }
+/* 画面下部のページ繊維バー */
+.page-nav{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+.page-nav-num{
+    background-color: #F4F4F4;
+    border: solid 1px #464E58;
+    padding: 0.5em;
+    margin: 5px;
+}
+/* ・・・ってとこ */
+.page-nav-omitted{
+    padding: 0.5em;
+    margin: 5px;
+    background-color: none;
+    border: none;
+}
+
 .yellow-button {
 	background-color: #FFE202;
-	box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
+    display: flex;
+	align-items: center;
+	border-radius: 2em;
+	padding: 0.5em 1em 0.5em 1em;
 }
 .normal-button {
 	background-color: white;
-	border: solid 1px #8C9298;
-}
-button {
-	display: flex;
+    border: solid 1px #8C9298;
+    display: flex;
 	align-items: center;
 	border-radius: 2em;
 	padding: 0.5em 1em 0.5em 1em;
@@ -207,4 +229,21 @@ button {
 /* 募集一覧 */
 .post-list-contents{
     display: flex;
+}
+/* 募集管理画面 */
+.post-management-contents{
+    border-bottom: solid 1px #8C9298;
+    display: flex;
+}
+.post-application-num-container{
+    display: flex;
+}
+.post-application-num{
+    display: flex;
+}
+.applicant-card{
+    border: solid 1px #8C9298;
+}
+.applicant-img{
+    border-radius: 60px;
 }

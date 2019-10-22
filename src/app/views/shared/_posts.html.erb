@@ -1,28 +1,61 @@
 <div>
-  <% posts.each do |post| %>
-    <div>
-      <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" %>
-    </div>
-    <div>
-      <%= post.company.name %>
-      <%= post.title %>
-      <div>
-        <% post.sectors.each do |sector| %>
-          <%= sector.name %>
-        <% end %>
-      </div>
-      <%= post.period %>
-      <%= post.content %>
-      <%= post.salary %>
-    </div>
-    
-    <%= button_to "詳細を見る", "/posts/#{post.id}", method: :get %>
-    <% if current_user && current_user.is_student %>
-      <%= button_to "気になる" %>
-    <% else %>
-      <% if current_user.company.posts.include?(post) %>
-        <%= link_to "内容を編集する", "/posts/#{post.id}/edit" %>
-      <% end %>
+    <% posts.each do |post| %>
+        <div class="post-box">
+            <div><%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-img"%></div>
+            <div>
+                <h4><%= post.company.name %></h4>
+                <h3><%= post.title %></h3>
+                <div class="post-tag">
+                    <!--応募タグ-->
+                    <i aria-hidden="true" class="fas fa-tag"></i> 
+                    <ul>
+                        <% post.sectors.each do |sector| %>
+                        <%= sector.name %>
+                        <% end %>
+                    </ul>               
+                </div>
+                <ul>
+                    <li class="post-summary">
+                        <p>就業期間：</p>
+                        <p><%= post.period %></p>
+                    </li>
+                    <li class="post-summary">
+                        <p>業務内容：</p>
+                        <p><%= post.content %></p>
+                    </li>
+                    <li class="post-summary">
+                        <p>給与体制：</p>
+                        <p><%= post.salary %></p>
+                    </li>
+                </ul>
+                <p>掲載終了まで後10日</p>
+                <ul>
+                    <li><%= button_to "詳細を見る", "/posts/#{post.id}", method: :get ,class:"normal-button" %></li>
+                    <% if current_user && current_user.is_student %>
+                        <li>
+                            <button class="yellow-button">
+                                <i aria-hidden="true" class="far fa-bookmark"></i>
+                                気になる
+                            </button>
+                        </li>
+                    <% else %>
+                        <% if current_user.company.posts.include?(post) %>
+                        <li>
+                            <%= link_to "内容を編集する", "/posts/#{post.id}/edit" ,class:"normal-button" %>
+                        </li>
+                        <% end %>
+                    <% end %>
+                </ul>
+            </div>    
+        </div>
     <% end %>
-  <% end %>
+    
+    <!--フッターページ遷移-->
+    <ul　class="page-nav">
+        <li><p class="page-nav-num">1</p></li>
+        <li><p class="page-nav-num">2</p></li>
+        <li><p class="page-nav-num">3</p></li>
+        <li><p class="page-nav-omitted">…</p></li>
+        <li><p class="page-nav-num">6</p></li>
+    </ul>
 </div>
