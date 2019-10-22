@@ -28,5 +28,6 @@ Rails.application.routes.draw do
 
   resources :students
   resources :companies
+  resources :summaries, only: [:new, :create]
   resources :account_activations, only: [:edit]
 end

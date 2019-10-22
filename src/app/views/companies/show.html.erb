@@ -5,8 +5,8 @@
 <div class="company-contents">
 	<div>
 		<div class="company-profile">
-            <img src="#" alt="企業ロゴ">
-			<%= @company.name %><%= @company.url %><%= @company.address %>
+      <img src="#" alt="企業ロゴ">
+			<%= @company.name %>    <%= @company.url %>    <%= @company.address %>
 		</div>
         <button class="yellow-button">企業をフォローする</button>
 	</div>
@@ -43,7 +43,7 @@
       </li>
     </ul>
   </div>
-	<div>
+	<div class="company-summaries">
 		<% @company.summaries.each do |summary| %>
 			<div>
 				<h3><%= summary.title %></h3>
@@ -51,6 +51,16 @@
 			</div>
     <% end %>
 	</div>
+  <%= if current_user && current_user.company.id == @company.id %>
+    <div>
+      <%= form_with model: @summary do |f| %>
+        <%= f.text_field :title %>
+        <%= f.text_field :content %>
+        <%= f.hidden_field :company_id, :value => @company.id %>
+        <%= f.submit %>
+      <% end %>
+    </div>
+  <% end %>
 	<div>
 		<h3>募集中の業務</h3>
     <% @company.posts.each do |post| %>
