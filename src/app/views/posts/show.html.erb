@@ -1,4 +1,4 @@
-<%= image_tag "http://lorempixel.com/400/300/business/#{@post.id/10+1}", :size => '600x400' %>
+<%= image_tag "http://lorempixel.com/400/300/business/#{@post.id%10+1}", :size => '600x400' %>
 <br>
 募集タイトル
 <%= @post.title %>
@@ -52,7 +52,7 @@
 <br>
 
 企業img
-<%= image_tag "http://lorempixel.com/400/300/business/#{@post.id/10+1}", :size => '50x50' %>
+<%= image_tag "http://lorempixel.com/400/300/business/#{@post.id%10+1}", :size => '50x50' %>
 <br>
 
 企業名前

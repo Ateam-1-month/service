@@ -1,7 +1,7 @@
 <div>
   <% posts.each do |post| %>
     <div>
-      <%= image_tag "http://lorempixel.com/400/300/business/#{post.id/10+1}" %>
+      <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" %>
     </div>
     <div>
       <%= post.company.name %>
