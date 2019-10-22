@@ -1,22 +1,76 @@
+<!--募集管理画面-->
 <%= render 'shared/user_menu' %>
 <div class="company-contents">
-    募集タイトル<%= @post.title %><br>
-    募集期間<%= @post.period %><br>
-    募集内容<%= @post.content %><br> <!-- あとで先頭10文字表示にする -->
-    <%= link_to "内容を編集する", "/posts/#{@post.id}/edit" %><br>
-    <%= link_to "募集ページを見る", "/posts/#{@post.id}" %><br>
-    応募者数 <%= @post.students.count %>人<br>
-    ブックマーク数 10人<br>
-    閲覧者数 202人<br>
-    応募者一覧<br>
-    <% @post.students.each do |student| %>
-    <%= image_tag "https://i.pravatar.cc/100?img=#{student.id/10+1}", :size => '100x100' %>
-    <%= student.first_name %><%= student.last_name %> 4 お気に入り 2 業務経験<br>
-    <%= student.age %> 歳/<%= student.gender ? '男性' : '女性' %><br>
-    <%= student.university %> <%= student.faculty %>
-    <%= link_to "詳細を見る", "/students/#{student.id}" %>
-    <%= link_to "メッセージ", "#" %>
-    <% end %>
-    <br>
-    ブックマーク一覧
+    <div class="post-management-summary">
+        <h3><%= @post.title %><br></h3>
+        <div class="post-management-contents">
+            <div>
+                <%= image_tag "http://lorempixel.com/400/300/business/#{@post.id%10+1}", :size => '350x250' %>
+            </div>
+            <div>
+            <div class="post-tag">
+                <!--応募タグ-->
+                <i aria-hidden="true" class="fas fa-tag"></i>
+                <ul>
+                    <li>リサーチ</li>
+                    <li>資料作成</li>
+                    <li>web運用</li>
+                </ul>
+            </div>
+                <ul>
+                    <li><p>募集期間: </p><p><%= @post.period %></p></li>
+                    <li><p>募集内容: </p><p><%= @post.content %></p></li><!-- あとで先頭10文字表示にする -->
+                    <li><p>給与体制: </p><p><%= @post.salary %></p></li> 
+                </ul>
+                <ul>
+                    <!--この中みあとでbuttonに変更-->
+                    <li>
+                        <%= link_to "内容を編集する", "/posts/#{@post.id}/edit" %>
+                    </li>
+                    <li>
+                        <%= link_to "募集ページを見る", "/posts/#{@post.id}" %>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <ul class="post-application-num-container">
+            <li class="post-application-num"><p>応募者数</p><p><%= @post.students.count %></p><p>人</p></li>
+            <li class="post-application-num"><p>ブックマーク数</p><p>10人</p></li>
+            <li class="post-application-num"><p>閲覧者数</p><p>202人</p></li>
+        </ul>
+    </div>
+    <h3>応募者一覧</h3>
+    <div>
+        <% @post.students.each do |student| %>
+        <div class="applicant-card">
+            <%= image_tag "https://i.pravatar.cc/100?img=#{student.id%10+1}", :size => '120x120' ,class:"applicant-img" %>
+            <div>
+                <ul>
+                    <li><p><%= student.first_name %></p><p><%= student.last_name %></p></li>
+                    <li><p>4</p><p>お気に入り</p></li>
+                    <li><p>2</p><p>業務経験</p></li>
+                </ul>
+                <ul>
+                    <li><p><%= student.age %></p><p>歳</p>/<p><%= student.gender ? '男性' : '女性' %></p></li>
+                    <li><p><%= student.university %></p><p><%= student.faculty %></p></li>
+                </ul>
+                <ul>
+                    <li>
+                        <%= link_to "/students/#{student.id}" do %>
+                            <button class="normal-button">詳細を見る</button>
+                        <% end %>
+                    </li>
+                    <li>
+                        <%= link_to "#" do %>
+                            <button class="yellow-button">メッセージ</button>
+                        <% end %>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <% end %>
+    </div>
+    <h3>ブックマーク一覧</h3>
+    <!--ここにブックマークしてくれた人入れる（上とデザイン同じ)-->
+    <button class="normal-button">もっと見る</button>
 </div>
