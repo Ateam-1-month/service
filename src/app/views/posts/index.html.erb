@@ -30,37 +30,56 @@
                         <p><%= post.salary %></p>
                     </li>
                 </ul>
-                <p>掲載終了まで後10日</p>
-                <ul>
-                    <li>                                
-                        <%= link_to "/posts/#{post.id}" do %>
-                            <button class="normal-button">詳細を見る</button>
-                        <% end %>
-                    </li>
-                    <li><button class="yellow-button">
+                <br><!-- TODO いい方法思いつかなかったすみません -->
+                <p class="inline-block">掲載終了まで後10日</p>
+                <div class="inline-block">
+                    <%= link_to "/posts/#{post.id}" do %>
+                    <button class="normal-button">詳細を見る</button>
+                    <% end %>
+                </div>
+                <div class="inline-block">
+                    <button class="yellow-button">
                         <i aria-hidden="true" class="far fa-bookmark"></i>
                         気になる
-                    </button></li>
-                </ul>
+                    </button>
+                </div>
             </div>
         </div>
         <% end %>
     </div>
     <div class="home-main-contents">
         <!--検索バー-->
-        <div class="search-form-container">
-            <%= form_with url: "/posts/search", method: :get, local: true do |f| %>
-                業種
+        <div class="search-form-container col-3">
+            <h3>検索条件</h3>
+            <%= form_with url: "/posts/search", method: :get, html: {class: "search-condition"}, local: true do |f| %>
+                <p>業務内容</p>
                 <% @sectors.each do |sector| %>
+                    <div>
                     <%= f.check_box :sector_id, {}, sector.id, nil %>
                     <%= f.label :sector_name, sector.name %>
+                    </div>
                 <% end %>
+                <div class="d-none">
                 <%= f.submit '検索' %>
+                </div>
+            <% end %>
+          <%= form_with url: "/posts/search", method: :get, html: {class: "search-condition"}, local: true do |f| %>
+            <p>業種</p>
+                <% @sectors.each do |sector| %>
+                <div>
+                    <%= f.check_box :sector_id, {}, sector.id, nil %>
+                    <%= f.label :sector_name, sector.name %>
+                    </div>
+                <% end %>
+                <div class="d-none">
+                <%= f.submit '検索' %>
+                </div>
             <% end %>
             <button class="normal-button">詳しく検索する</button>
         </div>
-        <div><!--おすすめ〜新着募集のまとめ-->
+        <div class="posts"><!--おすすめ〜新着募集のまとめ-->
             <!--オススメ-->
+            <h3>あなたにオススメの募集</h3>
             <div class="post-box-container">
                 <% @recommendedPosts.each do |post| %>
                 <div class="post-box">
@@ -91,26 +110,31 @@
                                 <p><%= post.salary %></p>
                             </li>
                         </ul>
-                        <p>掲載終了まで後10日</p>
-                        <ul>
-                            <li>
-                                <%= link_to "/posts/#{post.id}" do %>
-                                    <button class="normal-button">詳細を見る</button>
-                                <% end %>
-                            </li>
-                            <li><button class="yellow-button">
+                        <br><!-- TODO いい方法思いつかなかったすみません -->
+                        <p class="inline-block">掲載終了まで後10日</p>
+                        <div class="inline-block">
+                            <%= link_to "/posts/#{post.id}" do %>
+                            <button class="normal-button">詳細を見る</button>
+                            <% end %>
+                        </div>
+                        <div class="inline-block">
+                            <button class="yellow-button">
                                 <i aria-hidden="true" class="far fa-bookmark"></i>
                                 気になる
-                            </button></li>
-                        </ul>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <% end %>
             </div>
-            <a href="/posts/list"><button class="yellow-button">もっとみる</button></a>
-            <!--<%= link_to "もっと見る", "/posts/list" %>ボタンにしたかったけど良くわかんなかったから上の感じに書き直した-->
+            <div class="row"><!-- TODO いい方法思いつかなかったすみません -->
+                <div class="col-5"></div>
+                <a href="/posts/list"><button class="yellow-button">もっとみる</button></a>
+                <!--<%= link_to "もっと見る", "/posts/list" %>ボタンにしたかったけど良くわかんなかったから上の感じに書き直した-->
+            </div>
 
             <!--人気-->
+            <h3>人気上昇中の募集</h3>
             <div class="post-box-container">
                 <% @popularPosts.each do |post| %>
                 <div class="post-box">
@@ -141,26 +165,31 @@
                                 <p><%= post.salary %></p>
                             </li>
                         </ul>
-                        <p>掲載終了まで後10日</p>
-                        <ul>
-                            <li>
-                                <%= link_to "/posts/#{post.id}" do %>
-                                    <button class="normal-button">詳細を見る</button>
-                                <% end %>
-                            </li>
-                            <li><button class="yellow-button">
+                        <br><!-- TODO いい方法思いつかなかったすみません -->
+                        <p class="inline-block">掲載終了まで後10日</p>
+                        <div class="inline-block">
+                            <%= link_to "/posts/#{post.id}" do %>
+                            <button class="normal-button">詳細を見る</button>
+                            <% end %>
+                        </div>
+                        <div class="inline-block">
+                            <button class="yellow-button">
                                 <i aria-hidden="true" class="far fa-bookmark"></i>
                                 気になる
-                            </button></li>
-                        </ul>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <% end %>
             </div>
-            <a href="/posts/list"><button class="yellow-button">もっとみる</button></a>
-            <!--<%= link_to "もっと見る", "/posts/list" %>ボタンにしたかったけど良くわかんなかったから上の感じに書き直した-->
+            <div class="row"><!-- TODO いい方法思いつかなかったすみません -->
+                <div class="col-5"></div>
+                <a href="/posts/list"><button class="yellow-button">もっとみる</button></a>
+                <!--<%= link_to "もっと見る", "/posts/list" %>ボタンにしたかったけど良くわかんなかったから上の感じに書き直した-->
+            </div>
 
             <!--新規-->
+            <h3>新しい募集</h3>
             <div class="post-box-container">
                 <% @newPosts.each do |post| %>
                 <div class="post-box">
@@ -191,24 +220,28 @@
                                 <p><%= post.salary %></p>
                             </li>
                         </ul>
-                        <p>掲載終了まで後10日</p>
-                        <ul>
-                            <li>
-                                <%= link_to "/posts/#{post.id}" do %>
-                                    <button class="normal-button">詳細を見る</button>
-                                <% end %>
-                            </li>
-                            <li><button class="yellow-button">
+                        <br><!-- TODO いい方法思いつかなかったすみません -->
+                        <p class="inline-block">掲載終了まで後10日</p>
+                        <div class="inline-block">
+                            <%= link_to "/posts/#{post.id}" do %>
+                            <button class="normal-button">詳細を見る</button>
+                            <% end %>
+                        </div>
+                        <div class="inline-block">
+                            <button class="yellow-button">
                                 <i aria-hidden="true" class="far fa-bookmark"></i>
                                 気になる
-                            </button></li>
-                        </ul>
+                            </button>
+                        </div>
                     </div>
                 </div>
                 <% end %>
             </div>
-            <a href="/posts/list"><button class="yellow-button">もっとみる</button></a>
-            <!--<%= link_to "もっと見る", "/posts/list" %>ボタンにしたかったけど良くわかんなかったから上の感じに書き直した-->
+            <div class="row"><!-- TODO いい方法思いつかなかったすみません -->
+                <div class="col-5"></div>
+                <a href="/posts/list"><button class="yellow-button">もっとみる</button></a>
+                <!--<%= link_to "もっと見る", "/posts/list" %>ボタンにしたかったけど良くわかんなかったから上の感じに書き直した-->
+            </div>
         </div>
     </div>
 </div>
