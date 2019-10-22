@@ -87,10 +87,7 @@
         </div>
         <h3>事業概要</h3><!--ここって事業概要になってる？-->
         <p>
-            <% @post.company.summaries.each do |summary| %>
-            <%= summary.title %>
-            <%= summary.content %>
-            <% end %>
+            <%= @post.company.bussiness_summary %>
         </p>
         <button class="yellow-button">企業をフォローする</button>
     </div>
