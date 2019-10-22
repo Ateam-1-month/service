@@ -13,18 +13,20 @@
 *= require_tree .
 *= require_self
 */
+
 /* 全体共通 */
+
 body {
 	margin: 0;
 	background-color: white;
 	color: #464E58;
 }
-input{
-    padding: 0;
-    border: none;
-    border-radius: 0;
-    outline: none;
-    background: none;
+input {
+	padding: 0;
+	border: none;
+	border-radius: 0;
+	outline: none;
+	background: none;
 }
 p {
 	font-size: 16px;
@@ -40,9 +42,9 @@ a {
 	color: #464E58;
 }
 ul {
-    list-style: none;
-    padding: 0;
-    margin: 0;
+	list-style: none;
+	padding: 0;
+	margin: 0;
 }
 li {
 	list-style: none;
@@ -51,53 +53,87 @@ i {
 	color: #464E58;
 }
 /* 画面下部のページ繊維バー */
-.page-nav{
-    display: flex;
-    justify-content: center;
-    width: 100%;
+
+.page-nav {
+	display: flex;
+	justify-content: center;
+	width: 100%;
 }
-.page-nav-num{
-    background-color: #F4F4F4;
-    border: solid 1px #464E58;
-    padding: 0.5em;
-    margin: 5px;
+.page-nav-num {
+	background-color: #F4F4F4;
+	border: solid 1px #464E58;
+	padding: 0.5em;
+	margin: 5px;
 }
 /* ・・・ってとこ */
-.page-nav-omitted{
-    padding: 0.5em;
-    margin: 5px;
-    background-color: none;
-    border: none;
-}
 
+.page-nav-omitted {
+	padding: 0.5em;
+	margin: 5px;
+	background-color: none;
+	border: none;
+}
 .yellow-button {
 	background-color: #FFE202;
-    box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
-    display: flex;
+	box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
+	display: flex;
 	align-items: center;
 	border-radius: 2em;
 	padding: 0.5em 1em 0.5em 1em;
 }
+.gray-button {
+	font-size: 14px;
+	background-color: #F4F4F4;
+	border: solid 1px #8C9298;
+	display: flex;
+	align-items: center;
+	border-radius: 3px;
+	padding: 0.3em 0.7em 0.3em 0.7em;
+}
 .normal-button {
 	background-color: white;
-    border: solid 1px #8C9298;
-    display: flex;
+	border: solid 1px #8C9298;
+	display: flex;
+	align-items: center;
+	border-radius: 2em;
+	padding: 0.5em 1em 0.5em 1em;
+}
+.negative-button {
+	background-color: rgb(210, 210, 210);
+	border: solid 1px #8C9298;
+	display: flex;
 	align-items: center;
 	border-radius: 2em;
 	padding: 0.5em 1em 0.5em 1em;
 }
 /* 学生 */
+
 .student-contents {
-    box-sizing: border-box;
+	box-sizing: border-box;
 	width: 100%;
 	margin-top: 60px;
 	padding: 40px;
 	/* height: auto;
     width: calc(100vw - 300px); */
 }
+/* 学生プロフ左メニュー  */
+
+.student-prof-menu {
+	top: 60px;
+	position: fixed;
+	z-index: 900;
+	width: 300px;
+	background-color: white;
+	padding: 25px;
+	box-sizing: border-box;
+}
+.student-prof-contents {
+	border-bottom: solid 1px #8C9298;
+}
 /* 企業 */
+
 .company-contents {
-    box-sizing: border-box;
+	box-sizing: border-box;
 	width: calc(100vw - 300px);
 	margin-top: 60px;
 	margin-left: 300px;
@@ -106,17 +142,17 @@ i {
     width: calc(100vw - 300px); */
 }
 /* 企業詳細 */
-.company-zenre-container{
-    display: flex;
-}
 
+.company-zenre-container {
+	display: flex;
+}
 /* ヘッダー */
 
 .header-container {
 	position: fixed;
-    justify-content: space-around;
-    align-items: center;
-    top: 0;
+	justify-content: space-around;
+	align-items: center;
+	top: 0;
 	min-width: 980px;
 	z-index: 1000;
 	height: 60px;
@@ -125,17 +161,17 @@ i {
 	background-color: white;
 	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
 }
-.header-search-bar{
-    display: flex;
-    background-color: #F4F4F4;
-    border-radius: 0.5em;
-    padding: 0.3em;
-    justify-content: space-between;
-    border: solid 0.5px #8C9298;
+.header-search-bar {
+	display: flex;
+	background-color: #F4F4F4;
+	border-radius: 0.5em;
+	padding: 0.3em;
+	justify-content: space-between;
+	border: solid 0.5px #8C9298;
 }
-.header-search-button{
-    background: none;
-    border: none;
+.header-search-button {
+	background: none;
+	border: none;
 }
 .header-icon-container {
 	display: flex;
@@ -143,8 +179,8 @@ i {
 .link-search {
 	display: flex;
 }
-.header-icon{
-    font-size: 30px;
+.header-icon {
+	font-size: 30px;
 }
 /* usermenu */
 
@@ -190,60 +226,68 @@ i {
 	margin-right: 80px;
 }
 /* 企業詳細ページ */
-.post-box{
-    display: flex;
-    flex-direction: column;
-    border: solid 0.5px #8C9298;
-    width: 47%;
-    height: auto;
+
+.post-box {
+	display: flex;
+	flex-direction: column;
+	border: solid 0.5px #8C9298;
+	width: 47%;
+	height: auto;
 }
-.post-img{
-    width: 100%;
-    height: auto;
+.post-img {
+	width: 100%;
+	height: auto;
 }
-.post-text-box{
-    padding: 30px;
+.post-text-box {
+	padding: 30px;
 }
-.post-summary{
-    display: flex;
+.post-summary {
+	display: flex;
 }
-.post-tag{
-    display: flex;
+.post-tag {
+	display: flex;
 }
 /* 学生ホーム */
-.post-box-container{
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-    overflow: hidden;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-}
-.home-main-contents{
-    display: flex;
-}
-.search-menu-container{
-    width: 350px;
-}
 
+.post-box-container {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	overflow: hidden;
+	overflow-x: auto;
+	-webkit-overflow-scrolling: touch;
+}
+.home-main-contents {
+	display: flex;
+}
+.search-menu-container {
+	width: 350px;
+}
 /* 募集一覧 */
-.post-list-contents{
-    display: flex;
+
+.post-list-contents {
+	display: flex;
 }
 /* 募集管理画面 */
-.post-management-contents{
-    border-bottom: solid 1px #8C9298;
-    display: flex;
+
+.post-management-contents {
+	border-bottom: solid 1px #8C9298;
+	display: flex;
 }
-.post-application-num-container{
-    display: flex;
+.post-application-num-container {
+	display: flex;
 }
-.post-application-num{
-    display: flex;
+.post-application-num {
+	display: flex;
 }
-.applicant-card{
-    border: solid 1px #8C9298;
+.applicant-card {
+	border: solid 1px #8C9298;
 }
-.applicant-img{
-    border-radius: 60px;
+.applicant-img {
+	border-radius: 60px;
+}
+
+/* 学生詳細ページ */
+.each-skill-container{
+    border-bottom: solid 0.5px #8C9298;
 }
