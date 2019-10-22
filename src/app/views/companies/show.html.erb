@@ -55,7 +55,7 @@
 			</div>
     <% end %>
 	</div>
-  <% if current_user && (current_user.company.id == @company.id) %>
+  <% if current_user && current_user.is_company && (current_user.company.id == @company.id) %>
     <div>
       <%= form_with model: @summary do |f| %>
         <%= f.text_field :title %>
