@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2019_10_20_123443) do
 
-  create_table "appeals", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "appeals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "student_id", null: false
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
@@ -20,7 +20,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_123443) do
     t.index ["student_id"], name: "index_appeals_on_student_id"
   end
 
-  create_table "applies", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "applies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "student_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -29,17 +29,17 @@ ActiveRecord::Schema.define(version: 2019_10_20_123443) do
     t.index ["student_id"], name: "index_applies_on_student_id"
   end
 
-  create_table "business_contents", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "business_contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "careers", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "careers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "student_id", null: false
     t.string "name"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.date "start_date"
+    t.date "end_date"
     t.string "role"
     t.text "content"
     t.datetime "created_at", precision: 6, null: false
@@ -47,9 +47,10 @@ ActiveRecord::Schema.define(version: 2019_10_20_123443) do
     t.index ["student_id"], name: "index_careers_on_student_id"
   end
 
-  create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "companies", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "name"
+    t.text "bussiness_summary"
     t.string "url"
     t.string "address"
     t.string "image"
@@ -58,7 +59,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_123443) do
     t.index ["user_id"], name: "index_companies_on_user_id"
   end
 
-  create_table "company_business_contents", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "company_business_contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "company_id", null: false
     t.bigint "business_content_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -67,7 +68,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_123443) do
     t.index ["company_id"], name: "index_company_business_contents_on_company_id"
   end
 
-  create_table "company_sectors", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "company_sectors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "company_id", null: false
     t.bigint "sector_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -76,7 +77,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_123443) do
     t.index ["sector_id"], name: "index_company_sectors_on_sector_id"
   end
 
-  create_table "company_work_contents", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "company_work_contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "company_id", null: false
     t.bigint "work_content_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -85,13 +86,13 @@ ActiveRecord::Schema.define(version: 2019_10_20_123443) do
     t.index ["work_content_id"], name: "index_company_work_contents_on_work_content_id"
   end
 
-  create_table "fields", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "fields", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "post_fields", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "post_fields", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "field_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -100,7 +101,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_123443) do
     t.index ["post_id"], name: "index_post_fields_on_post_id"
   end
 
-  create_table "post_sectors", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "post_sectors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "sector_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -108,7 +109,6 @@ ActiveRecord::Schema.define(version: 2019_10_20_123443) do
     t.index ["post_id"], name: "index_post_sectors_on_post_id"
     t.index ["sector_id"], name: "index_post_sectors_on_sector_id"
   end
-
 
   create_table "post_work_contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "post_id", null: false
@@ -136,7 +136,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_123443) do
     t.index ["company_id"], name: "index_posts_on_company_id"
   end
 
-  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "company_id", null: false
     t.string "title"
     t.text "content"
@@ -146,12 +146,11 @@ ActiveRecord::Schema.define(version: 2019_10_20_123443) do
     t.index ["company_id"], name: "index_reviews_on_company_id"
   end
 
-  create_table "sectors", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "sectors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
-
 
   create_table "self_introductions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "student_id", null: false
@@ -171,7 +170,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_123443) do
     t.index ["student_id"], name: "index_skills_on_student_id"
   end
 
-  create_table "student_sectors", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "student_sectors", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "student_id", null: false
     t.bigint "sector_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -180,7 +179,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_123443) do
     t.index ["student_id"], name: "index_student_sectors_on_student_id"
   end
 
-  create_table "student_work_contents", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "student_work_contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "student_id", null: false
     t.bigint "work_content_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -189,7 +188,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_123443) do
     t.index ["work_content_id"], name: "index_student_work_contents_on_work_content_id"
   end
 
-  create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "students", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.string "image"
     t.string "first_name"
@@ -206,7 +205,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_123443) do
     t.index ["user_id"], name: "index_students_on_user_id"
   end
 
-  create_table "summaries", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "summaries", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.bigint "company_id", null: false
     t.string "title"
     t.text "content"
@@ -215,7 +214,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_123443) do
     t.index ["company_id"], name: "index_summaries_on_company_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "email"
     t.boolean "is_company", default: false
     t.boolean "is_student", default: false
@@ -227,7 +226,7 @@ ActiveRecord::Schema.define(version: 2019_10_20_123443) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "work_contents", options: "ENGINE=InnoDB DEFAULT CHARSET=latin1", force: :cascade do |t|
+  create_table "work_contents", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

@@ -55,8 +55,9 @@
 			</div>
     <% end %>
 	</div>
-  <% if current_user && current_user.is_company && (current_user.company.id == @company.id) %>
-    <div>
+
+  <% if current_user && current_user.is_company && (current_user.company.id == @company.id) %> 
+    <div class="summary-edit">
       <%= form_with model: @summary do |f| %>
         <%= f.text_field :title %>
         <%= f.text_field :content %>
@@ -64,7 +65,8 @@
         <%= f.submit %>
       <% end %>
     </div>
-  <% end %>
+  <% end %> 
+
 	<div>
 		<h3>募集中の業務</h3>
     <% @company.posts.each do |post| %>

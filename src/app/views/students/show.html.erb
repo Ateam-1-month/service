@@ -11,9 +11,9 @@
                 <p><%= @student.first_name %></p>
                 <p><%= @student.last_name_kana %></p>
                 <p><%= @student.first_name_kana %></p>
-                <p><%= @student.gender %></p>
-                <p><%= @student.age %></p>
-                <p><%= @student.prefecture %></p>
+                <p><%= @student.gender ? '男性' : '女性' %></p>
+                <p><%= @student.age %>歳</p>
+                <p>岩手県</p>
                 <p><%= @student.university %></p>
                 <p><%= @student.faculty %></p>
             </div>
@@ -131,20 +131,40 @@
                 </button>
             <% end %>
         </div>
-        <div>
+        <div class="career-container">
             <% @student.careers.each do |career| %>
-            <p><%= career.name %></p>
-            <p><%= career.start_date %></p>
-            <p><%= career.end_date %></p>
-            <p><%= career.role %></p>
-            <p><%= career.content %></p>
+                <div>
+                    <p><%= career.name %></p>
+                    <p><%= career.start_date %></p>
+                    <p><%= career.end_date %></p>
+                    <p><%= career.role %></p>
+                    <p><%= career.content %></p>
+                </div>
             <% end %>
         </div>
-
-        <% if current_user && current_user.is_student %>
-            <!--コンテンツ追加ボタン-->
-            <button><i aria-hidden="true" class="fas fa-plus"></i></button>
-        <% end %>
+        <div class="career-edit-continer">
+            <% if current_user && current_user.is_student && (current_user.student.id == @student.id) %>
+                <!--コンテンツ追加ボタン-->
+                <button class="history-button"><i aria-hidden="true" class="fas fa-plus"></i></button>
+                <div class="career-form" style="display:none;">
+                    <%= form_with model: @career do |f| %>
+                        <%= f.label :name, '勤務先' %>
+                        <%= f.text_field :name %>
+                        <%= f.label :role, '役割' %>
+                        <%= f.text_field :role %>
+                        <%= f.label :content, '内容' %>
+                        <%= f.text_field :content %>
+                        <%= f.label :start_date, '開始日' %>
+                        <%= f.date_select :start_date, discard_day:true %>
+                        <%= f.label :end_date, '終了日' %>
+                        <%= f.date_select :end_date, discard_day:true %>
+                        <%= f.hidden_field :student_id, :value => @student.id %>
+                        <%= f.submit "登録" %>
+                    <% end %>
+                    <button class="history-button-cancel">キャンセル</button>
+                </div>
+            <% end %>
+        </div>
     </div>
 
     <div>
@@ -158,7 +178,7 @@
                 </button>
             <% end %>
         </div>
-        <div>　<!--スキル繰り返し3回くらいにしてもらえると嬉しいです-->
+        <div>
             <% @student.skills.each do |skill| %>
             <div class="each-skill-container">
                 <p><%= skill.name %></p>
