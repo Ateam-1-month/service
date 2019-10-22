@@ -37,6 +37,14 @@ class CompaniesController < ApplicationController
   def destroy
 
   end
+  
+  def mail
+
+  end
+
+  def message
+    
+  end
 
   private
   def company_params
