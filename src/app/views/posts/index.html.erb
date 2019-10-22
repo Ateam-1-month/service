@@ -3,10 +3,7 @@
     <div class="post-box-container">
         <% @posts.each do |post| %>
         <div class="post-box">
-            <%= image_tag 'http://lorempixel.com/400/300/business/' ,class:"post-img"%>
-            <%post.sectors.each do |sector| %>
-            <!--<%= sector.name %>　謎のやつ　消していいやつ？-->
-            <%end %>
+            <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-img"%>
             <div class="post-text-box">
                 <h4><%= post.company.name %></h4>
                 <h3><%= post.title %></h3>
@@ -14,9 +11,9 @@
                     <!--応募タグ-->
                     <i aria-hidden="true" class="fas fa-tag"></i>
                     <ul>
-                        <li>リサーチ</li>
-                        <li>資料作成</li>
-                        <li>web運用</li>
+                        <% post.work_contents.each do |work_content| %>
+                            <li><%= work_content.name %></li>
+                        <% end %>
                     </ul>
                 </div>
                 <ul>
@@ -35,7 +32,11 @@
                 </ul>
                 <p>掲載終了まで後10日</p>
                 <ul>
-                    <li><button class="normal-button">詳細を見る</button></li>
+                    <li>                                
+                        <%= link_to "/posts/#{post.id}" do %>
+                            <button class="normal-button">詳細を見る</button>
+                        <% end %>
+                    </li>
                     <li><button class="yellow-button">
                         <i aria-hidden="true" class="far fa-bookmark"></i>
                         気になる
@@ -49,12 +50,12 @@
         <!--検索バー-->
         <div class="search-form-container">
             <%= form_with url: "/posts/search", method: :get, local: true do |f| %>
-            業種
-            <% @sectors.each do |sector| %>
-                <%= f.check_box :sector_id, {}, sector.id, nil %>
-                <%= f.label :sector_name, sector.name %>
-            <% end %>
-            <%= f.submit '検索' %>
+                業種
+                <% @sectors.each do |sector| %>
+                    <%= f.check_box :sector_id, {}, sector.id, nil %>
+                    <%= f.label :sector_name, sector.name %>
+                <% end %>
+                <%= f.submit '検索' %>
             <% end %>
             <button class="normal-button">詳しく検索する</button>
         </div>
@@ -63,10 +64,7 @@
             <div class="post-box-container">
                 <% @recommendedPosts.each do |post| %>
                 <div class="post-box">
-                    <%= image_tag 'http://lorempixel.com/400/300/business/' ,class:"post-img"%>
-                    <%post.sectors.each do |sector| %>
-                    <!--<%= sector.name %>　謎のやつ　消していいやつ？-->
-                    <%end %>
+                    <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-img"%>
                     <div class="post-text-box">
                         <h4><%= post.company.name %></h4>
                         <h3><%= post.title %></h3>
@@ -74,9 +72,9 @@
                             <!--応募タグ-->
                             <i aria-hidden="true" class="fas fa-tag"></i>
                             <ul>
-                                <li>リサーチ</li>
-                                <li>資料作成</li>
-                                <li>web運用</li>
+                                <% post.work_contents.each do |work_content| %>
+                                    <li><%= work_content.name %></li>
+                                <% end %>
                             </ul>
                         </div>
                         <ul>
@@ -95,7 +93,11 @@
                         </ul>
                         <p>掲載終了まで後10日</p>
                         <ul>
-                            <li><button class="normal-button">詳細を見る</button></li>
+                            <li>
+                                <%= link_to "/posts/#{post.id}" do %>
+                                    <button class="normal-button">詳細を見る</button>
+                                <% end %>
+                            </li>
                             <li><button class="yellow-button">
                                 <i aria-hidden="true" class="far fa-bookmark"></i>
                                 気になる
@@ -112,10 +114,7 @@
             <div class="post-box-container">
                 <% @popularPosts.each do |post| %>
                 <div class="post-box">
-                    <%= image_tag 'http://lorempixel.com/400/300/business/' ,class:"post-img"%>
-                    <%post.sectors.each do |sector| %>
-                    <!--<%= sector.name %>　謎のやつ　消していいやつ？-->
-                    <%end %>
+                    <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-img"%>
                     <div class="post-text-box">
                         <h4><%= post.company.name %></h4>
                         <h3><%= post.title %></h3>
@@ -123,9 +122,9 @@
                             <!--応募タグ-->
                             <i aria-hidden="true" class="fas fa-tag"></i>
                             <ul>
-                                <li>リサーチ</li>
-                                <li>資料作成</li>
-                                <li>web運用</li>
+                                <% post.work_contents.each do |work_content| %>
+                                    <li><%= work_content.name %></li>
+                                <% end %>
                             </ul>
                         </div>
                         <ul>
@@ -144,7 +143,11 @@
                         </ul>
                         <p>掲載終了まで後10日</p>
                         <ul>
-                            <li><button class="normal-button">詳細を見る</button></li>
+                            <li>
+                                <%= link_to "/posts/#{post.id}" do %>
+                                    <button class="normal-button">詳細を見る</button>
+                                <% end %>
+                            </li>
                             <li><button class="yellow-button">
                                 <i aria-hidden="true" class="far fa-bookmark"></i>
                                 気になる
@@ -161,10 +164,7 @@
             <div class="post-box-container">
                 <% @newPosts.each do |post| %>
                 <div class="post-box">
-                    <%= image_tag 'http://lorempixel.com/400/300/business/' ,class:"post-img"%>
-                    <%post.sectors.each do |sector| %>
-                    <!--<%= sector.name %>　謎のやつ　消していいやつ？-->
-                    <%end %>
+                    <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-img"%>
                     <div class="post-text-box">
                         <h4><%= post.company.name %></h4>
                         <h3><%= post.title %></h3>
@@ -172,9 +172,9 @@
                             <!--応募タグ-->
                             <i aria-hidden="true" class="fas fa-tag"></i>
                             <ul>
-                                <li>リサーチ</li>
-                                <li>資料作成</li>
-                                <li>web運用</li>
+                                <% post.work_contents.each do |work_content| %>
+                                    <li><%= work_content.name %></li>
+                                <% end %>
                             </ul>
                         </div>
                         <ul>
@@ -193,7 +193,11 @@
                         </ul>
                         <p>掲載終了まで後10日</p>
                         <ul>
-                            <li><button class="normal-button">詳細を見る</button></li>
+                            <li>
+                                <%= link_to "/posts/#{post.id}" do %>
+                                    <button class="normal-button">詳細を見る</button>
+                                <% end %>
+                            </li>
                             <li><button class="yellow-button">
                                 <i aria-hidden="true" class="far fa-bookmark"></i>
                                 気になる

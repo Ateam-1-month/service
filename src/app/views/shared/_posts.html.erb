@@ -1,7 +1,7 @@
 <div>
     <% posts.each do |post| %>
         <div class="post-box">
-            <div><%= image_tag "http://lorempixel.com/400/300/business/#{post.id/10+1}" ,class:"post-img"%></div>
+            <div><%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-img"%></div>
             <div>
                 <h4><%= post.company.name %></h4>
                 <h3><%= post.title %></h3>
@@ -46,8 +46,7 @@
                         <% end %>
                     <% end %>
                 </ul>
-            </div>
-        
+            </div>    
         </div>
     <% end %>
     

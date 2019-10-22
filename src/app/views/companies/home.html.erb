@@ -27,7 +27,7 @@
                     </div>
                 </div>
                 <div>
-                    <%= image_tag "http://lorempixel.com/400/300/business/#{post.id/10+1}", :size => '350x250' %>
+                    <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}", :size => '350x250' %>
                     <ul>
                         <% post.work_contents.each do |work_content| %>
                             <li><p class="zenre-tag"><%= work_content.name %></p></li>
