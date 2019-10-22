@@ -21,6 +21,9 @@ body {
 	background-color: white;
 	color: #464E58;
 }
+.flex{
+    display: flex;
+}
 input {
 	padding: 0;
 	border: none;
@@ -79,7 +82,11 @@ i {
 	display: flex;
 	align-items: center;
 	border-radius: 2em;
-	padding: 0.5em 1em 0.5em 1em;
+    padding: 0.5em 1em 0.5em 1em;
+    font-size: 16px;
+}
+.important-button{
+    font-size: 20px;
 }
 .gray-button {
 	font-size: 14px;
@@ -91,6 +98,7 @@ i {
 	padding: 0.3em 0.7em 0.3em 0.7em;
 }
 .normal-button {
+    font-size: 16px;
 	background-color: white;
 	border: solid 1px #8C9298;
 	display: flex;
@@ -290,4 +298,11 @@ i {
 /* 学生詳細ページ */
 .each-skill-container{
     border-bottom: solid 0.5px #8C9298;
+}
+.student-prof-header{
+    display: flex;
+    border-bottom: solid 0.5px #8C9298;
+}
+.company-revue-card{
+    border: solid 0.5px #8C9298;
 }
