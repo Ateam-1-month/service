@@ -49,7 +49,7 @@ end
 # 会社アカウント
 (1..10).each do |num|
   User.create!(email: "test_company#{num+10}@gmail.com", password: 'password', password_confirmation: 'password', is_company: true, is_student: false, activated: true, activated_at: Time.zone.now)
-  Company.create!(user_id: num+10, url: "http://test.company#{num}", address: companyAddress[num-1], name: companyName[num-1], image: "image_#{num+10}")
+  Company.create!(user_id: num+10, bussiness_summary: "事業概要#{num}" ,url: "http://test.company#{num}", address: companyAddress[num-1], name: companyName[num-1], image: "image_#{num+10}")
 end
 
 # appeal ポイント
@@ -69,7 +69,7 @@ end
 
 # 学生スキル
 (1..30).each do |num|
-  Skill.create!(student_id:num/10+1, name: "Excel#{num}", level: rand(3), content: "#{num}年使っています")
+  Skill.create!(student_id:num/10+1, name: "Excel#{num}", level: 5-rand(3), content: "#{num}年使っています")
 end
 
 # student_sector
