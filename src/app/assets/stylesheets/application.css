@@ -25,6 +25,7 @@ body {
     display: flex;
 }
 input {
+    font-size: 16px;
 	padding: 0;
 	border: none;
 	border-radius: 0;
@@ -81,7 +82,7 @@ i {
 	box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
 	display: flex;
 	align-items: center;
-	border-radius: 2em;
+	border-radius: 5px;
     padding: 0.5em 1em 0.5em 1em;
     font-size: 16px;
 }
@@ -94,7 +95,7 @@ i {
 	border: solid 1px #8C9298;
 	display: flex;
 	align-items: center;
-	border-radius: 3px;
+	border-radius: 5px;
 	padding: 0.3em 0.7em 0.3em 0.7em;
 }
 .normal-button {
@@ -103,7 +104,7 @@ i {
 	border: solid 1px #8C9298;
 	display: flex;
 	align-items: center;
-	border-radius: 2em;
+	border-radius: 5px;
 	padding: 0.5em 1em 0.5em 1em;
 }
 .negative-button {
@@ -111,7 +112,7 @@ i {
 	border: solid 1px #8C9298;
 	display: flex;
 	align-items: center;
-	border-radius: 2em;
+	border-radius: 5px;
 	padding: 0.5em 1em 0.5em 1em;
 }
 /* 学生 */
@@ -157,23 +158,25 @@ i {
 /* ヘッダー */
 
 .header-container {
-	position: fixed;
-	justify-content: space-around;
+    box-sizing: border-box;
+    position: fixed;
+    padding: 10px 20px;
 	align-items: center;
 	top: 0;
 	min-width: 980px;
 	z-index: 1000;
 	height: 60px;
 	width: 100%;
-	display: flex;
+    display: flex;
+    justify-content: space-between;
 	background-color: white;
 	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
 }
 .header-search-bar {
 	display: flex;
 	background-color: #F4F4F4;
-	border-radius: 0.5em;
-	padding: 0.3em;
+	border-radius: 3px;
+	padding: 0.5em;
 	justify-content: space-between;
 	border: solid 0.5px #8C9298;
 }
@@ -184,11 +187,16 @@ i {
 .header-icon-container {
 	display: flex;
 }
-.link-search {
-	display: flex;
+.link-search-container {
+    display: flex;
+}
+.header-search-link{
+    margin-right: 10px;
+    display: flex;
+    align-items: center;
 }
 .header-icon {
-	font-size: 30px;
+	margin-left: 10px;
 }
 /* usermenu */
 
@@ -256,7 +264,6 @@ i {
 	display: flex;
 }
 /* 学生ホーム */
-
 .post-box-container {
 	display: flex;
 	width: 100%;
@@ -272,12 +279,10 @@ i {
 	width: 350px;
 }
 /* 募集一覧 */
-
 .post-list-contents {
 	display: flex;
 }
 /* 募集管理画面 */
-
 .post-management-contents {
 	border-bottom: solid 1px #8C9298;
 	display: flex;
@@ -294,7 +299,6 @@ i {
 .applicant-img {
 	border-radius: 60px;
 }
-
 /* 学生詳細ページ */
 .each-skill-container{
     border-bottom: solid 0.5px #8C9298;
@@ -305,4 +309,144 @@ i {
 }
 .company-revue-card{
     border: solid 0.5px #8C9298;
+}
+/* 応募確認ウィンドウ */
+.modal-container{
+    top: 0;
+    z-index: 5000;
+    background-color: rgba(50,50,50,0.1);
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-hidden{
+    display: none;
+}
+.blur{
+    -ms-filter: blur(3px);
+    filter: blur(3px);
+}
+.application-confirm-modal{
+    border: solid 0.5px #8C9298;
+    background-color: white;
+    width: 500px;
+    height: auto;
+    padding: 50px;
+    box-sizing: border-box;
+}
+.apply-button{
+    font-size: 16px;
+    cursor: pointer;
+}
+/* 応募完了アラートの１・アニメーション調整 */
+.alert{
+    top: 60px;
+    z-index: 5000;
+    background-color: white;
+    /* border: solid 1px #8C9298; */
+    padding: 0.5em 1em;
+    width: 100%;
+    text-align: center;
+}
+.alert{
+    -moz-animation: cssAnimation 0s ease-in 2s forwards;
+    /* Firefox */
+    -webkit-animation: cssAnimation 0s ease-in 2s forwards;
+    /* Safari and Chrome */
+    -o-animation: cssAnimation 0s ease-in 2s forwards;
+    /* Opera */
+    animation: cssAnimation 0s ease-in 2s forwards;
+    -webkit-animation-fill-mode: forwards;
+    animation-fill-mode: forwards;
+    position: absolute;
+}
+@keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        overflow:hidden;
+        display: none;
+    }
+}
+@-webkit-keyframes cssAnimation {
+    to {
+        width:0;
+        height:0;
+        visibility:hidden;
+        display: none;
+    }
+}
+/* ログインモーダル */
+.login-modal{
+    border: solid 0.5px #8C9298;
+    background-color: white;
+    padding: 30px;
+    text-align: center;
+    width: 350px;
+}
+.login-else{
+    width: 100%;
+}
+.login-button{
+    width: 100%;
+    color: black;
+    background-color: #FFE202;
+    padding: 0.5em;
+    border-radius: 5px;
+    font-size: 14px;
+}
+.facebook-button{
+    color: white;
+    background-color: rgb(67, 116, 221);
+    border: none;
+}
+.login-way-hr{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.login-way{
+    width: 43%;
+    height: 1px;
+    background-color: #8C9298;
+}
+.login-hr{
+    width: 100%;
+    height: 1px;
+    background-color: #8C9298;
+}
+.form-control{
+    margin: 0;
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 10px;
+    box-sizing: border-box;;
+}
+.forget-password{
+    text-decoration: underline;
+}
+.login-hr{
+    width: 100%;
+    height: 1px;
+    background-color: #8C9298;
+    margin: 10px 0;
+}
+.account-regist{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+.regist-button{
+    font-size: 12px;
+	background-color: #F4F4F4;
+	display: flex;
+	align-items: center;
+	border-radius: 3px;
+    padding: 0.5em;
+    margin-left: 20px;
 }
