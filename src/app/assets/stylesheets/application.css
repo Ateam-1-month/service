@@ -56,6 +56,15 @@ li {
 i {
 	color: #464E58;
 }
+
+.center {
+	text-align: center;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
 /* 画面下部のページ繊維バー */
 
 .page-nav {
@@ -80,7 +89,6 @@ i {
 .yellow-button {
 	background-color: #FFE202;
 	box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
-	display: flex;
 	align-items: center;
 	border-radius: 5px;
     padding: 0.5em 1em 0.5em 1em;
@@ -93,7 +101,6 @@ i {
 	font-size: 14px;
 	background-color: #F4F4F4;
 	border: solid 1px #8C9298;
-	display: flex;
 	align-items: center;
 	border-radius: 5px;
 	padding: 0.3em 0.7em 0.3em 0.7em;
@@ -102,7 +109,6 @@ i {
     font-size: 16px;
 	background-color: white;
 	border: solid 1px #8C9298;
-	display: flex;
 	align-items: center;
 	border-radius: 5px;
 	padding: 0.5em 1em 0.5em 1em;
@@ -110,7 +116,6 @@ i {
 .negative-button {
 	background-color: rgb(210, 210, 210);
 	border: solid 1px #8C9298;
-	display: flex;
 	align-items: center;
 	border-radius: 5px;
 	padding: 0.5em 1em 0.5em 1em;
@@ -244,11 +249,11 @@ i {
 /* 企業詳細ページ */
 
 .post-box {
-	display: flex;
-	flex-direction: column;
 	border: solid 0.5px #8C9298;
-	width: 47%;
+	width: 430px;
 	height: auto;
+	margin-right: 10px;
+	display:inline-block;
 }
 .post-img {
 	width: 100%;
@@ -264,12 +269,20 @@ i {
 	display: flex;
 }
 /* 学生ホーム */
+
+.posts {
+	overflow-x: scroll;
+}
+
 .post-box-container {
-	display: flex;
 	width: 100%;
 	justify-content: space-between;
 	overflow: hidden;
 	overflow-x: auto;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	display: inline-block;
+	white-space: nowrap;
 	-webkit-overflow-scrolling: touch;
 }
 .home-main-contents {
@@ -278,10 +291,32 @@ i {
 .search-menu-container {
 	width: 350px;
 }
+
+.search-condition {
+	padding-bottom: 30px;
+}
+
 /* 募集一覧 */
 .post-list-contents {
 	display: flex;
 }
+
+/* 募集詳細 */
+
+.post-detail-content {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.review-box {
+	border: solid 0.5px #8C9298;
+	width: 430px;
+	height: auto;
+	padding: 10px;
+	margin-right: 10px;
+	display:inline-block;
+}
+
 /* 募集管理画面 */
 .post-management-contents {
 	border-bottom: solid 1px #8C9298;

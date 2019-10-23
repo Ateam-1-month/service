@@ -28,6 +28,8 @@ class StudentsController < ApplicationController
   def show
     @student = Student.find(params[:id])
     @career = Career.new
+    @appeal = Appeal.new
+    @skill = Skill.new
   end
 
   def edit
@@ -39,6 +41,10 @@ class StudentsController < ApplicationController
   end
 
   def destroy
+
+  end
+
+  def top
 
   end
 
