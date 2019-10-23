@@ -114,9 +114,24 @@
                 </button>
             <% end %>
         </div>
-        <div>
+        <div class="appeal-container">
             <% @student.appeals.each do |appeal| %>
             <p><%= appeal.content %></p>
+            <% end %>
+        </div>
+        <div class="appeal-edit-continer">
+            <% if current_user && current_user.is_student && (current_user.student.id == @student.id) %>
+                <!--アピール追加ボタン-->
+                <button class="appeal-history-button"><i aria-hidden="true" class="fas fa-plus"></i></button>
+                <div class="appeal-form" style="display:none;">
+                    <%= form_with model: @appeal do |f| %>
+                        <%= f.label :content, '内容' %>
+                        <%= f.text_field :content %>
+                        <%= f.hidden_field :student_id, :value => @student.id %>
+                        <%= f.submit "登録" %>
+                    <% end %>
+                    <button class="appeal-history-button-cancel">キャンセル</button>
+                </div>
             <% end %>
         </div>
     </div>
@@ -145,7 +160,7 @@
         <div class="career-edit-continer">
             <% if current_user && current_user.is_student && (current_user.student.id == @student.id) %>
                 <!--コンテンツ追加ボタン-->
-                <button class="history-button"><i aria-hidden="true" class="fas fa-plus"></i></button>
+                <button class="career-history-button"><i aria-hidden="true" class="fas fa-plus"></i></button>
                 <div class="career-form" style="display:none;">
                     <%= form_with model: @career do |f| %>
                         <%= f.label :name, '勤務先' %>
@@ -161,7 +176,7 @@
                         <%= f.hidden_field :student_id, :value => @student.id %>
                         <%= f.submit "登録" %>
                     <% end %>
-                    <button class="history-button-cancel">キャンセル</button>
+                    <button class="career-history-button-cancel">キャンセル</button>
                 </div>
             <% end %>
         </div>
@@ -178,7 +193,7 @@
                 </button>
             <% end %>
         </div>
-        <div>
+        <div class="skill-container">
             <% @student.skills.each do |skill| %>
             <div class="each-skill-container">
                 <p><%= skill.name %></p>
@@ -186,14 +201,33 @@
                     <div>
                         <% skill.level.times do %>
                             <i class="fas fa-star"></i>
-                            <% end %>
-                            <% (5-skill.level).times do %>
+                        <% end %>
+                        <% (5-skill.level).times do %>
                             <i class="far fa-star"></i>
                         <% end %>
                     </div>
                     <p><%= skill.content %></p>
                 </div>
             </div>
+            <% end %>
+        </div>
+        <div class="skill-edit-continer">
+            <% if current_user && current_user.is_student && (current_user.student.id == @student.id) %>
+                <!--スキル追加ボタン-->
+                <button class="skill-history-button"><i aria-hidden="true" class="fas fa-plus"></i></button>
+                <div class="skill-form" style="display:none;">
+                    <%= form_with model: @skill do |f| %>
+                        <%= f.label :name, 'スキル名' %>
+                        <%= f.text_field :name %>
+                        <%= f.label :level, 'レベル' %>
+                        <%= f.number_field :level %>
+                        <%= f.label :content, '内容' %>
+                        <%= f.text_field :content %>
+                        <%= f.hidden_field :student_id, :value => @student.id %>
+                        <%= f.submit "登録" %>
+                    <% end %>
+                    <button class="skill-history-button-cancel">キャンセル</button>
+                </div>
             <% end %>
         </div>
     </div>
