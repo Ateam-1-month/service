@@ -1,26 +1,45 @@
 <!--募集一覧-->
 <div class="student-contents">
-    <!--検索バー-->
     <div class="post-list-contents">
-    <!--検索バー-->
-        <div class="search-form-container">
-            <%= form_with url: "/posts/search", method: :get, local: true do |f| %>
-            業種
-            <% @sectors.each do |sector| %>
-                <%= f.check_box :sector_id, {}, sector.id, nil %>
-                <%= f.label :sector_name, sector.name %>
+        <!--検索バー-->
+        <div class="search-form-container col-3">
+            <h3>検索条件</h3>
+            <%= form_with url: "/posts/search", method: :get, html: {class: "search-condition"}, local: true do |f| %>
+                <p>業務内容</p>
+                <% @sectors.each do |sector| %>
+                <div>
+                  <%= f.check_box :sector_id, {}, sector.id, nil %>
+                  <%= f.label :sector_name, sector.name %>
+                </div>
+                <% end %>
+                <div class="d-none">
+                    <%= f.submit '検索' %>
+                </div>
             <% end %>
-            <%= f.submit '検索' %>
+            <%= form_with url: "/posts/search", method: :get, html: {class: "search-condition"}, local: true do |f| %>
+                <p>業種</p>
+                <% @sectors.each do |sector| %>
+                <div>
+                  <%= f.check_box :sector_id, {}, sector.id, nil %>
+                  <%= f.label :sector_name, sector.name %>
+                </div>
+                <% end %>
+                <div class="d-none">
+                <%= f.submit '検索' %>
+                </div>
             <% end %>
             <button class="normal-button">詳しく検索する</button>
         </div>
-        <div><!--並べ替えのやつ-->
-            <%= form_with url: "/posts/list", method: :get, local: true do |f| %>
-            <%= f.select :sortOrder, {おすすめ順: 0, 人気順: 1, 新しい順: 2}, {include_blank: '並び順'}, onchange: "this.form.submit();" %>
-            <% end %>
-        </div>
         <div>
-        <%= render '/shared/posts', posts: @posts %>
-        <!--ページ繊維-->
+            <div class="mb-5"><!--並べ替えのやつ-->
+                <%= form_with url: "/posts/list", method: :get, local: true do |f| %>
+                    <%= f.select :sortOrder, {おすすめ順: 0, 人気順: 1, 新しい順: 2}, {include_blank: '並び順'}, onchange: "this.form.submit();" %>
+                <% end %>
+            </div>
+            <div>
+            <%= render '/shared/posts', posts: @posts %>
+            <!--ページ繊維-->
+            </div>
+        </div>
     </div>
 </div>
