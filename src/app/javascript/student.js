@@ -46,10 +46,9 @@ $(function() {
     }
 
 
-    $('.skill-container').append('<div class="aa"><p>' + e.detail[0]['name'] + '</p><div><div>' + star + '</div><p>' +  e.detail[0]['content'] + '</p></div></div>');
+    $('.skill-container').append('<div class="each-skill-container"><p>' + e.detail[0]['name'] + '</p><div><div>' + star + '</div><p>' +  e.detail[0]['content'] + '</p></div></div>');
     $('.skill-form').css('display', 'none');
     $('.skill-history-button').css({'display': ''});
-    $('.aa').addClass('each-skill-container')
   })
 
   $('.skill-history-button').on('click', function(){
@@ -59,7 +58,7 @@ $(function() {
 
   $('.skill-history-button-cancel').on('click', function(){
     $('.skill-form').css('display', 'none');
-    $('.skill-history-button').css({'display': ''});
+    $('.skill-history-button').css({'display': ''})
   });
 
 })
