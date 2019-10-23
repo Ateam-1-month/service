@@ -18,3 +18,4 @@ require('jquery')
 
 require ('company.js')
 require ('student.js')
+require ('post.js')
