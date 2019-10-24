@@ -64,6 +64,16 @@ i {
 	display: inline-block;
 }
 
+.padding-tb {
+	padding-top: 30px;
+	padding-bottom: 30px;
+}
+
+.padding-lr {
+	padding-left: 30px;
+	padding-right: 30px;
+}
+
 /* 画面下部のページ繊維バー */
 
 .page-nav {
@@ -154,6 +164,15 @@ i {
 	/* height: auto;
     width: calc(100vw - 300px); */
 }
+
+.post-status {
+	display: flex;
+}
+
+.post-summary-content {
+	display: flex;
+}
+
 /* 企業詳細 */
 
 .company-zenre-container {
@@ -215,6 +234,8 @@ i {
 
 .recruitment-thumbnail {
 	border: solid 0.5px #8C9298;
+	padding-left: 30px;
+	padding-right: 30px;
 }
 /* フッター */
 
