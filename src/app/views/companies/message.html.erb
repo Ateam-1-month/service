@@ -1,9 +1,53 @@
-<p>message ダミー</p>
-<p>message ダミー</p>
-<p>message ダミー</p>
-<p>message ダミー</p>
-<p>message ダミー</p>
-<p>message ダミー</p>
-<p>message ダミー</p>
-<p>message ダミー</p>
-<p>message ダミー</p>
+<% if current_user && current_user.is_company %>
+  <%= render 'shared/user_menu' %>  
+  <div class="company-contents message">
+<% else %>
+    <div class="student-contents company-show">
+<% end %>
+<div class="contact-contents">
+    <div class="contact-address-list">
+        <h3 class="title contact-address">メッセージ</h3>
+        <div class="address-sort">
+            <button class="address-sort">新しい順<i class="fas fa-sort"></i></button>
+            <input class="address-search" placeholder="ワードで検索する" type="text" name="search" id="search">
+        </div>
+        <div class="contact-address">
+            <p class="contact-address">佐藤 結城</p>
+            <h4 class="contact-address">2019/10/20</h4>
+        </div>
+        <div class="contact-address">
+            <p class="contact-address">田中 蓮</p>
+            <h4 class="contact-address">2019/10/13</h4>
+        </div>
+        <div class="contact-address">
+            <p class="contact-address">鈴木 雅樹</p>
+            <h4 class="contact-address">2019/10/10</h4>
+        </div>
+        <div class="contact-address">
+            <p class="contact-address">柏木 由紀</p>
+            <h4 class="contact-address">2019/10/3</h4>
+        </div>
+        <div class="contact-address">
+            <p class="contact-address">櫻井 光希</p>
+            <h4 class="contact-address">2019/9/23</h4>
+        </div>
+    </div>
+    <div class="message-container">
+        <div>
+            <div class="contact-address-header">
+                <p class="contact-address">佐藤 結城</p>
+            </div>
+            <div class="message-contents">
+                <div class="apply-notice-message">
+                    <h3>コーポレートサイトと社内SNSの運用</h3>
+                    <p>に応募されました</p>
+                </div>
+            </div>
+        </div>
+        <div class="message-input-form">
+            <textarea class="message-input-form" placeholder="メッセージを入力">
+            </textarea>
+            <button class="yellow-button message-submit-button">送信</button>
+        </div>
+    </div>
+</div>
