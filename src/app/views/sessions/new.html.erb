@@ -1,27 +1,28 @@
 
-<div class="modal-container">
+<div class="login-modal-container modal-hidden">
     <div class="login-modal">
-        <div></div>
-        <h3>ログイン</h3>
-        <button class="login-button facebook-button">Facebook</button>
-        <div class="login-way-hr"><span class="login-way"></span><h4>または</h4><span class="login-way"></span></div>
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <%= form_for(:session, url: login_path) do |f| %>
-                <ul>
+        <h3 class="login-title">ログイン</h3>
+        <button class="facebook-button">Facebook</button>
+        <div class="login-way-hr">
+            <span class="login-way"></span>
+            <h4 class="login-way">または</h4>
+            <span class="login-way"></span>
+        </div>
+        <div class="login-form-container">
+            <%= form_for(:session, url: login_path) do |f| %>
+                <ul class="login-form-container">
                     <li><%= f.email_field :email, class: 'form-control login-form' ,placeholder: 'メールアドレス'%></li>
                     <li><%= f.password_field :password, class: 'form-control' ,placeholder: 'パスワード'%></li>
                 </ul>
-                <h4 class="forget-password">パスワードをお忘れですか？</h4>
+                <h4 class="login-form-container">パスワードをお忘れですか？</h4>
                 <%= f.submit "ログイン", class: "btn btn-primary login-button" %>
-                <% end %>
-            </div>
+            <% end %>
         </div>
         <div class="login-hr"></div>
         <div class="account-regist">
-            <h4>登録がお済みでない方</h4>
+            <h4 class="login-way">登録がお済みでない方</h4>
             <div class="regist-button">登録はこちら</div>
         </div>
-        <!--<%= link_to "Log out", logout_path, method: :delete %>-->
+        <p class="login-cancel">キャンセル</p>
     </div>
 </div>
