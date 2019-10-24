@@ -1,3 +1,4 @@
+<%= render 'layouts/application_confirm.html.erb', post: @post %>
 <div class="student-contents">
     <div><!--ここのデザインあとで考えるね-->
         <% if current_user && current_user.is_student %>
@@ -34,6 +35,34 @@
             <h3>あるといい経験・スキル</h3>
             <p>事務経験</p>
         </div>
+    </div>
+    <div>
+        <ul>
+            <li>
+                <p>担当者電話番号</p>
+                <p><%= @post.tel_number %></p>
+            </li>
+            <li>
+                <p>担当者名</p>
+                <p><%= @post.first_name %><%= @post.last_name %></p>
+            </li>
+            <!--担当者名（かな）<%= @post.first_name_kana %><%= @post.last_name_kana %>-->
+        </ul>
+        <ul>
+            <li><p>投稿日時</p><p><%= @post.created_at.strftime('%Y年%m月%d日') %></p></li>
+            <li><p>更新日時</p><p><%= @post.updated_at.strftime('%Y年%m月%d日') %></p></li>
+        </ul>
+    </div>
+    <div>
+        <% if current_user && current_user.is_student %>
+        　  <% if current_user.student.posts.include?(@post) %>
+                <button class="negative-button">応募済みの募集です</button>
+            <% else %>
+                <!--ここのボタンあとで適用お願いします-->
+                <button class="normal-button">気になるする</button>
+                <p class="yellow-button apply-button">応募する</p>
+            <% end %>
+        <% end %>
     </div>
     <!--ここから下は企業情報-->
     <h3>企業情報</h3>

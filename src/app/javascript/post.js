@@ -1,0 +1,12 @@
+$(function(){
+    $('.apply-button').on('click',function(){
+        $('.modal-container').removeClass('modal-hidden');
+        $('.student-contents').addClass('blur');
+        $('.header-container').addClass('blur');
+    });
+    $('.close-button').on('click',function(){
+        $('.modal-container').addClass('modal-hidden');
+        $('.student-contents').removeClass('blur');
+        $('.header-container').removeClass('blur');
+    });
+});
