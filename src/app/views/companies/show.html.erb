@@ -1,17 +1,26 @@
 <!--会社詳細ページ-->
 <% if current_user && current_user.is_company %>
   <%= render 'shared/user_menu' %>  
+  <div class="company-contents">
+<% else %>
+    <div class="student-contents company-show">
 <% end %>
-<div class="company-contents">
-	<div>
-		<div class="company-profile">
-      <img src="#" alt="企業ロゴ">
-			<%= @company.name %>    <%= @company.url %>    <%= @company.address %>
+	<div class="company-profile">
+		<div class="company-profile-contents">
+			<h3 class="company-name"><%= @company.name %></h3>
+            <div class="company-show-detail">
+                <i aria-hidden="true" class="company-show-detail fas fa-globe"></i>
+                <p><%= @company.url %></p>
+            </div>
+            <div class="company-show-detail">
+                <i aria-hidden="true" class="company-show-detail fas fa-map-marker-alt"></i>
+                <p><%= @company.address %></p>
+            </div>
 		</div>
         <button class="yellow-button">企業をフォローする</button>
 	</div>
-	<div>
-		<%= image_tag 'http://lorempixel.com/400/300/business/' %>
+	<div class="company-show-img">
+		<%= image_tag 'http://lorempixel.com/400/300/business/' ,class:"company-show-img"%>
 	</div>
   <div class="company-zenre-container">
     <ul class="company-zenre-title">
@@ -29,6 +38,7 @@
       </li>
       <li>
         <p>
+            ホームページ制作事業・システム開発事業・インターネットメディア事業・インターネット広告代理事業
           <% @company.business_contents.each do |business_content| %> 
             <%= business_content.name %>
           <% end %>
@@ -44,14 +54,14 @@
     </ul>
   </div>
   <div>
-    <h3>事業概要</h3>
-    <%= @company.bussiness_summary %>
+    <h3 class="title">事業概要</h3>
+    <p class="company-show-summary"><%= @company.bussiness_summary %></p>
   </div>
 	<div class="company-summaries">
 		<% @company.summaries.each do |summary| %>
 			<div>
-				<h3><%= summary.title %></h3>
-				<p><%= summary.content %></p>
+				<h3 class="title"><%= summary.title %></h3>
+				<p class="company-show-summary"><%= summary.content %></p>
 			</div>
     <% end %>
 	</div>
@@ -68,71 +78,86 @@
   <% end %> 
 
 	<div>
-		<h3>募集中の業務</h3>
-    <% @company.posts.each do |post| %>
-			<div class="post-box">
-				<%= image_tag 'http://lorempixel.com/400/300/business/' ,class:"post-img"%>
-        <% post.sectors.each do |sector| %>
-          <!--<%= sector.name %>　謎のやつ　消していいやつ？-->
-        <% end %>
-				<div class="post-text-box">
-					<h4><%= post.company.name %></h4>
-					<h3><%= post.title %></h3>
-					<div class="post-tag">
-						<!--応募タグ-->
-						<i aria-hidden="true" class="fas fa-tag"></i>
-						<ul>
-              <% post.work_contents.each do |work_content| %>
-                <li><%= work_content.name %></li>
-              <% end %>
-						</ul>
-				</div>
-				<ul>
-					<li class="post-summary">
-						<p>就業期間：</p>
-						<p><%= post.period %></p>
-					</li>
-					<li class="post-summary">
-						<p>業務内容：</p>
-						<p><%= post.content %></p>
-					</li>
-					<li class="post-summary">
-						<p>給与体制：</p>
-						<p><%= post.salary %></p>
-					</li>
-				</ul>
-         <p>掲載終了まで後10日</p>
-            <ul>
-              <li><button class="normal-button">詳細を見る</button></li>
-              <li>
-                <button class="yellow-button">
-                  <i aria-hidden="true" class="far fa-bookmark"></i>
-                    気になる
-                </button>
-              </li>
-            </ul>
-				</div>
-			</div>
+		<h3 class="title">募集中の業務</h3>
+        <div class="post-box-container">
+            <% @company.posts.each do |post| %>
+			<div class="post-box company-show-post">
+                <div class="post-img"><%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-img"%></div>
+                <div class="post-text-box">
+                <h4><%= post.company.name %></h4>
+                <h3><%= post.title %></h3>
+                <div class="post-tag">
+                    <!--応募タグ-->
+                    <i aria-hidden="true" class="fas fa-tag"></i> 
+                    <ul>
+                        <% post.sectors.each do |sector| %>
+                        <%= sector.name %>
+                        <% end %>
+                    </ul>               
+                </div>
+                <ul>
+                    <li class="post-summary">
+                        <p>就業期間：</p>
+                        <p><%= post.period %></p>
+                    </li>
+                    <li class="post-summary">
+                        <p>業務内容：</p>
+                        <p><%= post.content %></p>
+                    </li>
+                    <li class="post-summary">
+                        <p>給与体制：</p>
+                        <p><%= post.salary %></p>
+                    </li>
+                </ul>
+                <div class="post-button-container">
+                    <div>
+                        <p class="post-deadline">掲載終了まで後10日</p>
+                        <div class="inline-block">
+                            <%= link_to "/posts/#{post.id}" do %>
+                            <button class="normal-button">詳細を見る</button>
+                            <% end %>
+                        </div>
+                        <div class="inline-block">
+                            <button class="yellow-button">
+                                <i aria-hidden="true" class="far fa-bookmark"></i>
+                                気になる
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+				
     <% end %>
 	</div>
-  <% if current_user && current_user.is_student %>
-    <div>
-      <h3>学生レビュー</h3>
-      <div>
-        <% @company.reviews.each do |review| %>
-          <ul>
-            <li>
-              <p><%= review.evaluation %></p>
-            </li>
-            <li>
-              <p><%= review.title %></p>
-            </li>
-            <li>
-              <p><%= review.content %></p>
-            </li>
-          </ul>
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+    <% if current_user && current_user.is_student %>
+        <h3 class="title">企業へのユーザーレビュー</h3>
+        <div class="review-container">
+            <div class="review-box"><!--ここで一枚-->
+                <% @company.reviews.each do |review| %>
+                <h5><%= review.title %></h5>
+                <p><%= review.content %></p>
+                <div class="col-8 inline-block"></div>
+                <div class="inline-block"><!--評価ボタン-->
+                    <i aria-hidden="true" class="fas fa-thumbs-up inline-block"></i><h4 class="mr-3 inline-block"><%= review.evaluation %></h4>
+                    <i aria-hidden="true" class="fas fa-ban inline-block"></i><h4 class="inline-block">違反報告する</h4>
+                </div>
+                <% end %>
+            </div>
+            <div class="review-box"><!--ここで一枚-->
+                <% @company.reviews.each do |review| %>
+                <h5><%= review.title %></h5>
+                <p><%= review.content %></p>
+                <div class="col-8 inline-block"></div>
+                <div class="inline-block"><!--評価ボタン-->
+                    <i aria-hidden="true" class="fas fa-thumbs-up inline-block"></i><h4 class="mr-3 inline-block"><%= review.evaluation %></h4>
+                    <i aria-hidden="true" class="fas fa-ban inline-block"></i><h4 class="inline-block">違反報告する</h4>
+                </div>
+                <% end %>
+            </div>
+        </div>
+        <div class="center">
+            <button class="normal-button">もっと見る</button>
+        </div>
+    <% end %>
 </div>

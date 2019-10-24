@@ -3,7 +3,9 @@
     <div class="post-box-container">
         <% @posts.each do |post| %>
         <div class="post-box">
-            <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-img"%>
+            <div class="post-img promote">
+                <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-img"%>
+            </div>
             <div class="post-text-box">
                 <h4><%= post.company.name %></h4>
                 <h3><%= post.title %></h3>
@@ -30,18 +32,21 @@
                         <p><%= post.salary %></p>
                     </li>
                 </ul>
-                <br><!-- TODO いい方法思いつかなかったすみません -->
-                <p class="inline-block">掲載終了まで後10日</p>
-                <div class="inline-block">
-                    <%= link_to "/posts/#{post.id}" do %>
-                    <button class="normal-button">詳細を見る</button>
-                    <% end %>
-                </div>
-                <div class="inline-block">
-                    <button class="yellow-button">
-                        <i aria-hidden="true" class="far fa-bookmark"></i>
-                        気になる
-                    </button>
+                <div class="post-button-container">
+                    <div>
+                        <p class="post-deadline">掲載終了まで後10日</p>
+                        <div class="inline-block">
+                            <%= link_to "/posts/#{post.id}" do %>
+                            <button class="normal-button">詳細を見る</button>
+                            <% end %>
+                        </div>
+                        <div class="inline-block">
+                            <button class="yellow-button">
+                                <i aria-hidden="true" class="far fa-bookmark"></i>
+                                気になる
+                            </button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -49,14 +54,14 @@
     </div>
     <div class="home-main-contents">
         <!--検索バー-->
-        <div class="search-form-container col-3">
-            <h3>検索条件</h3>
+        <div class="search-form-container">
+            <p class="serch-form-title">検索条件</p>
             <%= form_with url: "/posts/search", method: :get, html: {class: "search-condition"}, local: true do |f| %>
                 <p>業務内容</p>
                 <% @sectors.each do |sector| %>
-                    <div>
-                    <%= f.check_box :sector_id, {}, sector.id, nil %>
-                    <%= f.label :sector_name, sector.name %>
+                    <div class="search-contents">
+                        <%= f.check_box :sector_id, {}, sector.id, nil %>
+                        <%= f.label :sector_name, sector.name ,class:"search-contents"%>
                     </div>
                 <% end %>
                 <div class="d-none">
@@ -66,9 +71,9 @@
           <%= form_with url: "/posts/search", method: :get, html: {class: "search-condition"}, local: true do |f| %>
             <p>業種</p>
                 <% @sectors.each do |sector| %>
-                <div>
+                <div class="search-contents">
                     <%= f.check_box :sector_id, {}, sector.id, nil %>
-                    <%= f.label :sector_name, sector.name %>
+                    <%= f.label :sector_name, sector.name ,class:"search-contents"%>
                     </div>
                 <% end %>
                 <div class="d-none">
@@ -83,7 +88,9 @@
             <div class="post-box-container">
                 <% @recommendedPosts.each do |post| %>
                 <div class="post-box">
-                    <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-img"%>
+                    <div class="post-img">
+                        <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-img"%>
+                    </div>
                     <div class="post-text-box">
                         <h4><%= post.company.name %></h4>
                         <h3><%= post.title %></h3>
@@ -110,18 +117,21 @@
                                 <p><%= post.salary %></p>
                             </li>
                         </ul>
-                        <br><!-- TODO いい方法思いつかなかったすみません -->
-                        <p class="inline-block">掲載終了まで後10日</p>
-                        <div class="inline-block">
-                            <%= link_to "/posts/#{post.id}" do %>
-                            <button class="normal-button">詳細を見る</button>
-                            <% end %>
-                        </div>
-                        <div class="inline-block">
-                            <button class="yellow-button">
-                                <i aria-hidden="true" class="far fa-bookmark"></i>
-                                気になる
-                            </button>
+                        <div class="post-button-container">
+                            <div>
+                                <p class="post-deadline">掲載終了まで後10日</p>
+                                <div class="inline-block">
+                                    <%= link_to "/posts/#{post.id}" do %>
+                                    <button class="normal-button">詳細を見る</button>
+                                    <% end %>
+                                </div>
+                                <div class="inline-block">
+                                    <button class="yellow-button">
+                                        <i aria-hidden="true" class="far fa-bookmark"></i>
+                                        気になる
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -137,7 +147,9 @@
             <div class="post-box-container">
                 <% @popularPosts.each do |post| %>
                 <div class="post-box">
-                    <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-img"%>
+                    <div class="post-img">
+                        <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-img"%>
+                    </div>
                     <div class="post-text-box">
                         <h4><%= post.company.name %></h4>
                         <h3><%= post.title %></h3>
@@ -164,18 +176,21 @@
                                 <p><%= post.salary %></p>
                             </li>
                         </ul>
-                        <br><!-- TODO いい方法思いつかなかったすみません -->
-                        <p class="inline-block">掲載終了まで後10日</p>
-                        <div class="inline-block">
-                            <%= link_to "/posts/#{post.id}" do %>
-                            <button class="normal-button">詳細を見る</button>
-                            <% end %>
-                        </div>
-                        <div class="inline-block">
-                            <button class="yellow-button">
-                                <i aria-hidden="true" class="far fa-bookmark"></i>
-                                気になる
-                            </button>
+                        <div class="post-button-container">
+                            <div>
+                                <p class="post-deadline">掲載終了まで後10日</p>
+                                <div class="inline-block">
+                                    <%= link_to "/posts/#{post.id}" do %>
+                                    <button class="normal-button">詳細を見る</button>
+                                    <% end %>
+                                </div>
+                                <div class="inline-block">
+                                    <button class="yellow-button">
+                                        <i aria-hidden="true" class="far fa-bookmark"></i>
+                                        気になる
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -191,7 +206,9 @@
             <div class="post-box-container">
                 <% @newPosts.each do |post| %>
                 <div class="post-box">
-                    <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-img"%>
+                    <div class="post-img">
+                        <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-img"%>
+                    </div>
                     <div class="post-text-box">
                         <h4><%= post.company.name %></h4>
                         <h3><%= post.title %></h3>
@@ -218,18 +235,21 @@
                                 <p><%= post.salary %></p>
                             </li>
                         </ul>
-                        <br><!-- TODO いい方法思いつかなかったすみません -->
-                        <p class="inline-block">掲載終了まで後10日</p>
-                        <div class="inline-block">
-                            <%= link_to "/posts/#{post.id}" do %>
-                            <button class="normal-button">詳細を見る</button>
-                            <% end %>
-                        </div>
-                        <div class="inline-block">
-                            <button class="yellow-button">
-                                <i aria-hidden="true" class="far fa-bookmark"></i>
-                                気になる
-                            </button>
+                        <div class="post-button-container">
+                            <div>
+                                <p class="post-deadline">掲載終了まで後10日</p>
+                                <div class="inline-block">
+                                    <%= link_to "/posts/#{post.id}" do %>
+                                    <button class="normal-button">詳細を見る</button>
+                                    <% end %>
+                                </div>
+                                <div class="inline-block">
+                                    <button class="yellow-button">
+                                        <i aria-hidden="true" class="far fa-bookmark"></i>
+                                        気になる
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>

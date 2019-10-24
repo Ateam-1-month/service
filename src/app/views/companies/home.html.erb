@@ -3,71 +3,77 @@
 <% end %>
 <%= link_to "+新規募集を作成", "/posts/new" %>
 <div class="company-contents">
-    <button class="yellow-button">
-        <i class="fas fa-plus button-contents"></i>
-        <p class="button-contents">新規募集を作成</p>
+    <button class="yellow-button add-post-button">
+        <i class="fas fa-plus button-contents add-post-button"></i>
+        <p class="button-contents add-post-button">新規募集を作成</p>
     </button>
-    <h2 class="padding-tb">公開中の募集一覧</h2>
-    <ul class="post-status padding-tb">
-        <li class="padding-lr" style="background-color: #FFE202;">すべて(5)</li>
-        <li class="padding-lr">募集中(2)</li>|
-        <li class="padding-lr">募集停止中(1)</li>|
-        <li class="padding-lr">下書き(1)</li>|
-        <li class="padding-lr">募集終了(1)</li>|
+    <h2 class="padding-tb page-title">公開中の募集一覧</h2>
+    <ul class="post-status">
+        <li class="padding-lr post-status yellow" style="background-color: #FFE202;">すべて(5)</li>
+        <li class="padding-lr post-status">募集中(2)</li>
+        <li class="padding-lr post-status">募集停止中(1)</li>
+        <li class="padding-lr post-status">下書き(1)</li>
+        <li class="padding-lr post-status">募集終了(1)</li>
     </ul>
     <% @posts.each do |post| %>
-        <ul>
-            <li class="recruitment-thumbnail">
-                <div class="padding-tb">
-                    <p class="inline-block padding-lr" style="background-color: #FFE202; border-radius: 5px;">募集中</p>
-                    <h3 class="inline-block padding-lr"><%= post.title %></h3>
-                    <div class="inline-block">
-                        <%= link_to '詳細を見る', "/posts/#{post.id}/edit"%>
-                        <%= link_to '募集ページを見る', "/posts/#{post.id}" %>
+        
+	<ul>
+        <li>
+            <a href="/posts/1">
+                <div class="recruitment-thumbnail">
+                    <div class="padding-tb">
+                        <div class="flex">
+                            <p class="post-status-budge">募集中</p>
+                            <h3 class="inline-block padding-lr"><%= post.title %></h3>
+                        </div>
+                        <div class="inline-block">
+                            <%= link_to '詳細を見る', "../posts/management/#{post.id}" ,class:"normal-button post-link"%><%= link_to '募集ページを見る', "/posts/#{post.id}" ,class:"normal-button post-link"%>
+                        </div>
                     </div>
+                    <div class="row post-summary-content">
+                        <div class="post-thum-img">
+                            <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-thum-img" %>
+                        </div>
+                        <div>
+                            <div class="zenre-tag">
+                                <%post.work_contents.each do |work_content| %>
+                                <h4 class="zenre-tag"><%= work_content.name %></h4><%end %>
+                            </div>
+                            <ul>
+                                <li class="post-summary-content">
+                                    <p>募集期間：</p>
+                                    <p><%= post.period %></p>
+                                </li>
+                                <li class="post-summary-content">
+                                    <p>業務内容：</p>
+                                    <p><%= post.content.slice(0..15) %></p>
+                                </li>
+                                <li class="post-summary-content">
+                                    <p>給与体制：</p>
+                                    <p><%= post.salary %></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul class="post-summary-content padding-tb">
+                        <li class="post-num">
+                            <p>応募者数</p>
+                            <p class="post-num yellow"><%= post.applies.count %>人</p>
+                        </li>
+                        <li class="post-num">
+                            <p>ブックマーク数</p>
+                            <p class="post-num">8人</p>
+                        </li>
+                        <li class="post-num">
+                            <p>閲覧者数</p>
+                            <p class="post-num">32人</p>
+                        </li>
+                    </ul>
                 </div>
-                <div class="row">
-                    <div class="col-4 inline-block">
-                        <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}", :size => '200x100' %>
-                    </div>
-                    <div class="inline-block">
-                        <ul>
-                            <% post.work_contents.each do |work_content| %>
-                                <li><p class="zenre-tag"><%= work_content.name %></p></li>
-                            <% end %>
-                        </ul>
-                        <ul>
-                            <li class="post-summary-content ">
-                                <p>募集期間：</p>
-                                <p><%= post.period %></p>
-                            </li>
-                            <li class="post-summary-content ">
-                                <p>業務内容：</p>
-                                <p><%= post.content.slice(0..15) %></p>
-                            </li>
-                            <li class="post-summary-content ">
-                                <p>給与体制：</p>
-                                <p><%= post.salary %></p>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <ul class="post-summary-content padding-tb">
-                    <li class="post-summary-content">
-                        <p class="padding-lr">応募者数</p>
-                        <p class="padding-lr"><%= post.applies.count %>人</p>
-                    </li>
-                    <li class="post-summary-content">
-                        <p class="padding-lr">ブックマーク数</p>
-                        <p class="padding-lr">8人</p>
-                    </li>
-                    <li class="post-summary-content">
-                        <p class="padding-lr">閲覧者数</p>
-                        <p class="padding-lr">32人</p>
-                    </li>
-                </ul>
-            </li>
-        </ul>
+            </a>
+        </li>
+	</ul>
+</body>
     <% end %>
 </div>
 

@@ -71,12 +71,20 @@ i {
 
 .padding-tb {
 	padding-top: 30px;
-	padding-bottom: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
 }
 
 .padding-lr {
-	padding-left: 30px;
-	padding-right: 30px;
+    padding: 5px 30px;
+}
+p.padding-lr {
+    padding: 5px 10px;
+}
+h3.padding-lr{
+    padding: 5px 0;
+    margin-bottom: 0;
 }
 
 /* 画面下部のページ繊維バー */
@@ -424,13 +432,39 @@ h4.account-plan:hover{
 	margin-right: 140px;
 }
 /* 企業詳細ページ */
-
-.post-box {
+p.serch-form-title{
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.post-box{
 	border: solid 0.5px #8C9298;
-	width: 430px;
+	width: 32%;
 	height: auto;
-	margin-right: 10px;
-	display:inline-block;
+	margin-bottom: 20px;
+    display:inline-block;
+    margin-right: 20px;
+}
+.post-box.posts{
+    margin-right: 0;
+}
+.post-button-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+div.post-img{
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+}
+div.post-img.promote{
+    height: 200px;
+}
+.post-deadline{
+    color: rgb(231, 206, 10);
+    margin: 5px;
+    margin-top: 10px;
+    text-align: right;
 }
 .post-img {
 	width: 100%;
@@ -439,13 +473,66 @@ h4.account-plan:hover{
 .post-text-box {
 	padding: 30px;
 }
-.post-summary {
-	display: flex;
+p.post-summary {
+	margin-right: 30px;
+}
+li.post-summary {
+    display: flex;
+    margin-bottom: 5px;
+}
+ul.post-summary{
+    margin-bottom: 30px;
+}
+.post-detail-container{
+    margin-bottom: 30px;
+}
+.post-tag.posts-show{
+    margin-bottom: 30px;
 }
 .post-tag {
     display: flex;
     align-items: center;
     margin-bottom: 10px;
+}
+div.post-apply-button{
+   margin-bottom: 50px;
+   display: flex;
+   justify-content: center;
+}
+button.post-apply-button{
+    margin-right: 20px;
+}
+label.search-contents{
+    display: flex;
+    align-items: center;
+    margin: 0;
+    margin-left: 10px;
+}
+div.search-contents{
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    height: auto;
+}
+.post-list-box-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+div.company-main-summary{
+    display: flex;
+    margin-bottom: 30px;
+}
+div.company-summary-img{
+    overflow: hidden;
+    width: 500px;
+    height: 250px;
+    margin-right: 30px;
+}
+img.company-summary-img{
+    width: 100%;
+    height: auto;
 }
 /* 学生ホーム */
 
@@ -479,39 +566,95 @@ h4.account-plan:hover{
 .post-list-contents {
 	display: flex;
 }
-
-/* 募集詳細 */
-
-.post-detail-content {
-	padding-top: 30px;
-	padding-bottom: 30px;
+p.post-applied-alert{
+    margin-bottom: 10px;
 }
-
+/* 募集詳細 */
+.student-contents.post-show{
+    padding: 30px 10%;
+}
+.post-detail-content {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+div.post-show-img{
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+.fa-tag{
+    margin-right: 20px;
+}
+img.post-show-img{
+    width: 100%;
+    height: auto;
+}
+.review-container{
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
 .review-box {
 	border: solid 0.5px #8C9298;
-	width: 430px;
+	width: 47%;
 	height: auto;
-	padding: 10px;
-	margin-right: 10px;
+	padding: 20px;
 	display:inline-block;
 }
-
+.center{
+    margin-bottom: 50px;
+}
 /* 募集管理画面 */
-.post-management-contents {
-	border-bottom: solid 1px #8C9298;
-	display: flex;
+div.post-management-contents {
+    display: flex;
+    margin-bottom: 20px;
 }
 .post-application-num-container {
-	display: flex;
+    display: flex;
+    border-top: solid 1px #464E58;
+    padding: 10px;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    margin-bottom: 30px;
 }
-.post-application-num {
-	display: flex;
+li.post-application-num {
+    display: flex;
+    margin-left: 20px;
+}
+p.post-application-num {
+    margin-right: 10px;
+}
+.applicant-card-container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 70px;
 }
 .applicant-card {
-	border: solid 1px #8C9298;
+    border: solid 1px #8C9298;
+    width: 49%;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.applicant-card-button-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.applicant-card-button{
+    margin-left: 20px;
 }
 .applicant-img {
-	border-radius: 60px;
+    border-radius: 60px;
+    margin-right: 20px;
+}
+.management-button-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 /* 学生詳細ページ */
 .each-skill-container{
@@ -727,4 +870,266 @@ span.schedule-time-bar{
 }
 span.selected-time{
     background-color: #FFE202;
+}
+li.post-summary-content{
+    margin-bottom: 5px;
+}
+p.post-status-budge{
+    background-color: #FFE202;
+    padding: 0 0.5em;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+div.post-thum-img{
+    width: 250px;
+    height: 120px;
+    margin-right: 30px;
+    overflow: hidden;
+}
+img.post-thum-img{
+    width: 100%;
+    height: auto;
+}
+h4.zenre-tag{
+    margin: 0;
+}
+div.zenre-tag{
+    margin-bottom: 10px;
+    border:solid 1px #464E58;
+    padding: 0.3em 1em;
+    display: flex;
+    justify-content: center;
+}
+.normal-button.post-link{
+    margin-left: 10px;
+}
+p.post-num{
+    margin-left: 10px;
+    font-size: 20px;
+}
+p.yellow{
+    color: rgb(231, 188, 17);
+}
+ul.post-summary-content{
+    margin: 0 auto;
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+div.post-summary-content{
+    width: 100%;
+    margin: 0;
+}
+li.post-status{
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: solid 2px #464E58;
+    cursor: pointer;
+}
+ul.post-status{
+    margin-bottom: 20px;
+}
+li.post-status.yellow{
+    background-color: #FFE202;
+}   
+button.add-post-button{
+    padding: 0.5em 1.5em;
+    margin-bottom: 20PX;
+}
+i.add-post-button{
+    font-size: 2em;
+}
+p.add-post-button{
+    font-size: 20px;
+}
+h2.page-title{
+    padding-bottom: 20px;
+}
+div.recruitment-thumbnail{
+    cursor: pointer;
+    background-color: white;
+}
+div.recruitment-thumbnail:hover{
+    background-color: rgb(254, 251, 251);
+}
+.normal-button.post-link{
+    border: solid 1px #8C9298;
+}
+li.post-num{
+    display: flex;
+    align-items: center;
+}
+h4.post-management-contents{
+    margin-bottom: 50px;
+    border: none;
+}
+.post-management-contents.button-container{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.post-management-contents.normal-button{
+    margin-right: 10px;
+}
+h3.page-title{
+    margin-bottom: 30px;
+}
+.search-form-container{
+    width: 1000px;
+}
+.posts-sort{
+    padding: 0.3em;
+    outline: none;
+}
+.company-show-detail.fas{
+    margin-right: 20px;
+}
+div.company-show-detail{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+h3.company-name{
+    font-size: 24px;
+    margin-right: 20px;
+}
+div.company-profile-contents{
+    display: flex;
+}
+div.company-profile{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+.student-contents.company-show{
+    width: 80%;
+    margin: 60px 10%;;
+}
+div.company-show-img{
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+img.company-show-img{
+    width: 100%;
+    height: auto;
+}
+.company-zenre-title{
+    margin-right: 20px;
+}
+.company-zenre-container{
+    margin-bottom: 50px;
+}
+.company-show-summary{
+    margin-bottom: 30px;
+}
+.post-box.company-show-post{
+    width: 48%;
+}
+.company-contents.message{
+    padding: 0;
+    height: calc(100vh - 60px);
+    width: calc(100vw - 300px);
+}
+.contact-contents{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: white;
+}
+.contact-address-list{
+    width: 320px;
+    height: auto;
+    border-right: solid 1px #464E58;
+    text-align: center;
+    padding-top: 30px;
+}
+.contact-address.title{
+    margin-bottom: 50px;
+}
+div.contact-address{
+    border-bottom: solid 1px #464E58;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+}
+div.message-contents{
+    padding: 30px;
+    box-sizing: border-box;
+}
+div.apply-notice-message{
+    background-color: white;
+}
+div.apply-notice-message{
+    padding: 10px 15%;
+    width: 70%;
+    text-align: center;
+    border: solid 1px #464E58;
+}
+.message-input-form{
+    position: fixed;
+    bottom: 0;
+    display: flex;
+}
+.contact-address-header{
+    height: 50px;
+    border-bottom: 1px solid #464E58;
+    padding: 10px;
+    background-color: white;
+}
+p.contact-address{
+    cursor: pointer;
+    font-weight: bold;
+}
+div.address-sort{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+}
+button.address-sort{
+    padding: 0.5em;
+    background-color: #F4F4F4;
+}
+button.address-sort:hover{
+    background-color: rgb(210, 210, 210);
+}
+.address-search{
+    padding: 0.5em;
+    background-color: #F4F4F4;
+}
+.fa-sort{
+    margin-left: 10px;
+}
+textarea.message-input-form{
+    width: 100%;
+    height: 5em;
+    border: none;
+    border-top: solid 1px #464E58;
+    background-color: white;
+    padding-top: 20px;
+}
+.message-submit-button{
+    z-index: 1000;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin: 10px;
+}
+.message-container{
+    display: flex;
+    height: 100vh;
+    width: calc(100% - 320px);
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #F4F4F4;
 }

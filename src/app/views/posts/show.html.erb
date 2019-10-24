@@ -1,42 +1,47 @@
 <%= render 'layouts/application_confirm.html.erb', post: @post %>
-<div class="student-contents">
+<div class="student-contents post-show">
     <div><!--ここのデザインあとで考えるね-->
         <% if current_user && current_user.is_student %>
-        　<p>応募済みの募集です</p>
+        　<p class="post-applied-alert">応募済みの募集です</p>
         <% end %>
     </div>
     <div class="post-detail-content">
         <h3 class="inline-block"><%= @post.title %></h3>
         <h4 class="inline-block"><%= @post.company.name %></h4>
     </div>
-    <%= image_tag "http://lorempixel.com/400/300/business/#{@post.id%10+1}", :size => '600x400' %>
-    <div class="post-detail-content">
-        <i aria-hidden="true" class="fas fa-tag"></i>
-        <% @post.work_contents.each do |work_content| %>
-            <%= work_content.name %>
-        <% end %>
+    <div class="post-show-img">
+        <%= image_tag "http://lorempixel.com/400/300/business/#{@post.id%10+1}",class:"post-show-img" %>
     </div>
-    <ul class="post-detail-content">
-        <li class="post-summary"><p>就業期間：</p><p><%= @post.period %></p></li>
-        <li class="post-summary"><p>給与体制：</p><p><%= @post.salary %></p></li>
+    <div class="post-tag posts-show">
+        <i aria-hidden="true" class="fas fa-tag"></i>
+        <ul>
+            <% @post.work_contents.each do |work_content| %>
+                <li><%= work_content.name %></li>
+            <% end %>
+        </ul>
+    </div>
+    <ul class="post-summary">
+        <li class="post-summary"><p class="post-summary">就業期間</p><p><%= @post.period %></p></li>
+        <li class="post-summary"><p class="post-summary">給与体制</p><p><%= @post.salary %></p></li>
     </ul>
-    <div><!--ここら辺は打ち込みでOK??-->
+    <div class="post-detail-container"><!--ここら辺は打ち込みでOK??-->
+        
+        <h3 class="title">募集内容</h3>
         <div class="post-detail-content">
-            <h3>業務内容</h3>
-            <p>募集内容</p><p><%= @post.content %></p>
+            <p><%= @post.content %></p>
         </div>
+            <h3 class="title">必要経験・スキル</h3>
         <div class="post-detail-content">
-            <h3>必要経験・スキル</h3>
             <p>ネットでの検索<br>
                 PCで資料を制作できるスキル（WordやPowerPoint、KeyNoteなど）
             </p>
         </div>
+        <h3 class="title">あるといい経験・スキル</h3>
         <div class="post-detail-content">
-            <h3>あるといい経験・スキル</h3>
             <p>事務経験</p>
         </div>
     </div>
-    <div>
+    <!--<div>
         <ul>
             <li>
                 <p>担当者電話番号</p>
@@ -46,14 +51,14 @@
                 <p>担当者名</p>
                 <p><%= @post.first_name %><%= @post.last_name %></p>
             </li>
-            <!--担当者名（かな）<%= @post.first_name_kana %><%= @post.last_name_kana %>-->
+            担当者名（かな）<%= @post.first_name_kana %><%= @post.last_name_kana %>
         </ul>
         <ul>
             <li><p>投稿日時</p><p><%= @post.created_at.strftime('%Y年%m月%d日') %></p></li>
             <li><p>更新日時</p><p><%= @post.updated_at.strftime('%Y年%m月%d日') %></p></li>
         </ul>
-    </div>
-    <div>
+    </div>-->
+    <div class="post-apply-button">
         <% if current_user && current_user.is_student %>
         　  <% if current_user.student.posts.include?(@post) %>
                 <button class="negative-button">応募済みの募集です</button>
@@ -65,16 +70,16 @@
         <% end %>
     </div>
     <!--ここから下は企業情報-->
-    <h3>企業情報</h3>
+    <h3 class="title">企業情報</h3>
     <div>
         <div class="mb-3">
             <p class="mr-5 inline-block"><%= @post.company.name %></p>
             <i aria-hidden="true" class="fas fa-globe inline-block"></i><p class="mr-5 inline-block"><%= @post.company.url %></p>
             <i aria-hidden="true" class="fas fa-map-marker-alt inline-block"></i><p class="mr-5 inline-block"><%= @post.company.address %></p>
         </div>
-        <div class="row">
-            <div class="col-5 inline-block">
-                <%= image_tag "http://lorempixel.com/400/300/business/#{@post.id%10+1}", :size => '500x300' %>
+        <div class="company-main-summary">
+            <div class="company-summary-img">
+                <%= image_tag "http://lorempixel.com/400/300/business/#{@post.id%10+1}", class:"company-summary-img" %>
             </div>
             <div class="col-6 inline-block">
                 <div class="post-detail-content">
@@ -91,16 +96,13 @@
                 </div>
             </div>
         </div>
-        <div class="post-detail-content">
-            <h3>事業概要</h3>
-            <p><%= @post.company.bussiness_summary %></p>
-        </div>
-        <div class="center">
+        <div class="post-apply-button">
+            <a href="../../companies/1"><button class="post-apply-button normal-button">企業の詳細を見る</button></a>
             <button class="yellow-button">企業をフォローする</button>
         </div>
     </div>
-    <h3>企業へのユーザーレビュー</h3>
-    <div>
+    <h3 class="title">企業へのユーザーレビュー</h3>
+    <div class="review-container">
         <div class="review-box"><!--ここで一枚-->
             <% @post.company.reviews.each do |review| %>
             <h5><%= review.title %></h5>
@@ -112,9 +114,20 @@
             </div>
             <% end %>
         </div>
-        <div class="center">
-            <button class="normal-button">もっと見る</button>
+        <div class="review-box"><!--ここで一枚-->
+            <% @post.company.reviews.each do |review| %>
+            <h5><%= review.title %></h5>
+            <p><%= review.content %></p>
+            <div class="col-8 inline-block"></div>
+            <div class="inline-block"><!--評価ボタン-->
+                <i aria-hidden="true" class="fas fa-thumbs-up inline-block"></i><h4 class="mr-3 inline-block"><%= review.evaluation %></h4>
+                <i aria-hidden="true" class="fas fa-ban inline-block"></i><h4 class="inline-block">違反報告する</h4>
+            </div>
+            <% end %>
         </div>
+    </div>
+    <div class="center">
+        <button class="normal-button">もっと見る</button>
     </div>
 </div>
 
