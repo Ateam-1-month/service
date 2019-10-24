@@ -12,7 +12,7 @@ class SessionsController < ApplicationController
           if user.is_student
             redirect_to '/posts/index'
           else
-            redirect_to "/companies/#{user.company.id}"
+            redirect_to "/companies/home"
           end
         else
           flash[:success] = 'プロフィール登録が完了していません.プロフィールを登録してください.'
