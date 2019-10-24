@@ -1,3 +1,156 @@
 // Place all the styles related to the Students controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+.box {
+ margin-bottom: 50px;
+  textarea {
+    border: solid 1px lightgray;
+    width: 90%;
+    display: block;
+    margin: 0 auto;
+  } 
+}
+
+.cancel-btn {
+  border: solid 1px black;
+  width: 100px;
+  height: 30px;
+  font-weight: 100;
+  padding: 0;
+}
+
+.student-submit-btn {
+  background-color: #FFE202;
+  width: 100px;
+  height: 30px;
+  font-weight: 100;
+}
+
+.appeal-form {
+  text-align: center;
+}
+
+.student-btns {
+  margin-top: 20px;
+  text-align: center;
+  display: inline-block;
+}
+
+.appeal-content p {
+  font-size: 15px;
+}
+
+.appeal-content {
+  margin-top: 10px;
+}
+
+.student-btn {
+  text-align: center;
+}
+
+.appeal-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.appeal-history-button {
+  display: inline-block;
+}
+
+.appeal-history-button i, .career-history-button i, .skill-history-button i  {
+  display: block;
+  border-radius: 50%;
+  border: solid 3px #FFE202;
+  line-height: 40px;
+  width: 40px;
+  height: 40px;
+}
+
+.each-skill-container {
+  width: 90%;
+  margin: 5px auto;
+  margin-bottom: 10px;
+}
+
+.skill-content {
+  margin-left: 100px;
+  line-height: 50px;
+}
+
+.skill-stars {
+  line-height: 50px;
+}
+
+.each-skill {
+  height: 50px;
+}
+
+.each-skill-name {
+  font-size: 20px;
+}
+
+
+.career-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.career-name, .career-date, .career-role {
+  display: inline-block;
+  width: 300px;
+}
+
+.each-career-container {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.schedule-time-contents {
+  display: inline-block;
+  margin: 0 auto;
+}
+
+.students-edit-button {
+  margin: 5px 0px;
+  margin-left: 20px;
+}
+
+
+.appeal-form, .skill-form, .career-form {
+  width: 90%;
+  margin: 0 auto;
+  margin-top: 40px;
+  input {
+    border: solid 1px lightgray;
+  }
+  .btn-container {
+    text-align: center;
+    margin-top: 20px;
+  }
+}
+
+.appeal-form-label {
+  display: block;
+  width: 100px;
+  margin: 10px auto;
+}
+
+.career-form {
+  label {
+    width: 100px;
+  }
+  div {
+    width: 90%;
+    margin: 0 auto;
+  }
+}
+
+.skill-form {
+  label {
+    width: 100px;
+  }
+  div {
+    width: 90%;
+    margin: 0 auto;
+  }
+}

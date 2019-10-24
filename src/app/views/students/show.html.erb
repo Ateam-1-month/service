@@ -103,12 +103,12 @@
             </div>
         </div>
     <% end %>
-    <div>
+    <div class="appeal-box box">
         <div>
             <h3>アピールポイント</h3>
             <!--編集ボタン右上部に固定-->
-            <% if current_user && current_user.is_student %>
-                <button　class="students-edit-button">
+            <% if current_user && current_user.is_student && (current_user.student.id == @student.id) %>
+                <button class="students-edit-button">
                     <i class="fas fa-pen"></i>
                     編集する
                 </button>
@@ -116,31 +116,34 @@
         </div>
         <div class="appeal-container">
             <% @student.appeals.each do |appeal| %>
-            <p><%= appeal.content %></p>
+                <div class="appeal-content">
+                    <p><%= appeal.content %></p>
+                </div>
             <% end %>
         </div>
         <div class="appeal-edit-continer">
             <% if current_user && current_user.is_student && (current_user.student.id == @student.id) %>
                 <!--アピール追加ボタン-->
-                <button class="appeal-history-button"><i aria-hidden="true" class="fas fa-plus"></i></button>
+                <div class="student-btn">
+                    <button class="appeal-history-button"><i aria-hidden="true" class="fas fa-plus"></i></button>
+                </div>
                 <div class="appeal-form" style="display:none;">
                     <%= form_with model: @appeal do |f| %>
-                        <%= f.label :content, '内容' %>
-                        <%= f.text_field :content %>
+                        <p><%= f.label :content, '入力内容', class: 'appeal-form-label' %></p>
+                        <div><%= f.text_area :content , rows: 5 %></div>
                         <%= f.hidden_field :student_id, :value => @student.id %>
-                        <%= f.submit "登録" %>
+                        <div class="student-btns"><button type="button" class="appeal-history-button-cancel cancel-btn">キャンセル</button>　<%= f.submit "登録", class: 'student-submit-btn' %></div>
                     <% end %>
-                    <button class="appeal-history-button-cancel">キャンセル</button>
                 </div>
             <% end %>
         </div>
     </div>
-    <div>
+    <div class="career-box box">
         <div>
             <h3>アルバイト・インターン歴</h3>
             <!--編集ボタン右上部に固定-->
-            <% if current_user && current_user.is_student %>
-                <button　class="students-edit-button">
+            <% if current_user && current_user.is_student && (current_user.student.id == @student.id) %>
+                <button class="students-edit-button">
                     <i class="fas fa-pen"></i>
                     編集する
                 </button>
@@ -148,11 +151,8 @@
         </div>
         <div class="career-container">
             <% @student.careers.each do |career| %>
-                <div>
-                    <p><%= career.name %></p>
-                    <p><%= career.start_date %></p>
-                    <p><%= career.end_date %></p>
-                    <p><%= career.role %></p>
+                <div class="each-career-container">
+                    <p><span class="career-name"><%= career.name %></span><span class="career-date"><%= career.start_date.strftime("%Y/%m") %>~<%= career.end_date.strftime("%Y/%m") %></span><span class="career-role"><%= career.role %></span></p>
                     <p><%= career.content %></p>
                 </div>
             <% end %>
@@ -160,34 +160,40 @@
         <div class="career-edit-continer">
             <% if current_user && current_user.is_student && (current_user.student.id == @student.id) %>
                 <!--コンテンツ追加ボタン-->
-                <button class="career-history-button"><i aria-hidden="true" class="fas fa-plus"></i></button>
+                <div class="student-btn">
+                    <button class="career-history-button"><i aria-hidden="true" class="fas fa-plus"></i></button>
+                </div>
                 <div class="career-form" style="display:none;">
                     <%= form_with model: @career do |f| %>
-                        <%= f.label :name, '勤務先' %>
-                        <%= f.text_field :name %>
-                        <%= f.label :role, '役割' %>
-                        <%= f.text_field :role %>
-                        <%= f.label :content, '内容' %>
-                        <%= f.text_field :content %>
-                        <%= f.label :start_date, '開始日' %>
-                        <%= f.date_select :start_date, discard_day:true %>
-                        <%= f.label :end_date, '終了日' %>
-                        <%= f.date_select :end_date, discard_day:true %>
+                        <div>
+                            <%= f.label :name, '勤務先' %>
+                            <%= f.text_field :name %>
+                        </div>
+                        <div>
+                            <%= f.label :role, '役割' %>
+                            <%= f.text_field :role %>
+                        </div>
+                        <div><label>期間</label>開始　<%= f.date_select :start_date, discard_day:true %>　終了　<%= f.date_select :end_date, discard_day:true %></div>
+                        <%= f.text_area :content, rows: 5, placeholder: 'アルバイトの内容や学んだことについて書いてください' %>
                         <%= f.hidden_field :student_id, :value => @student.id %>
-                        <%= f.submit "登録" %>
+                        <div class="btn-container">
+                            <div class="student-btns">
+                                <button type="button" class="career-history-button-cancel cancel-btn">キャンセル</button>　<%= f.submit "登録", class: 'student-submit-btn' %>
+                            </div>
+                        </div>
                     <% end %>
-                    <button class="career-history-button-cancel">キャンセル</button>
+
                 </div>
             <% end %>
         </div>
     </div>
 
-    <div>
+    <div class="skill-box box">
         <div>
             <h3>スキル</h3>
             <!--編集ボタン右上部に固定-->
-            <% if current_user && current_user.is_student %>
-                <button　class="students-edit-button">
+            <% if current_user && current_user.is_student && (current_user.student.id == @student.id) %>
+                <button class="students-edit-button">
                     <i class="fas fa-pen"></i>
                     編集する
                 </button>
@@ -196,17 +202,17 @@
         <div class="skill-container">
             <% @student.skills.each do |skill| %>
             <div class="each-skill-container">
-                <p><%= skill.name %></p>
-                <div>
-                    <div>
+                <p class="each-skill-name"><%= skill.name %></p>
+                <div class="each-skill">
+                    <div class="skill-stars inline-block">
                         <% skill.level.times do %>
-                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star fa-lg"></i>
                         <% end %>
                         <% (5-skill.level).times do %>
-                            <i class="far fa-star"></i>
+                            <i class="far fa-star fa-lg"></i>
                         <% end %>
                     </div>
-                    <p><%= skill.content %></p>
+                    <p class="skill-content inline-block"><%= skill.content %></p>
                 </div>
             </div>
             <% end %>
@@ -214,19 +220,27 @@
         <div class="skill-edit-continer">
             <% if current_user && current_user.is_student && (current_user.student.id == @student.id) %>
                 <!--スキル追加ボタン-->
-                <button class="skill-history-button"><i aria-hidden="true" class="fas fa-plus"></i></button>
+                <div class="student-btn">
+                    <button class="skill-history-button"><i aria-hidden="true" class="fas fa-plus"></i></button>
+                </div>
                 <div class="skill-form" style="display:none;">
                     <%= form_with model: @skill do |f| %>
-                        <%= f.label :name, 'スキル名' %>
-                        <%= f.text_field :name %>
-                        <%= f.label :level, 'レベル' %>
-                        <%= f.number_field :level %>
-                        <%= f.label :content, '内容' %>
-                        <%= f.text_field :content %>
+                        <div>
+                            <%= f.label :name, 'スキル名' %>
+                            <%= f.text_field :name %>
+                        </div>
+                        <div>
+                            <%= f.label :level, 'レベル' %>
+                            <%= f.number_field :level %>
+                        </div>
+                        <%= f.text_area :content, row: 5, placeholder: 'できる内容や得意な点について書いてください' %>
                         <%= f.hidden_field :student_id, :value => @student.id %>
-                        <%= f.submit "登録" %>
+                        <div class="btn-container">
+                            <div class="student-btns">
+                                <button type="button" class="skill-history-button-cancel cancel-btn">キャンセル</button>　<%= f.submit "登録", class: 'student-submit-btn' %>
+                            </div>
+                        </div>
                     <% end %>
-                    <button class="skill-history-button-cancel">キャンセル</button>
                 </div>
             <% end %>
         </div>
@@ -237,13 +251,13 @@
             <h3>スケジュール</h3>
             <!--編集ボタン右上部に固定-->
             <% if current_user && current_user.is_student %>
-                <button　class="students-edit-button">
+                <button class="students-edit-button">
                     <i class="fas fa-pen"></i>
                     編集する
                 </button>
             <% end %>
         </div>
-        <div　class="schedule-time">
+        <div class="schedule-time">
             <div class="schedule-time-contents">
                 <ul class="schedule-time">
                     <li class="schedule-time"><p>10時</p></li>

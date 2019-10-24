@@ -688,7 +688,6 @@ button:focus {
 
 /* 学生詳細スケジュール */
 .schedule-time-contents{
-    width: 100%;
     height: auto;
     display: flex;
     flex-direction: column;
