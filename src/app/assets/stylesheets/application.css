@@ -45,6 +45,10 @@ a {
 	text-decoration: none;
 	color: #464E58;
 }
+a:hover{
+    text-decoration: none;
+    color: #464E58;
+}
 ul {
 	list-style: none;
 	padding: 0;
@@ -86,13 +90,34 @@ i {
 	background-color: none;
 	border: none;
 }
+/* ボタン */
+button{
+    border: none;
+    outline: none;
+    appearance: none;
+}
+i.button-contents{
+    float: left;
+    margin-right: 10px;
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+p.button-contents{
+    float: left;
+    line-height: 2.5em;
+}
 .yellow-button {
-	background-color: #FFE202;
-	box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
+    background-color: #FFE202;
+    border: none;
 	align-items: center;
 	border-radius: 5px;
     padding: 0.5em 1em 0.5em 1em;
     font-size: 16px;
+    color: black;
+}
+.yellow-button:hover{
+    background-color: rgb(231, 206, 10);
+    color:white;
 }
 .important-button{
     font-size: 20px;
@@ -105,13 +130,19 @@ i {
 	border-radius: 5px;
 	padding: 0.3em 0.7em 0.3em 0.7em;
 }
+.gray-button:hover {
+	background-color: rgb(223, 223, 223);
+}
 .normal-button {
     font-size: 16px;
-	background-color: white;
-	border: solid 1px #8C9298;
+	background-color: #F4F4F4;
+	/* border: solid 1px #8C9298; */
 	align-items: center;
 	border-radius: 5px;
 	padding: 0.5em 1em 0.5em 1em;
+}
+.normal-button:hover{
+    background-color: rgb(223, 223, 223);
 }
 .negative-button {
 	background-color: rgb(210, 210, 210);
@@ -161,7 +192,9 @@ i {
 	display: flex;
 }
 /* ヘッダー */
-
+.uniwork-logo-link{
+    cursor: pointer;
+}
 .header-container {
     box-sizing: border-box;
     position: fixed;
@@ -181,70 +214,193 @@ i {
 	display: flex;
 	background-color: #F4F4F4;
 	border-radius: 3px;
-	padding: 0.5em;
+    padding: 0.3em 0.5em;
+    margin-right: 25px;
 	justify-content: space-between;
-	border: solid 0.5px #8C9298;
+	/* border: solid 0.5px #8C9298; */
 }
 .header-search-button {
 	background: none;
 	border: none;
 }
 .header-icon-container {
-	display: flex;
+    display: flex;
+    align-items: center;
 }
 .link-search-container {
     display: flex;
 }
-.header-search-link{
-    margin-right: 10px;
+li.header-search-link{
+    margin-right: 20px;
+}
+/* ホバーアニメーション */
+li.hover-underline{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+p.hover-underline{
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+}
+p.hover-underline::after {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background: #FFE202;
+    /* transition: all 0.3s ease 0s; */
+}
+p.hover-underline:hover {
+    cursor: pointer;
+    font-weight: bold;
+    color: #464E58;
+}
+p.hover-underline:hover::after {
+    width: 100%;
+}
+.header-icon.fa-lg {
+    margin-left: 20px;
+    font-size: 1.5em;
+    color: #8C9298;
+    cursor: pointer;
+}
+.header-icon.fa-lg:hover{
+    color: #464E58;
+}
+.header-icon-mypage {
+    margin-left: 20px;
+    font-size: 2em;
+    cursor: pointer;
+}
+.header-icon.fa-lg.fa-question-circle{
+    font-size: 1.7em;
+}
+/* ログインしてない状態のヘッダー */
+ul.header-regist{
     display: flex;
     align-items: center;
 }
-.header-icon {
-	margin-left: 10px;
+li.header-regist{
+    margin-right: 20px;
+    cursor: pointer;
+}
+p.header-regist:hover{
+    font-weight: bold;
+}
+i.header-regist{
+    color: #8C9298;
+    margin-left: 10px;
+    font-size: 1.5em;
+}
+i.header-regist:hover{
+    color: #464E58;
 }
 /* usermenu */
-
 .menu-icon {
-	float: left;
+    margin-right: 5px;
 }
 .menu-text {
 	float: left;
 }
+.menu-title:hover{
+    color: rgb(231, 206, 10);
+}
+.user-menu-contents.company-name{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .user-menu-container {
+    padding: 20px 30px;
 	top: 60px;
 	position: fixed;
 	z-index: 900;
 	background: white;
 	width: 300px;
-	border-right: solid 1px #8C9298;
+	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+}
+ul.user-menu-contents{
+    margin: 0 5px;
+    margin-bottom: 10px;
+}
+div.user-menu-contents{
+    padding: 0 10px;
+}
+.user-menu-contents.account-plan{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.user-menu-hr{
+    background-color: #8C9298;
+    height: 1px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+li.user-menu-contents{
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.user-menu-contents.company-name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+li.company-name{
+    display: flex;
+    justify-content: center;
+}
+p.company-name{
+    font-size: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+h4.company-name{
+    text-align: center;
+}
+h3.account-plan:hover{
+    color: #FFE202;
+}
+h4.account-plan:hover{
+    color: #FFE202;
+}
+.company-name:hover{
+    color: rgb(231, 206, 10);
 }
 /* ホーム画面 */
-
 .recruitment-thumbnail {
 	border: solid 0.5px #8C9298;
 }
 /* フッター */
 
 .footer {
+    position: relative;
+    background-color: white;
 	width: 100%;
 	height: 140px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-top: solid 0.5px #8C9298;
+    border-top: solid 0.5px #8C9298;
+    z-index: 800;
 }
 .footer-link-container {
+    width: 60%;
 	padding: 0;
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
 }
 .footer-service-logo {
 	margin-right: 140px;
-}
-.footer-link {
-	margin-right: 80px;
 }
 /* 企業詳細ページ */
 
@@ -266,7 +422,9 @@ i {
 	display: flex;
 }
 .post-tag {
-	display: flex;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
 }
 /* 学生ホーム */
 
@@ -345,6 +503,122 @@ i {
 .company-revue-card{
     border: solid 0.5px #8C9298;
 }
+/* ログインモーダル */
+.login-modal-container{
+    top: 0;
+    z-index: 5000;
+    background-color: rgba(50,50,50,0.1);
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-modal{
+    border: solid 0.5px #8C9298;
+    background-color: white;
+    padding: 30px;
+    text-align: center;
+    width: 350px;
+}
+.login-cancel{
+    margin-top: 15px;
+    text-decoration: underline;
+    color: #8C9298;
+    cursor: pointer;
+}
+.login-cancel:hover{
+    color: #464E58;
+}
+.login-title{
+    margin-bottom: 30px;
+}
+.login-else{
+    width: 100%;
+}
+.login-button{
+    width: 100%;
+    color: black;
+    background-color: #FFE202;
+    padding: 0.5em;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.login-button:hover{
+    background-color: rgb(231, 188, 17);
+    font-weight: bold;
+}
+.facebook-button{
+    width: 100%;
+    color: white;
+    background-color: rgb(67, 116, 221);
+    border: none;
+    padding: 0.5em;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.facebook-button:hover{
+    background-color: rgb(47, 84, 163);
+}
+.login-way-hr{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+span.login-way{
+    width: 43%;
+    height: 1px;
+    background-color: #8C9298;
+}
+h4.login-way{
+    margin: 0;
+}
+.login-hr{
+    width: 100%;
+    height: 1px;
+    background-color: #8C9298;
+    margin-bottom: 20px;
+}
+.form-control{
+    margin: 0;
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 10px;
+    box-sizing: border-box;;
+}
+.account-regist{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+.regist-button{
+    font-size: 12px;
+	background-color: #F4F4F4;
+	display: flex;
+	align-items: center;
+	border-radius: 3px;
+    padding: 0.5em;
+    margin-left: 20px;
+    cursor: pointer;
+}
+div.login-form-container{
+    width: 100%;
+   margin-bottom: 10px;
+}
+ul.login-form-container{
+    margin-bottom: 20px;
+}
+h4.login-form-container{
+    text-decoration: underline;
+    margin-bottom: 20px;
+}
 /* 応募確認ウィンドウ */
 .modal-container{
     top: 0;
@@ -377,7 +651,7 @@ i {
     cursor: pointer;
 }
 /* 応募完了アラートの１・アニメーション調整 */
-.alert{
+.alert-success{
     top: 60px;
     z-index: 5000;
     background-color: white;
@@ -385,103 +659,51 @@ i {
     padding: 0.5em 1em;
     width: 100%;
     text-align: center;
+    animation-delay: 0.5s;
 }
-.alert{
-    -moz-animation: cssAnimation 0s ease-in 2s forwards;
-    /* Firefox */
-    -webkit-animation: cssAnimation 0s ease-in 2s forwards;
-    /* Safari and Chrome */
-    -o-animation: cssAnimation 0s ease-in 2s forwards;
-    /* Opera */
-    animation: cssAnimation 0s ease-in 2s forwards;
-    -webkit-animation-fill-mode: forwards;
-    animation-fill-mode: forwards;
-    position: absolute;
+button:focus {
+	outline:0;
 }
-@keyframes cssAnimation {
-    to {
-        width:0;
-        height:0;
-        overflow:hidden;
-        display: none;
-    }
-}
-@-webkit-keyframes cssAnimation {
-    to {
-        width:0;
-        height:0;
-        visibility:hidden;
-        display: none;
-    }
-}
-/* ログインモーダル */
-.login-modal{
-    border: solid 0.5px #8C9298;
-    background-color: white;
-    padding: 30px;
-    text-align: center;
-    width: 350px;
-}
-.login-else{
+
+/* 学生詳細スケジュール */
+.schedule-time-contents{
     width: 100%;
-}
-.login-button{
-    width: 100%;
-    color: black;
-    background-color: #FFE202;
-    padding: 0.5em;
-    border-radius: 5px;
-    font-size: 14px;
-}
-.facebook-button{
-    color: white;
-    background-color: rgb(67, 116, 221);
-    border: none;
-}
-.login-way-hr{
-    width: 100%;
+    height: auto;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    justify-content: center;
 }
-.login-way{
-    width: 43%;
-    height: 1px;
-    background-color: #8C9298;
-}
-.login-hr{
+div.schedule-time{
     width: 100%;
-    height: 1px;
-    background-color: #8C9298;
-}
-.form-control{
-    margin: 0;
-    width: 100%;
-    padding: 0.5em;
-    margin-bottom: 10px;
-    box-sizing: border-box;;
-}
-.forget-password{
-    text-decoration: underline;
-}
-.login-hr{
-    width: 100%;
-    height: 1px;
-    background-color: #8C9298;
-    margin: 10px 0;
-}
-.account-regist{
+    height: auto;
     display: flex;
     justify-content: center;
-    width: 100%;
-    align-items: center;
 }
-.regist-button{
-    font-size: 12px;
-	background-color: #F4F4F4;
-	display: flex;
-	align-items: center;
-	border-radius: 3px;
-    padding: 0.5em;
-    margin-left: 20px;
+ul.schedule-time{
+    margin-left: 40px;
+    display: flex;
+    margin-bottom: 10px;
+}
+li.schedule-time{
+    width: 70px;
+}
+div.schedule-time-bar{
+    display: flex;
+}
+li.schedule-time-bar{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+p.schedule-time-bar{
+    width: 40px;
+}
+span.schedule-time-bar{
+    width: 70px;
+    height: 30px;
+    background-color: #F4F4F4;
+    border-right: solid 4px white;
+}
+span.selected-time{
+    background-color: #FFE202;
 }
