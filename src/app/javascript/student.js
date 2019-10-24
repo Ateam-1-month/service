@@ -29,9 +29,9 @@ $(function() {
     $('.appeal-form').css({'display': '', 'background-color': 'red' })
   });
 
-  $('.skill-history-button-cancel').on('click', function(){
-    $('.skill-form').css('display', 'none');
-    $('.skill-history-button').css({'display': ''})
+  $('.appeal-history-button-cancel').on('click', function(){
+    $('.appeal-form').css('display', 'none');
+    $('.appeal-history-button').css({'display': ''})
   });
 
 
