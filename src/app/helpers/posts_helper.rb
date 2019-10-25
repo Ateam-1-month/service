@@ -3,9 +3,13 @@ module PostsHelper
     # 募集一覧
     posts = Post.all()
 
+    sectors = []
     # 現在ログインしているユーザの業種一覧
-    sectors = current_user.student.sectors
-
+    if current_user && current_user.is_student
+      sectors = current_user.student.sectors
+    else
+      sectors = Sector.all
+    end
     # オススメ一覧
     recommendedPosts = []
 

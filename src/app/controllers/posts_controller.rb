@@ -5,6 +5,8 @@ class PostsController < ApplicationController
     logged_in_user || company_user?
   }, only: [:new, :create, :edit, :update, :destroy]
 
+  before_action :company_user?, only: [:index]
+
   def index
     # 業種一覧
     @sectors = Sector.all()
