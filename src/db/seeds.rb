@@ -121,7 +121,7 @@ end
 
 # 応募中間テーブル
 (1..5).each do |num|
-  Apply.create!(post_id: 1, student_id: num)
+  Apply.create!(post_id: 1, student_id: num) unless num == 1
 end
 
 
