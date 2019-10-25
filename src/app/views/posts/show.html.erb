@@ -1,7 +1,7 @@
 <%= render 'layouts/application_confirm.html.erb', post: @post %>
 <div class="student-contents post-show">
     <div><!--ここのデザインあとで考えるね-->
-        <% if current_user && current_user.is_student %>
+        <% if current_user && current_user.is_student && Apply.find_by(student_id: current_user.student.id, post_id: @post.id) %>
         　<p class="post-applied-alert">応募済みの募集です</p>
         <% end %>
     </div>
