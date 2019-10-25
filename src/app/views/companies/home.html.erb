@@ -70,6 +70,206 @@
                         </li>
                     </ul>
                 </div>
+                <div class="recruitment-thumbnail">
+                    <div class="padding-tb">
+                        <div class="flex">
+                            <p class="post-status-budge">募集中</p>
+                            <h3 class="inline-block padding-lr"><%= post.title %></h3>
+                        </div>
+                        <div class="inline-block">
+                            <%= link_to '詳細を見る', "../posts/management/#{post.id}" ,class:"normal-button post-link"%><%= link_to '募集ページを見る', "/posts/#{post.id}" ,class:"normal-button post-link"%>
+                        </div>
+                    </div>
+                    <div class="row post-summary-content">
+                        <div class="post-thum-img">
+                            <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-thum-img" %>
+                        </div>
+                        <div>
+                            <div class="zenre-tag">
+                                <%post.work_contents.each do |work_content| %>
+                                <h4 class="zenre-tag"><%= work_content.name %></h4><%end %>
+                            </div>
+                            <ul>
+                                <li class="post-summary-content">
+                                    <p>募集期間：</p>
+                                    <p><%= post.period %></p>
+                                </li>
+                                <li class="post-summary-content">
+                                    <p>業務内容：</p>
+                                    <p><%= post.content.slice(0..15) %></p>
+                                </li>
+                                <li class="post-summary-content">
+                                    <p>給与体制：</p>
+                                    <p><%= post.salary %></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul class="post-summary-content padding-tb">
+                        <li class="post-num">
+                            <p>応募者数</p>
+                            <p class="post-num yellow"><%= post.applies.count %>人</p>
+                        </li>
+                        <li class="post-num">
+                            <p>ブックマーク数</p>
+                            <p class="post-num">8人</p>
+                        </li>
+                        <li class="post-num">
+                            <p>閲覧者数</p>
+                            <p class="post-num">32人</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="recruitment-thumbnail">
+                    <div class="padding-tb">
+                        <div class="flex">
+                            <p class="post-status-budge">募集中</p>
+                            <h3 class="inline-block padding-lr"><%= post.title %></h3>
+                        </div>
+                        <div class="inline-block">
+                            <%= link_to '詳細を見る', "../posts/management/#{post.id}" ,class:"normal-button post-link"%><%= link_to '募集ページを見る', "/posts/#{post.id}" ,class:"normal-button post-link"%>
+                        </div>
+                    </div>
+                    <div class="row post-summary-content">
+                        <div class="post-thum-img">
+                            <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-thum-img" %>
+                        </div>
+                        <div>
+                            <div class="zenre-tag">
+                                <%post.work_contents.each do |work_content| %>
+                                <h4 class="zenre-tag"><%= work_content.name %></h4><%end %>
+                            </div>
+                            <ul>
+                                <li class="post-summary-content">
+                                    <p>募集期間：</p>
+                                    <p><%= post.period %></p>
+                                </li>
+                                <li class="post-summary-content">
+                                    <p>業務内容：</p>
+                                    <p><%= post.content.slice(0..15) %></p>
+                                </li>
+                                <li class="post-summary-content">
+                                    <p>給与体制：</p>
+                                    <p><%= post.salary %></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul class="post-summary-content padding-tb">
+                        <li class="post-num">
+                            <p>応募者数</p>
+                            <p class="post-num yellow"><%= post.applies.count %>人</p>
+                        </li>
+                        <li class="post-num">
+                            <p>ブックマーク数</p>
+                            <p class="post-num">8人</p>
+                        </li>
+                        <li class="post-num">
+                            <p>閲覧者数</p>
+                            <p class="post-num">32人</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="recruitment-thumbnail">
+                    <div class="padding-tb">
+                        <div class="flex">
+                            <p class="post-status-budge">募集中</p>
+                            <h3 class="inline-block padding-lr"><%= post.title %></h3>
+                        </div>
+                        <div class="inline-block">
+                            <%= link_to '詳細を見る', "../posts/management/#{post.id}" ,class:"normal-button post-link"%><%= link_to '募集ページを見る', "/posts/#{post.id}" ,class:"normal-button post-link"%>
+                        </div>
+                    </div>
+                    <div class="row post-summary-content">
+                        <div class="post-thum-img">
+                            <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-thum-img" %>
+                        </div>
+                        <div>
+                            <div class="zenre-tag">
+                                <%post.work_contents.each do |work_content| %>
+                                <h4 class="zenre-tag"><%= work_content.name %></h4><%end %>
+                            </div>
+                            <ul>
+                                <li class="post-summary-content">
+                                    <p>募集期間：</p>
+                                    <p><%= post.period %></p>
+                                </li>
+                                <li class="post-summary-content">
+                                    <p>業務内容：</p>
+                                    <p><%= post.content.slice(0..15) %></p>
+                                </li>
+                                <li class="post-summary-content">
+                                    <p>給与体制：</p>
+                                    <p><%= post.salary %></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul class="post-summary-content padding-tb">
+                        <li class="post-num">
+                            <p>応募者数</p>
+                            <p class="post-num yellow"><%= post.applies.count %>人</p>
+                        </li>
+                        <li class="post-num">
+                            <p>ブックマーク数</p>
+                            <p class="post-num">8人</p>
+                        </li>
+                        <li class="post-num">
+                            <p>閲覧者数</p>
+                            <p class="post-num">32人</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="recruitment-thumbnail">
+                    <div class="padding-tb">
+                        <div class="flex">
+                            <p class="post-status-budge">募集中</p>
+                            <h3 class="inline-block padding-lr"><%= post.title %></h3>
+                        </div>
+                        <div class="inline-block">
+                            <%= link_to '詳細を見る', "../posts/management/#{post.id}" ,class:"normal-button post-link"%><%= link_to '募集ページを見る', "/posts/#{post.id}" ,class:"normal-button post-link"%>
+                        </div>
+                    </div>
+                    <div class="row post-summary-content">
+                        <div class="post-thum-img">
+                            <%= image_tag "http://lorempixel.com/400/300/business/#{post.id%10+1}" ,class:"post-thum-img" %>
+                        </div>
+                        <div>
+                            <div class="zenre-tag">
+                                <%post.work_contents.each do |work_content| %>
+                                <h4 class="zenre-tag"><%= work_content.name %></h4><%end %>
+                            </div>
+                            <ul>
+                                <li class="post-summary-content">
+                                    <p>募集期間：</p>
+                                    <p><%= post.period %></p>
+                                </li>
+                                <li class="post-summary-content">
+                                    <p>業務内容：</p>
+                                    <p><%= post.content.slice(0..15) %></p>
+                                </li>
+                                <li class="post-summary-content">
+                                    <p>給与体制：</p>
+                                    <p><%= post.salary %></p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <ul class="post-summary-content padding-tb">
+                        <li class="post-num">
+                            <p>応募者数</p>
+                            <p class="post-num yellow"><%= post.applies.count %>人</p>
+                        </li>
+                        <li class="post-num">
+                            <p>ブックマーク数</p>
+                            <p class="post-num">8人</p>
+                        </li>
+                        <li class="post-num">
+                            <p>閲覧者数</p>
+                            <p class="post-num">32人</p>
+                        </li>
+                    </ul>
+                </div>
             </a>
         </li>
 	</ul>
