@@ -1213,33 +1213,240 @@ div.apply-confirm-button{
 /* トップページ */
 div.top-container{
     margin-top: 60px;
+    width: 100%;
 }
 div.top-header-container{
     width: 100%;
     height: auto;
+    margin-bottom: 50px;
 }
-img.top-header-contents{
+button.top-start-button{
+    font-size: 30px;
+}
+@media (max-width: 850px) {
+    img.top-header-contents{
+        width: auto;
+        height: 100%;
+        background-color: rgb(231, 206, 10);
+    }
+ }
+ @media (min-width: 850px) {
+    img.top-header-contents{
+        width: 100%;
+        height: auto;
+        background-color: rgb(231, 206, 10);
+    }
+ }
+div.top-header-img{
     width: 100%;
-    height: auto;
-    background-color: rgb(231, 206, 10);
+    height: 80vh;
+    overflow: hidden;
 }
+
 div.top-header-contents{
     position: absolute;
-    top: 160px;
-    right: 80px;
+    top: 150px;
+    right: 50px;
+    
 }
 h3.top-header-contents{
     color: white;
     font-weight: bold;
-    font-size: 50px;
+    font-size: 30px;
+    line-height: 40px;
+    text-align: end;
+}
+div.top-link-box-container{
+    position: relative;
+    transform: translateY(-300px);
 }
 div.top-link-box{
     text-align: center;
-    padding: 20px 70px;
+    width: 260px;
+    padding: 20px 0;
+    background-color: white;
+    margin-bottom: 40px;
 }
 h3.top-link-box{
-    font-size: 50px;
+    font-size: 25px;
     font-weight: bold;
     color: #464E58;
     margin-bottom: 20px;
+}
+div.top-contents-title{
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 50px;
+    margin-left: 5%;
+}
+img.top-contents-title{
+    margin-right: 15px;
+    width: 300px;
+    height: auto;
+}
+h3.top-contents-title{
+    margin: 0;
+}
+div.top-contents-box{
+    margin-bottom: 50px;
+}
+div.top-work-style{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+span.top-work-style{
+    width: 270px;
+    height: 270px;
+    border-radius: 270px;
+    background-color: #FFE202;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    flex-wrap: wrap;
+    margin-bottom: 30px;
+}
+h3.top-work-style{
+    font-size: 30px;
+    font-weight: bold;
+    display: inline-block;
+    margin: 10px 0 0 0;
+}
+p.top-work-style{
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 30px;
+}
+div.top-work-style-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+div.multiply{
+    width: 40px;
+    height: auto;
+    margin: 20px;
+}
+img.multiply{
+    width: 100%;
+    height: auto;
+}
+.top-button-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 60px;
+}
+span.top-job-description{
+    width: 170px;
+    height: 170px;
+    border-radius: 170px;
+    background-color: #F4F4F4;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+.top-job-description.etc{
+    font-weight: bold;
+    text-align: center;
+    font-size: 24px;
+}
+h3.top-job-description{
+    font-size: 24px;
+}
+div.top-job-description-img{
+    width: 40%;
+    height: auto;
+}
+img.top-job-description-img{
+    width: 100%;
+    height: auto;
+    padding-top: 50px;
+}
+div.top-job-description{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+div.top-job-description-container{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+div.work-merit-container{
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 0 10%;
+}
+div.work-merit-contents{
+    background-color: #F4F4F4;
+    width: 49%;
+    padding: 50px;
+}
+span.work-merit-contents{
+    display: flex;
+}
+h3.work-merit-contents{
+    margin-bottom: 20px;
+}
+h4.work-merit-contents{
+    font-size: 16px;
+    color: #464E58;
+    height: 20px;
+    border-left: solid 5px #464E58;
+    padding-left: 5px;
+    margin-bottom: 20px;
+}
+img.work-merit-contents{
+    width: 40%;
+    height: auto;
+    margin-left: 30px;
+}
+img.work-merit-contents.pc{
+    margin-top: 20px;
+}
+div.top-use-process-box{
+    display: flex;
+    margin-bottom: 50px;
+}
+img.top-use-process{
+    width: 100%;
+    height: auto;
+}
+div.top-use-process-img{
+    width: 30%;
+    height: auto;
+    margin-right: 50px;
+}
+div.top-use-process-container{
+    width: 80%;
+    margin: 0 10%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+div.top-use-process{
+    width: calc(70% - 50px);
+}
+div.top-use-process-title{
+    display: flex;
+    align-items: flex-end;
+    margin-bottom: 15px;
+}
+h2.top-use-process{
+    line-height: 50px;
+    font-size: 60px;
+    font-weight: bold;
+    margin-right: 20px;
+}
+p.top-use-process{
+    margin-left: 35px;
 }
