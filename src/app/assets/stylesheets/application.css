@@ -25,6 +25,7 @@ body {
     display: flex;
 }
 input {
+    font-size: 16px;
 	padding: 0;
 	border: none;
 	border-radius: 0;
@@ -44,6 +45,10 @@ a {
 	text-decoration: none;
 	color: #464E58;
 }
+a:hover{
+    text-decoration: none;
+    color: #464E58;
+}
 ul {
 	list-style: none;
 	padding: 0;
@@ -55,6 +60,33 @@ li {
 i {
 	color: #464E58;
 }
+
+.center {
+	text-align: center;
+}
+
+.inline-block {
+	display: inline-block;
+}
+
+.padding-tb {
+	padding-top: 30px;
+    padding-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.padding-lr {
+    padding: 5px 30px;
+}
+p.padding-lr {
+    padding: 5px 10px;
+}
+h3.padding-lr{
+    padding: 5px 0;
+    margin-bottom: 0;
+}
+
 /* 画面下部のページ繊維バー */
 
 .page-nav {
@@ -76,14 +108,34 @@ i {
 	background-color: none;
 	border: none;
 }
+/* ボタン */
+button{
+    border: none;
+    outline: none;
+    appearance: none;
+}
+i.button-contents{
+    float: left;
+    margin-right: 10px;
+    font-size: 1.5em;
+    line-height: 1.5em;
+}
+p.button-contents{
+    float: left;
+    line-height: 2.5em;
+}
 .yellow-button {
-	background-color: #FFE202;
-	box-shadow: 0 0 2px 0 rgba(0, 0, 0, 0.2);
-	display: flex;
+    background-color: #FFE202;
+    border: none;
 	align-items: center;
-	border-radius: 2em;
+	border-radius: 5px;
     padding: 0.5em 1em 0.5em 1em;
     font-size: 16px;
+    color: black;
+}
+.yellow-button:hover{
+    background-color: rgb(231, 206, 10);
+    color:white;
 }
 .important-button{
     font-size: 20px;
@@ -92,26 +144,29 @@ i {
 	font-size: 14px;
 	background-color: #F4F4F4;
 	border: solid 1px #8C9298;
-	display: flex;
 	align-items: center;
-	border-radius: 3px;
+	border-radius: 5px;
 	padding: 0.3em 0.7em 0.3em 0.7em;
+}
+.gray-button:hover {
+	background-color: rgb(223, 223, 223);
 }
 .normal-button {
     font-size: 16px;
-	background-color: white;
-	border: solid 1px #8C9298;
-	display: flex;
+	background-color: #F4F4F4;
+	/* border: solid 1px #8C9298; */
 	align-items: center;
-	border-radius: 2em;
+	border-radius: 5px;
 	padding: 0.5em 1em 0.5em 1em;
+}
+.normal-button:hover{
+    background-color: rgb(223, 223, 223);
 }
 .negative-button {
 	background-color: rgb(210, 210, 210);
 	border: solid 1px #8C9298;
-	display: flex;
 	align-items: center;
-	border-radius: 2em;
+	border-radius: 5px;
 	padding: 0.5em 1em 0.5em 1em;
 }
 /* 学生 */
@@ -149,98 +204,269 @@ i {
 	/* height: auto;
     width: calc(100vw - 300px); */
 }
+
+.post-status {
+	display: flex;
+}
+
+.post-summary-content {
+	display: flex;
+}
+
 /* 企業詳細 */
 
 .company-zenre-container {
 	display: flex;
 }
 /* ヘッダー */
-
-.header-container {
-	position: fixed;
-	justify-content: space-around;
+.uniwork-logo-link{
+    cursor: pointer;
+}
+div.header-container {
+    box-sizing: border-box;
+    position: fixed;
+    padding: 10px 20px;
 	align-items: center;
 	top: 0;
 	min-width: 980px;
 	z-index: 1000;
 	height: 60px;
 	width: 100%;
-	display: flex;
+    display: flex;
+    justify-content: space-between;
 	background-color: white;
-	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2); */
+    border-bottom: solid 1.5px #8C9298;
 }
 .header-search-bar {
 	display: flex;
 	background-color: #F4F4F4;
-	border-radius: 0.5em;
-	padding: 0.3em;
+	border-radius: 3px;
+    padding: 0.3em 0.5em;
+    margin-right: 25px;
 	justify-content: space-between;
-	border: solid 0.5px #8C9298;
+	/* border: solid 0.5px #8C9298; */
 }
 .header-search-button {
 	background: none;
 	border: none;
 }
 .header-icon-container {
-	display: flex;
+    display: flex;
+    align-items: center;
 }
-.link-search {
-	display: flex;
+.link-search-container {
+    display: flex;
 }
-.header-icon {
-	font-size: 30px;
+li.header-search-link{
+    margin-right: 20px;
+}
+/* ホバーアニメーション */
+li.hover-underline{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+p.hover-underline{
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+}
+p.hover-underline::after {
+    position: absolute;
+    content: '';
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 4px;
+    background: #FFE202;
+    /* transition: all 0.3s ease 0s; */
+}
+p.hover-underline:hover {
+    cursor: pointer;
+    font-weight: bold;
+    color: #464E58;
+}
+p.hover-underline:hover::after {
+    width: 100%;
+}
+.header-icon.fa-lg {
+    margin-left: 20px;
+    font-size: 1.5em;
+    color: #8C9298;
+    cursor: pointer;
+}
+.header-icon.fa-lg:hover{
+    color: #464E58;
+}
+.header-icon-mypage {
+    margin-left: 20px;
+    font-size: 2em;
+    cursor: pointer;
+}
+.header-icon.fa-lg.fa-question-circle{
+    font-size: 1.7em;
+}
+/* ログインしてない状態のヘッダー */
+ul.header-regist{
+    display: flex;
+    align-items: center;
+}
+li.header-regist{
+    margin-right: 20px;
+    cursor: pointer;
+}
+p.header-regist:hover{
+    font-weight: bold;
+}
+i.header-regist{
+    color: #8C9298;
+    margin-left: 10px;
+    font-size: 1.5em;
+}
+i.header-regist:hover{
+    color: #464E58;
 }
 /* usermenu */
-
 .menu-icon {
-	float: left;
+    margin-right: 5px;
 }
 .menu-text {
 	float: left;
 }
+.menu-title:hover{
+    color: rgb(231, 206, 10);
+}
+.user-menu-contents.company-name{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .user-menu-container {
+    padding: 20px 30px;
 	top: 60px;
 	position: fixed;
 	z-index: 900;
 	background: white;
 	width: 300px;
-	border-right: solid 1px #8C9298;
+	border-right: solid 1.5px #8C9298;
+	border-bottom: solid 1.5px #8C9298;
+}
+ul.user-menu-contents{
+    margin: 0 5px;
+    margin-bottom: 10px;
+}
+div.user-menu-contents{
+    padding: 0 10px;
+}
+.user-menu-contents.account-plan{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.user-menu-hr{
+    background-color: #8C9298;
+    height: 1px;
+    width: 100%;
+    margin-bottom: 10px;
+}
+li.user-menu-contents{
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+}
+.user-menu-contents.company-name{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+}
+li.company-name{
+    display: flex;
+    justify-content: center;
+}
+p.company-name{
+    font-size: 20px;
+    margin-bottom: 5px;
+    text-align: center;
+}
+h4.company-name{
+    text-align: center;
+}
+h3.account-plan:hover{
+    color: #FFE202;
+}
+h4.account-plan:hover{
+    color: #FFE202;
+}
+.company-name:hover{
+    color: rgb(231, 206, 10);
 }
 /* ホーム画面 */
-
 .recruitment-thumbnail {
 	border: solid 0.5px #8C9298;
+	padding-left: 30px;
+	padding-right: 30px;
 }
 /* フッター */
 
 .footer {
+    position: relative;
+    background-color: white;
 	width: 100%;
 	height: 140px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	border-top: solid 0.5px #8C9298;
+    border-top: solid 0.5px #8C9298;
+    z-index: 800;
 }
 .footer-link-container {
+    width: 60%;
 	padding: 0;
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
 	align-items: center;
 }
 .footer-service-logo {
 	margin-right: 140px;
 }
-.footer-link {
-	margin-right: 80px;
-}
 /* 企業詳細ページ */
-
-.post-box {
-	display: flex;
-	flex-direction: column;
+p.serch-form-title{
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+.post-box{
 	border: solid 0.5px #8C9298;
-	width: 47%;
+	width: 32%;
 	height: auto;
+	margin-bottom: 20px;
+    display:inline-block;
+    margin-right: 20px;
+}
+.post-box.posts{
+    margin-right: 0;
+}
+.post-button-container{
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+}
+div.post-img{
+    width: 100%;
+    height: 150px;
+    overflow: hidden;
+}
+div.post-img.promote{
+    height: 200px;
+}
+.post-deadline{
+    color: rgb(231, 206, 10);
+    margin: 5px;
+    margin-top: 10px;
+    text-align: right;
 }
 .post-img {
 	width: 100%;
@@ -249,20 +475,82 @@ i {
 .post-text-box {
 	padding: 30px;
 }
-.post-summary {
-	display: flex;
+p.post-summary {
+	margin-right: 30px;
+}
+li.post-summary {
+    display: flex;
+    margin-bottom: 5px;
+}
+ul.post-summary{
+    margin-bottom: 30px;
+}
+.post-detail-container{
+    margin-bottom: 30px;
+}
+.post-tag.posts-show{
+    margin-bottom: 30px;
 }
 .post-tag {
-	display: flex;
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+div.post-apply-button{
+   margin-bottom: 50px;
+   display: flex;
+   justify-content: center;
+}
+button.post-apply-button{
+    margin-right: 20px;
+}
+label.search-contents{
+    display: flex;
+    align-items: center;
+    margin: 0;
+    margin-left: 10px;
+}
+div.search-contents{
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    height: auto;
+}
+.post-list-box-container{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+div.company-main-summary{
+    display: flex;
+    margin-bottom: 30px;
+}
+div.company-summary-img{
+    overflow: hidden;
+    width: 500px;
+    height: 250px;
+    margin-right: 30px;
+}
+img.company-summary-img{
+    width: 100%;
+    height: auto;
 }
 /* 学生ホーム */
 
+.posts {
+	overflow-x: scroll;
+}
+
 .post-box-container {
-	display: flex;
 	width: 100%;
 	justify-content: space-between;
 	overflow: hidden;
 	overflow-x: auto;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	display: inline-block;
+	white-space: nowrap;
 	-webkit-overflow-scrolling: touch;
 }
 .home-main-contents {
@@ -271,30 +559,105 @@ i {
 .search-menu-container {
 	width: 350px;
 }
-/* 募集一覧 */
 
+.search-condition {
+	padding-bottom: 30px;
+}
+
+/* 募集一覧 */
 .post-list-contents {
 	display: flex;
 }
+p.post-applied-alert{
+    margin-bottom: 10px;
+}
+/* 募集詳細 */
+.student-contents.post-show{
+    padding: 30px 10%;
+}
+.post-detail-content {
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+}
+div.post-show-img{
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+.fa-tag{
+    margin-right: 20px;
+}
+img.post-show-img{
+    width: 100%;
+    height: auto;
+}
+.review-container{
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+}
+.review-box {
+	border: solid 0.5px #8C9298;
+	width: 47%;
+	height: auto;
+	padding: 20px;
+	display:inline-block;
+}
+.center{
+    margin-bottom: 50px;
+}
 /* 募集管理画面 */
-
-.post-management-contents {
-	border-bottom: solid 1px #8C9298;
-	display: flex;
+div.post-management-contents {
+    display: flex;
+    margin-bottom: 20px;
 }
 .post-application-num-container {
-	display: flex;
+    display: flex;
+    border-top: solid 1px #464E58;
+    padding: 10px;
+    box-sizing: border-box;
+    justify-content: flex-end;
+    margin-bottom: 30px;
 }
-.post-application-num {
-	display: flex;
+li.post-application-num {
+    display: flex;
+    margin-left: 20px;
+}
+p.post-application-num {
+    margin-right: 10px;
+}
+.applicant-card-container{
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    margin-bottom: 70px;
 }
 .applicant-card {
-	border: solid 1px #8C9298;
+    border: solid 1px #8C9298;
+    width: 49%;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+.applicant-card-button-container{
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+.applicant-card-button{
+    margin-left: 20px;
 }
 .applicant-img {
-	border-radius: 60px;
+    border-radius: 60px;
+    margin-right: 20px;
 }
-
+.management-button-container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 /* 学生詳細ページ */
 .each-skill-container{
     border-bottom: solid 0.5px #8C9298;
@@ -302,7 +665,525 @@ i {
 .student-prof-header{
     display: flex;
     border-bottom: solid 0.5px #8C9298;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+div.student-prof-img{
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    overflow: hidden;
+    margin-right: 20px;
+}
+img.student-prof-img{
+    width: 100%;
+    height: 100%;
+}
+div.student-profile-contents{
+    margin-bottom: 30px;
 }
 .company-revue-card{
     border: solid 0.5px #8C9298;
+}
+/* ログインモーダル */
+.login-modal-container{
+    top: 0;
+    z-index: 5000;
+    background-color: rgba(50,50,50,0.1);
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-modal{
+    border: solid 0.5px #8C9298;
+    background-color: white;
+    padding: 30px;
+    text-align: center;
+    width: 350px;
+}
+.login-cancel{
+    margin-top: 15px;
+    text-decoration: underline;
+    color: #8C9298;
+    cursor: pointer;
+}
+.login-cancel:hover{
+    color: #464E58;
+}
+.login-title{
+    margin-bottom: 30px;
+}
+.login-else{
+    width: 100%;
+}
+.login-button{
+    width: 100%;
+    color: black;
+    background-color: #FFE202;
+    padding: 0.5em;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.login-button:hover{
+    background-color: rgb(231, 188, 17);
+    font-weight: bold;
+}
+.facebook-button{
+    width: 100%;
+    color: white;
+    background-color: rgb(67, 116, 221);
+    border: none;
+    padding: 0.5em;
+    border-radius: 5px;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+.facebook-button:hover{
+    background-color: rgb(47, 84, 163);
+}
+.login-way-hr{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+}
+span.login-way{
+    width: 43%;
+    height: 1px;
+    background-color: #8C9298;
+}
+h4.login-way{
+    margin: 0;
+}
+.login-hr{
+    width: 100%;
+    height: 1px;
+    background-color: #8C9298;
+    margin-bottom: 20px;
+}
+.form-control{
+    margin: 0;
+    width: 100%;
+    padding: 0.5em;
+    margin-bottom: 10px;
+    box-sizing: border-box;;
+}
+.account-regist{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    align-items: center;
+}
+.regist-button{
+    font-size: 12px;
+	background-color: #F4F4F4;
+	display: flex;
+	align-items: center;
+	border-radius: 3px;
+    padding: 0.5em;
+    margin-left: 20px;
+    cursor: pointer;
+}
+div.login-form-container{
+    width: 100%;
+   margin-bottom: 10px;
+}
+ul.login-form-container{
+    margin-bottom: 20px;
+}
+h4.login-form-container{
+    text-decoration: underline;
+    margin-bottom: 20px;
+}
+/* 応募確認ウィンドウ */
+.modal-container{
+    top: 0;
+    z-index: 5000;
+    background-color: rgba(50,50,50,0.1);
+    position: fixed;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.modal-hidden{
+    display: none;
+}
+.blur{
+    -ms-filter: blur(3px);
+    filter: blur(3px);
+}
+.application-confirm-modal{
+    border: solid 0.5px #8C9298;
+    background-color: white;
+    width: 500px;
+    height: auto;
+    padding: 50px;
+    box-sizing: border-box;
+}
+.apply-button{
+    font-size: 16px;
+    cursor: pointer;
+}
+/* 応募完了アラートの１・アニメーション調整 */
+.alert-success{
+    top: 60px;
+    z-index: 5000;
+    background-color: white;
+    /* border: solid 1px #8C9298; */
+    padding: 0.5em 1em;
+    width: 100%;
+    text-align: center;
+    animation-delay: 0.5s;
+}
+button:focus {
+	outline:0;
+}
+
+/* 学生詳細スケジュール */
+.schedule-time-contents{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+div.schedule-time{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+ul.schedule-time{
+    margin-left: 40px;
+    display: flex;
+    margin-bottom: 10px;
+}
+li.schedule-time{
+    width: 70px;
+}
+div.schedule-time-bar{
+    display: flex;
+}
+li.schedule-time-bar{
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+}
+p.schedule-time-bar{
+    width: 40px;
+}
+span.schedule-time-bar{
+    width: 70px;
+    height: 30px;
+    background-color: #F4F4F4;
+    border-right: solid 4px white;
+}
+span.selected-time{
+    background-color: #FFE202;
+}
+li.post-summary-content{
+    margin-bottom: 5px;
+}
+p.post-status-budge{
+    background-color: #FFE202;
+    padding: 0 0.5em;
+    display: flex;
+    align-items: center;
+    border-radius: 5px;
+    margin-right: 20px;
+}
+div.post-thum-img{
+    width: 250px;
+    height: 120px;
+    margin-right: 30px;
+    overflow: hidden;
+}
+img.post-thum-img{
+    width: 100%;
+    height: auto;
+}
+h4.zenre-tag{
+    margin: 0;
+}
+div.zenre-tag{
+    margin-bottom: 10px;
+    border:solid 1px #464E58;
+    padding: 0.3em 1em;
+    display: flex;
+    justify-content: center;
+}
+.normal-button.post-link{
+    margin-left: 10px;
+}
+p.post-num{
+    margin-left: 10px;
+    font-size: 20px;
+}
+p.yellow{
+    color: rgb(231, 188, 17);
+}
+ul.post-summary-content{
+    margin: 0 auto;
+    width: 500px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+div.post-summary-content{
+    width: 100%;
+    margin: 0;
+}
+li.post-status{
+    width: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-right: solid 2px #464E58;
+    cursor: pointer;
+}
+ul.post-status{
+    margin-bottom: 20px;
+}
+li.post-status.yellow{
+    background-color: #FFE202;
+}   
+button.add-post-button{
+    padding: 0.5em 1.5em;
+    margin-bottom: 20PX;
+}
+i.add-post-button{
+    font-size: 2em;
+}
+p.add-post-button{
+    font-size: 20px;
+}
+h2.page-title{
+    padding-bottom: 20px;
+}
+div.recruitment-thumbnail{
+    cursor: pointer;
+    background-color: white;
+    margin-bottom: 20px;
+}
+div.recruitment-thumbnail:hover{
+    background-color: rgb(247, 247, 247);
+}
+.normal-button.post-link{
+    border: solid 1px #8C9298;
+}
+li.post-num{
+    display: flex;
+    align-items: center;
+}
+h4.post-management-contents{
+    margin-bottom: 50px;
+    border: none;
+}
+.post-management-contents.button-container{
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.post-management-contents.normal-button{
+    margin-right: 10px;
+}
+h3.page-title{
+    margin-bottom: 30px;
+}
+.search-form-container{
+    width: 1000px;
+}
+.posts-sort{
+    padding: 0.3em;
+    outline: none;
+}
+.company-show-detail.fas{
+    margin-right: 20px;
+}
+div.company-show-detail{
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+h3.company-name{
+    font-size: 24px;
+    margin-right: 20px;
+}
+div.company-profile-contents{
+    display: flex;
+}
+div.company-profile{
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 20px;
+}
+.student-contents.company-show{
+    width: 80%;
+    margin: 60px 10%;;
+}
+div.company-show-img{
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    margin-bottom: 30px;
+}
+img.company-show-img{
+    width: 100%;
+    height: auto;
+}
+.company-zenre-title{
+    margin-right: 20px;
+}
+.company-zenre-container{
+    margin-bottom: 50px;
+}
+.company-show-summary{
+    margin-bottom: 30px;
+}
+.post-box.company-show-post{
+    width: 48%;
+}
+.company-contents.message{
+    padding: 0;
+    height: calc(100vh - 60px);
+    width: calc(100vw - 300px);
+}
+.contact-contents{
+    display: flex;
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    background-color: white;
+}
+.contact-address-list{
+    width: 320px;
+    height: auto;
+    border-right: solid 1px #464E58;
+    text-align: center;
+    padding-top: 30px;
+}
+.contact-address.title{
+    margin-bottom: 50px;
+}
+div.contact-address{
+    border-bottom: solid 1px #464E58;
+    display: flex;
+    justify-content: space-between;
+    padding: 20px 20px;
+}
+div.message-contents{
+    padding: 30px;
+    box-sizing: border-box;
+}
+div.apply-notice-message{
+    background-color: white;
+}
+div.apply-notice-message{
+    padding: 10px 15%;
+    width: 70%;
+    text-align: center;
+    border: solid 1px #464E58;
+}
+.message-input-form{
+    position: fixed;
+    bottom: 0;
+    display: flex;
+}
+.contact-address-header{
+    height: 50px;
+    border-bottom: 1px solid #464E58;
+    padding: 10px;
+    background-color: white;
+}
+p.contact-address{
+    cursor: pointer;
+    font-weight: bold;
+}
+div.address-sort{
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 15px;
+}
+button.address-sort{
+    padding: 0.5em;
+    background-color: #F4F4F4;
+}
+button.address-sort:hover{
+    background-color: rgb(210, 210, 210);
+}
+.address-search{
+    padding: 0.5em;
+    background-color: #F4F4F4;
+}
+.fa-sort{
+    margin-left: 10px;
+}
+textarea.message-input-form{
+    width: 100%;
+    height: 5em;
+    border: none;
+    border-top: solid 1px #464E58;
+    background-color: white;
+    padding-top: 20px;
+}
+.message-submit-button{
+    z-index: 1000;
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    margin: 10px;
+}
+.message-container{
+    display: flex;
+    height: 100vh;
+    width: calc(100% - 320px);
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #F4F4F4;
+}
+
+div.student-profile-contents{
+    width: 90%;
+    margin: 0 5% 30px 5%;
+}
+button.prof-link-message{
+    padding:1em 2em;
+    border-radius: 2em;
+    margin-left: 15px;
+}
+.prof-scout-button{
+    margin-left: 10px;
+}
+.fa-thumbs-up{
+    margin-right: 5px;
+}
+.fa-thumbs-up:hover{
+    color: rgb(231, 188, 17);
+}
+.fa-ban{
+    margin-right: 5px;
+}
+.fa-ban:hover{
+    color: rgb(231, 188, 17);
+}
+div.top-image {
+    width: 100%;
+    margin-top: 60px;
+    height: auto;
+}
+img.top-image {
+    width: 100%;
+    height: auto;
 }

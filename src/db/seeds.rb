@@ -88,7 +88,7 @@ end
 
 
 (1..10).each do |num|
-  Post.create!(company_id: num, tel_number: '090-1115-1999', first_name: '佐々木', last_name: '裕紀', first_name_kana: 'ささき', last_name_kana: 'ゆうき', image: 'image', title: "一緒に働きましょう#{num}", period: '1週間', content: 'content11', salary: '時給換算')
+  Post.create!(company_id: num, tel_number: '090-1115-1999', first_name: '佐々木', last_name: '裕紀', first_name_kana: 'ささき', last_name_kana: 'ゆうき', image: 'image', title: "一緒に働きましょう#{num}", period: '1週間', content: "SaaSモデルのAI-OCR「DX Suite」は2017年11月のリリース以来、数百を超えるお客様のご利用を頂いており、今も毎日ユーザーが増えている状況です。\r現在は、有り難いことに様々なお客様からお問い合わせをいただいており、アウトバウンドの営業はほとんどありません。\rしかし、DX Suite をよりグロースさせ、ビジョンである「豊かな未来社会」を実現するため、AIがもっと当たり前の存在になるよう、全国に届けていくためには、より広い認知が必要であると考えます\rそのためにマーケティングやPRをミッションとして一緒に成長していけるメンバーを募集します。\r下記のような領域が得意な方、経験のある方、何より'チャレンジしたい方'にお会いしたいです！\r■自社セミナーの企画・運営\r■各種プロモーション方法の考案・実行\r■マーケティングオートメーションツールの導入、運用\r　(Pardot,SFDC,FORCASを利用中です)\r当社は経験だけでなく、ポテンシャルも重視しています。\r新しいスキームを作ることに興味のある方、営業戦略や企画、新しい領域にチャレンジしたい方も大募集です。\r是非、ご連絡ください😊", salary: '時給換算')
 end
 
 # post_sector
@@ -121,7 +121,7 @@ end
 
 # 応募中間テーブル
 (1..5).each do |num|
-  Apply.create!(post_id: 1, student_id: num)
+  Apply.create!(post_id: 1, student_id: num) unless num == 1
 end
 
 

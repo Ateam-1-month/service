@@ -1,64 +1,65 @@
-<!-- 企業ページの左側に固定されてるメニュー -->
 <div class="user-menu-container">
-    <ul><!-- ここ3つは企業情報編集ページにリンクします -->
-        <li>
-        <%= link_to "/companies/#{current_user.company.id}/edit" do %>
-            <img src="" alt="company-logo"><!--企業ロゴ-->
-        <% end %>
-        </li>
-        <li>
-            <%= link_to "/companies/#{current_user.company.id}/edit" do %>
-                <p class="company-name"><%= current_user.company.name %></p><!--企業名-->
-            <% end %>
-        </li>
-        <li>
-            <%= link_to "/companies/#{current_user.company.id}/edit" do %>
-                <h4>企業情報を編集する</h4>
-            <% end %>
-        </li>
-    </ul>
-    <ul>
-        <li><a href="#">
-            <i class="fas fa-list menu-icon"></i>
-            <p class="menu-title">募集情報の管理</p>
-        </a></li>
-    </ul>
-    <ul>
-        <li><a href="#">
-            <i class="far fa-comment-dots menu-icon"></i>
-            <p class="menu-title">スカウト中の学生</p>
-        </a></li>
-        <li><a href="#">
-            <i class="far fa-bookmark menu-icon"></i>
-            <p class="menu-title">フォローした学生</p>
-        </a></li>
-        <li><a href="#">
-            <i class="far fa-user menu-icon"></i>
-            <p class="menu-title">フォローされた学生</p>
-        </a></li>
-    </ul>
-    <ul>
-        <li><p>ご利用中のプラン</p></li>
-        <li><!-- プラン詳細に遷移 -->
-            <a href="#"><h3>ベーシック</h3></a>
-            <a href="#"><h4>プラン情報を編集する</h4></a>
-        </li>
-        <li>
-            <a href="#">
-                <i class="far fa-credit-card menu-icon"></i>
-                <p class="menu-title">請求先情報</p>
-            </a>
-        </li>
-    </ul>
-    <ul>
-        <li><a href="#">
-            <i class="fas fa-cog menu-icon"></i>
-            <p class="menu-title">各種設定</p></a>
-        </li>
-        <li>
-            <i class="fas fa-sign-out-alt menu-icon"></i>
-            <p class="menu-title"><%= link_to "ログアウト", logout_path, method: :delete %></p>
-        </li>
-        <!-- ””のなかが表示される文字でlink_toがaタグに自動変換される -->
-    </ul>
-</div>
+        <ul class="user-menu-contents company-name">
+            <li class="company-name">
+                <%= link_to "/companies/#{current_user.company.id}/edit" do %>
+                    <p class="company-name"><%= current_user.company.name %></p>
+                <%end %>
+            </li>
+            <li class="company-name">
+                <%= link_to "/companies/#{current_user.company.id}/edit" do %>
+                    <h4 class="company-name">企業情報を編集する</h4>
+                <%end %>
+            </li>
+        </ul>
+		<div class="user-menu-hr"></div>
+		<div class="user-menu-contents">
+			<ul class="user-menu-contents">
+				<li class="user-menu-contents">
+					<i class="fas fa-fw fa-list menu-icon"></i> <a href="/posts/management/1">
+					<p class="menu-title">募集情報の管理</p></a>
+				</li>
+			</ul>
+			<div class="user-menu-hr"></div>
+			<ul class="user-menu-contents">
+				<li class="user-menu-contents">
+					<i class="far fa-fw fa-comment-dots menu-icon"></i> <a href="#">
+					<p class="menu-title">スカウト中の学生</p></a>
+				</li>
+				<li class="user-menu-contents">
+					<i class="far fa-fw fa-bookmark menu-icon"></i> <a href="#">
+					<p class="menu-title">フォローした学生</p></a>
+				</li>
+				<li class="user-menu-contents">
+					<i class="far fa-fw fa-user menu-icon"></i> <a href="#">
+					<p class="menu-title">フォローされた学生</p></a>
+				</li>
+			</ul>
+			<div class="user-menu-hr"></div>
+			<ul class="user-menu-contents">
+				<li class="user-menu-contents">
+					<h4>ご利用中のプラン</h4>
+				</li>
+				<li class="user-menu-contents account-plan">
+					<!-- プラン詳細に遷移 -->
+					<a href="#">
+					<h3 class="account-plan">ベーシック</h3></a> <a href="#">
+					<h4 class="account-plan">プラン情報を編集する</h4></a>
+				</li>
+				<li class="user-menu-contents">
+					<i class="far fa-fw fa-credit-card menu-icon"></i> <a href="#">
+					<p class="menu-title">請求先情報</p></a>
+				</li>
+			</ul>
+			<div class="user-menu-hr"></div>
+			<ul class="user-menu-contents">
+				<li class="user-menu-contents">
+					<i class="fas fa-fw fa-cog menu-icon"></i> <a href="#">
+					<p class="menu-title">各種設定</p></a>
+				</li>
+				<li class="user-menu-contents">
+					<i class="fas fa-fw fa-sign-out-alt menu-icon"></i>
+					<p class="menu-title"><%= link_to "ログアウト", logout_path, method: :delete %></p>
+				</li><!-- ””のなかが表示される文字でlink_toがaタグに自動変換される -->
+			</ul>
+		</div>
+	</div>

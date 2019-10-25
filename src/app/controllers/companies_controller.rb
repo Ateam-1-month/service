@@ -43,7 +43,7 @@ class CompaniesController < ApplicationController
   end
 
   def message
-    
+    @skip_footer = true
   end
 
   private
