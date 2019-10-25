@@ -4,12 +4,14 @@ $(function(){
         $('.student-contents').addClass('blur');
         $('.header-container').addClass('blur');
         $('.footer').addClass('blur');
+        $('.top-image').addClass('blur');
     });
     $('.login-cancel').on('click',function(){
         $('.login-modal-container').addClass('modal-hidden');
         $('.student-contents').removeClass('blur');
         $('.header-container').removeClass('blur');
         $('.footer').removeClass('blur');
+        $('.top-image').removeClass('blur');
     });
     $(window).scroll(function() {
         $('.alert-success').addClass('modal-hidden');

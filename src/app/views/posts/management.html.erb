@@ -17,7 +17,7 @@
                 </div>
                 <ul>
                     <li class="post-summary-content"><p>募集期間: </p><p><%= @post.period %></p></li>
-                    <li class="post-summary-content"><p>募集内容: </p><p><%= @post.content %></p></li><!-- あとで先頭10文字表示にする -->
+                    <li class="post-summary-content"><p>募集内容: </p><p><%= @post.content.slice(0..15) %></p></li><!-- あとで先頭10文字表示にする -->
                     <li class="post-summary-content"><p>給与体制: </p><p><%= @post.salary %></p></li> 
                 </ul>
             </div>

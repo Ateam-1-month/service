@@ -4,12 +4,12 @@
             <div>
                 <%= post.company.name %>
             </div>
-            <h3>この募集に応募しますか？</h3>
-            <%= link_to '応募する', apply_path(student_id: current_user.student.id, post_id: @post.id ,authenticity_token: form_authenticity_token), method: :post ,class:"yellow-button"%>
-            <div　class="flex">
-                <button class="normal-button close-button">
-                    キャンセル
-                </button>
+            <h3 class="apply-confirm">この募集に応募しますか？</h3>
+            <div class="apply-confirm-button">
+                <%= link_to '応募する', apply_path(student_id: current_user.student.id, post_id: @post.id ,authenticity_token: form_authenticity_token), method: :post ,class:"yellow-button apply-confirm-button"%>
+            </div>
+            <div class="apply-confirm-button">
+                <button class="normal-button close-button">キャンセル</button>
                 <button class="normal-button">
                     <i aria-hidden="true" class="far fa-bookmark"></i>
                     気になる
