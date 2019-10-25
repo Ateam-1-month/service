@@ -25,6 +25,183 @@
         <p class="login-cancel">キャンセル</p>
     </div>
 </div>
-<div class="top-image">
-    <%= image_tag 'top.png', class: 'top-image' %>
+<div class="top-container">
+    <div class="top-header-container">
+        <div class="top-header-img">
+            <%= image_tag 'top-header-img.jpg' ,class:"top-header-contents"%>
+        </div>
+        <div class="top-header-contents">
+            <h3 class="top-header-contents">空いてる時間に、必要な分だけ<br>
+            自分にあった働き方でお金を稼ぐ</h3>
+        </div>
+        <!--<div class="top-link-box-container">
+            <div class="top-link-box">
+                <h3 class="top-link-box">働く</h3>
+                <button class="yellow-button top-link-box">募集一覧を見る</button>
+            </div>
+            <div class="top-link-box">
+                <h3 class="top-link-box">雇う</h3>
+                <button class="yellow-button top-link-box">詳細を見る</button>
+            </div>
+        </div>-->
+    </div>
+    <div>
+        <div class="top-contents-title">
+            <%= image_tag 'uniwork-logotype@4x.png' ,class:"top-contents-title"%>
+            <h3 class="top-contents-title">で始める新しい仕事の形</h3>
+        </div>
+        <div class="top-contents-box top-work-style-container">
+            <div class="top-work-style">
+                <span class="top-work-style">
+                    <h3 class="top-work-style">業務単位</h3><h3 class="top-work-style">で募集</h3>
+                </span>
+                <p class="top-work-style">必要な時に必要な分だけ</p>
+            </div>
+            <div class="multiply"><%= image_tag 'multiply.png' ,class:"multiply"%></div>
+            <div class="top-work-style">
+                <span class="top-work-style">
+                    <h3 class="top-work-style">リモートワーク</h3>
+                </span>
+                <p class="top-work-style">自分の好きな場所・時間で</p>
+            </div>
+            <div class="multiply"><%= image_tag 'multiply.png' ,class:"multiply"%></div>
+            <div class="top-work-style">
+                <span class="top-work-style">
+                    <h3 class="top-work-style">給料即入金</h3>
+                </span>
+                <p class="top-work-style">必要なお金がすぐに稼げる！</p>
+            </div>
+        </div>
+        <div class="top-button-container"><button class="yellow-button top-start-button">uniworkを始める</button></div>
+        <div class="top-contents-title">
+            <%= image_tag 'uniwork-logotype@4x.png' ,class:"top-contents-title"%>
+            <h3 class="top-contents-title">でできる仕事内容</h3>
+        </div>
+        <div class="top-contents-box">
+            <div class="top-job-description-container">
+                <div class="top-job-description-img"><%= image_tag 'process3.png' ,class:"top-job-description-img"%></div>
+                <div>
+                    <div class="top-job-description">
+                        <span class="top-job-description">
+                            <h3 class="top-job-description">web運用</h3>
+                            <p class="top-job-description">SNS運用</p>
+                            <p class="top-job-description">サイト運用</p>
+                            <h4 class="top-job-description">など</h4>
+                        </span>
+                        <span class="top-job-description">
+                            <h3 class="top-job-description">リサーチ</h3>
+                            <p class="top-job-description">集計分析</p>
+                            <p class="top-job-description">アンケート設計</p>
+                            <h4 class="top-job-description">など</h4>
+                        </span>
+                        <span class="top-job-description">
+                            <h3 class="top-job-description">データ整備</h3>
+                            <p class="top-job-description">文字起こし</p>
+                            <p class="top-job-description">資料作成</p>
+                            <h4 class="top-job-description">など</h4>
+                        </span>
+                    </div>
+                    <div class="top-job-description">
+                        <span class="top-job-description">
+                            <h3 class="top-job-description">受付対応</h3>
+                            <p class="top-job-description">問い合わせ対応</p>
+                            <p class="top-job-description">採用媒体の対応</p>
+                            <h4 class="top-job-description">など</h4>
+                        </span>
+                        <span class="top-job-description">
+                            <h3 class="top-job-description">デザイナー</h3>
+                            <p class="top-job-description">チラシ製作</p>
+                            <p class="top-job-description">webデザイン</p>
+                            <h4 class="top-job-description">など</h4>
+                        </span>
+                        <span class="top-job-description">
+                            <h3 class="top-job-description">エンジニア</h3>
+                            <p class="top-job-description">アプリ開発</p>
+                            <p class="top-job-description">web製作</p>
+                            <h4 class="top-job-description">など</h4>
+                        </span>
+                    </div>
+                    <h3 class="top-job-description etc">etc...</h3>
+                </div>
+            </div>
+            <div class="work-merit-container">
+                <div class="work-merit-contents">
+                    <h4 class="work-merit-contents">働き方</h4>
+                    <h3 class="work-merit-contents">全てリモートワークだから立ち仕事や力仕事が苦手な人でも安心</h3>
+                    <span class="work-merit-contents">
+                        <p class="work-merit-contents">自分の得意な業務を選べるので、スキルを活かしながら自分のスタイルで仕事ができます。</p>
+                        <%= image_tag 'pc.png' ,class:"work-merit-contents pc"%>
+                    </span>
+                </div>
+                <div class="work-merit-contents">
+                    <h4 class="work-merit-contents">働き方</h4>
+                    <h3 class="work-merit-contents">都内企業で実務的な仕事ができるから業界研究・社会勉強につながる</h3>
+                    <span class="work-merit-contents">
+                        <p class="work-merit-contents">社会に出てから役立つビジネスマナーやパソコンスキルが身に付き、業界研究にも繋がります。</p>
+                        <%= image_tag 'tasks.png' ,class:"work-merit-contents"%>
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="top-button-container"><button class="yellow-button top-start-button">uniworkを始める</button></div>
+        <div class="top-contents-title">
+            <%= image_tag 'uniwork-logotype@4x.png' ,class:"top-contents-title"%>
+            <h3 class="top-contents-title">利用の流れ</h3>
+        </div>
+        <div class="top-use-process-container top-contents-box">
+            <div class="top-use-process-box">
+                <div class="top-use-process-img">
+                    <%= image_tag 'process1.png' ,class:"top-use-process"%>
+                </div>
+                <div class="top-use-process">
+                    <div class="top-use-process-title">
+                        <h2 class="top-use-process">1</h2>
+                        <h3 class="top-use-process">プロフィール登録</h3>
+                    </div>
+                    <p class="top-use-process">uniworkでは自分が作業できる時間と業務内容を登録します。<br>
+                        自分の得意分野や勉強分野に応じたスキルを登録することが出来るので、社会経験を積みながらお金を稼ぐ事が出来ます。</p>
+                </div>
+            </div>
+            <div class="top-use-process-box">
+                <div class="top-use-process-img">
+                    <%= image_tag 'process2.png' ,class:"top-use-process"%>
+                </div>
+                <div class="top-use-process">
+                    <div class="top-use-process-title">
+                        <h2 class="top-use-process">2</h2>
+                        <h3 class="top-use-process">企業とのマッチング</h3>
+                    </div>
+                    <p class="top-use-process">企業とのマッチングは自分から業務を探して申請する「応募」と、企業から「スカウト」のパターンがあります。スキルを充実させておくと思いがけない仕事が舞い込むことも。</p>
+                </div>
+            </div>
+            <div class="top-use-process-box">
+                <div class="top-use-process-img">
+                    <%= image_tag 'process3.png' ,class:"top-use-process"%>
+                </div>
+                <div class="top-use-process">
+                    <div class="top-use-process-title">
+                        <h2 class="top-use-process">3</h2>
+                        <h3 class="top-use-process">業務</h3>
+                    </div>
+                    <p class="top-use-process">企業とマッチングした後は実際に業務に入ります。<br>
+                        企業からの評価が高いと他の企業ともマッチングしやすくなります。</p>
+                </div>
+            </div>
+            <div class="top-use-process-box">
+                <div class="top-use-process-img">
+                    <%= image_tag 'process4.png' ,class:"top-use-process"%>
+                </div>
+                <div class="top-use-process">
+                    <div class="top-use-process-title">
+                        <h2 class="top-use-process">4</h2>
+                        <h3 class="top-use-process">給料支払い</h3>
+                    </div>
+                    <p class="top-use-process">業務完了後にuniworkから給料が振り込まれます。<br>
+                        手数料で給料の10%を支払うと、給料を即日入金することもできます。</p>
+                </div>
+            </div>
+        </div>
+        <div class="top-button-container"><button class="yellow-button top-start-button">uniworkを始める</button></div>
+    </div>
+    <!--<%= image_tag 'top.png', class: 'top-image' %>-->
 </div>
