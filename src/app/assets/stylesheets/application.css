@@ -1132,3 +1132,10 @@ textarea.message-input-form{
     justify-content: space-between;
     background-color: #F4F4F4;
 }
+
+
+.top-image {
+    width: 100%;
+    margin-top: 60px;
+    height: auto;
+}
