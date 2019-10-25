@@ -1187,3 +1187,7 @@ img.top-image {
     width: 100%;
     height: auto;
 }
+
+p.apply-button{
+    margin-left: 20px;
+}
