@@ -222,7 +222,7 @@ p.button-contents{
 .uniwork-logo-link{
     cursor: pointer;
 }
-.header-container {
+div.header-container {
     box-sizing: border-box;
     position: fixed;
     padding: 10px 20px;
@@ -235,7 +235,8 @@ p.button-contents{
     display: flex;
     justify-content: space-between;
 	background-color: white;
-	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2); */
+    border-bottom: solid 1.5px #8C9298;
 }
 .header-search-bar {
 	display: flex;
@@ -348,7 +349,8 @@ i.header-regist:hover{
 	z-index: 900;
 	background: white;
 	width: 300px;
-	box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+	border-right: solid 1.5px #8C9298;
+	border-bottom: solid 1.5px #8C9298;
 }
 ul.user-menu-contents{
     margin: 0 5px;
@@ -663,6 +665,24 @@ p.post-application-num {
 .student-prof-header{
     display: flex;
     border-bottom: solid 0.5px #8C9298;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding: 20px;
+}
+div.student-prof-img{
+    width: 80px;
+    height: 80px;
+    border-radius: 80px;
+    overflow: hidden;
+    margin-right: 20px;
+}
+img.student-prof-img{
+    width: 100%;
+    height: 100%;
+}
+div.student-profile-contents{
+    margin-bottom: 30px;
 }
 .company-revue-card{
     border: solid 0.5px #8C9298;
@@ -856,7 +876,7 @@ div.schedule-time-bar{
 li.schedule-time-bar{
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 15px;
 }
 p.schedule-time-bar{
     width: 40px;
@@ -952,9 +972,10 @@ h2.page-title{
 div.recruitment-thumbnail{
     cursor: pointer;
     background-color: white;
+    margin-bottom: 20px;
 }
 div.recruitment-thumbnail:hover{
-    background-color: rgb(254, 251, 251);
+    background-color: rgb(247, 247, 247);
 }
 .normal-button.post-link{
     border: solid 1px #8C9298;
@@ -1133,6 +1154,29 @@ textarea.message-input-form{
     background-color: #F4F4F4;
 }
 
+div.student-profile-contents{
+    width: 90%;
+    margin: 0 5% 30px 5%;
+}
+button.prof-link-message{
+    padding:1em 2em;
+    border-radius: 2em;
+    margin-left: 15px;
+}
+.prof-scout-button{
+    margin-left: 10px;
+}
+.fa-thumbs-up{
+    margin-right: 5px;
+}
+.fa-thumbs-up:hover{
+    color: rgb(231, 188, 17);
+}
+.fa-ban{
+    margin-right: 5px;
+}
+.fa-ban:hover{
+    color: rgb(231, 188, 17);
 
 .top-image {
     width: 100%;

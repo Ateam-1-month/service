@@ -42,34 +42,21 @@
     <% if current_user && current_user.is_company %>
         <!--企業ログインの場合は上のプロフが消えてこっちにプロフが入ります-->
         <div class="student-prof-header">
-            <div><%= image_tag "https://i.pravatar.cc/100?img=#{@student.id%10+1}", :size => '120x120'  %></div>
-            <div>
-                <p><%= @student.last_name %></p>
-                <p><%= @student.first_name %></p>
-            </div>
-            <div>
-                <p><%= @student.last_name_kana %></p>
-                <p><%= @student.first_name_kana %></p>
-            </div>
-            <div>
-                <p>フォロワー</p>
-                <p>5社</p>
+            <div class="flex">
+                <div class="student-prof-img"><%= image_tag "https://i.pravatar.cc/100?img=#{@student.id%10+1}",class:"student-prof-img"  %></div>
                 <div>
-                    <img src="#" alt="company-logo">
-                    <img src="#" alt="company-logo">
-                    <img src="#" alt="company-logo">
-                    <img src="#" alt="company-logo">
-                    <img src="#" alt="company-logo">
+                    <h4><%= @student.last_name_kana %> <%= @student.first_name_kana %></h4>
+                    <p><%= @student.last_name %> <%= @student.first_name %></p>
                 </div>
             </div>
             <div>
                 <button class="normal-button">フォローする</button>
-                <button class="normal-button">スカウトする</button>
-                <button class="yellow-button">メッセージを送る</button>
+                <button class="normal-button prof-scout-button">スカウトする</button>
+                <a href="../../companies/message"><button class="yellow-button prof-link-message">メッセージを送る</button></a>
             </div>
         </div>
-        <h3>プロフィール</h3>
-        <div>
+        <h3 class="title">プロフィール</h3>
+        <div class="student-profile-contents">
             <div>
                 <ul class="flex">
                     <li><p><%= @student.prefecture %></p></li>
@@ -105,7 +92,7 @@
     <% end %>
     <div class="appeal-box box">
         <div>
-            <h3>アピールポイント</h3>
+            <h3 class="title">アピールポイント</h3>
             <!--編集ボタン右上部に固定-->
             <% if current_user && current_user.is_student && (current_user.student.id == @student.id) %>
                 <button class="students-edit-button">
@@ -140,7 +127,7 @@
     </div>
     <div class="career-box box">
         <div>
-            <h3>アルバイト・インターン歴</h3>
+            <h3 class="title">アルバイト・インターン歴</h3>
             <!--編集ボタン右上部に固定-->
             <% if current_user && current_user.is_student && (current_user.student.id == @student.id) %>
                 <button class="students-edit-button">
@@ -190,7 +177,7 @@
 
     <div class="skill-box box">
         <div>
-            <h3>スキル</h3>
+            <h3 class="title">スキル</h3>
             <!--編集ボタン右上部に固定-->
             <% if current_user && current_user.is_student && (current_user.student.id == @student.id) %>
                 <button class="students-edit-button">
@@ -246,9 +233,9 @@
         </div>
     </div>
 
-    <div>
+    <div class="box">
         <div>
-            <h3>スケジュール</h3>
+            <h3 class="title">スケジュール</h3>
             <!--編集ボタン右上部に固定-->
             <% if current_user && current_user.is_student %>
                 <button class="students-edit-button">
@@ -392,62 +379,31 @@
     </div>
     <% if current_user && current_user.is_company %>
         <div>
-            <div>
-                <h3>学生への企業からのレビュー</h3>
+            <h3 class="title">学生への企業からのレビュー</h3>
+            <div class="box">
                 <!--データベースないので打ち込みです-->
-                <div class="company-revue-card">
-                    <div class="flex">
-                        <img src="#" alt="企業ロゴ">
-                        <div>
-                            <p>株式会社ZZZ</p>
-                            <div class="flex">
-                                <p>業務内容</p>
-                                <p>リサーチ・資料制作</p>
-                            </div>
-                            <div class="flex">
-                                <p>就業期間</p>
-                                <p>2週間</p>
-                            </div>
+                <div class="review-container">
+                    <div class="review-box"><!--ここで一枚-->
+                        <h5>雰囲気の良い会社でした</h5>
+                        <p>社員の方々の雰囲気がよく、小さいことでも聞くことができる雰囲気でした。自分の成長にも繋がることができました。悩んでいるならここの会社がオススメです。</p>
+                        <div class="col-8 inline-block"></div>
+                        <div class="inline-block"><!--評価ボタン-->
+                            <i aria-hidden="true" class="fas fa-thumbs-up inline-block"></i><h4 class="mr-3 inline-block">4</h4>
+                            <i aria-hidden="true" class="fas fa-ban inline-block"></i><h4 class="inline-block">違反報告する</h4>
                         </div>
                     </div>
-                    <p>事務所移転やイベントの設営撤去。主に商品や什器の運搬、設置。派遣先により時間や休憩は違いました。短時間の仕事で休憩のないときもありました。逆に待機時間がすごく長くあり、退屈した派遣先もありました。新規店舗に什器を搬入する際には夜中に働いたこともあります。</p>
-                    <ul class="flex"><!--評価ボタン-->
-                        <li class="flex">
-                            <i aria-hidden="true" class="fas fa-thumbs-up"></i>
-                            <h4>5</h4>
-                        </li>
-                        <li class="flex">
-                            <i aria-hidden="true" class="fas fa-ban"></i>
-                            <h4>違反報告する</h4>
-                        </li>
-                    </ul>
+                    <div class="review-box"><!--ここで一枚-->
+                        <h5>雰囲気の良い会社でした</h5>
+                        <p>社員の方々の雰囲気がよく、小さいことでも聞くことができる雰囲気でした。自分の成長にも繋がることができました。悩んでいるならここの会社がオススメです。</p>
+                        <div class="col-8 inline-block"></div>
+                        <div class="inline-block"><!--評価ボタン-->
+                            <i aria-hidden="true" class="fas fa-thumbs-up inline-block"></i><h4 class="mr-3 inline-block">4</h4>
+                            <i aria-hidden="true" class="fas fa-ban inline-block"></i><h4 class="inline-block">違反報告する</h4>
+                        </div>
+                    </div>
                 </div>
-                <div class="company-revue-card">
-                    <div class="flex">
-                        <img src="#" alt="企業ロゴ">
-                        <div>
-                            <p>株式会社ZZZ</p>
-                            <div class="flex">
-                                <p>業務内容</p>
-                                <p>リサーチ・資料制作</p>
-                            </div>
-                            <div class="flex">
-                                <p>就業期間</p>
-                                <p>2週間</p>
-                            </div>
-                        </div>
-                    </div>
-                    <p>事務所移転やイベントの設営撤去。主に商品や什器の運搬、設置。派遣先により時間や休憩は違いました。短時間の仕事で休憩のないときもありました。逆に待機時間がすごく長くあり、退屈した派遣先もありました。新規店舗に什器を搬入する際には夜中に働いたこともあります。</p>
-                    <ul class="flex"><!--評価ボタン-->
-                        <li class="flex">
-                            <i aria-hidden="true" class="fas fa-thumbs-up"></i>
-                            <h4>5</h4>
-                        </li>
-                        <li class="flex">
-                            <i aria-hidden="true" class="fas fa-ban"></i>
-                            <h4>違反報告する</h4>
-                        </li>
-                    </ul>
+                <div class="center">
+                    <button class="normal-button">もっと見る</button>
                 </div>
             </div>
         </div>
