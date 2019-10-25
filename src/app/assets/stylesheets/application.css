@@ -1177,9 +1177,13 @@ button.prof-link-message{
 }
 .fa-ban:hover{
     color: rgb(231, 188, 17);
-
-.top-image {
+}
+div.top-image {
     width: 100%;
     margin-top: 60px;
+    height: auto;
+}
+img.top-image {
+    width: 100%;
     height: auto;
 }
