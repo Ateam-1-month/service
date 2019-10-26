@@ -698,6 +698,7 @@ div.student-profile-contents{
     display: flex;
     justify-content: center;
     align-items: center;
+    position: fixed;
 }
 .login-modal{
     border: solid 0.5px #8C9298;
@@ -1244,6 +1245,9 @@ div.top-header-img{
 }
 
 div.top-header-contents{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     position: absolute;
     top: 150px;
     right: 50px;
@@ -1257,21 +1261,23 @@ h3.top-header-contents{
     text-align: end;
 }
 div.top-link-box-container{
-    position: relative;
-    transform: translateY(-300px);
+    right: 40px;
+    display: flex;
 }
 div.top-link-box{
+    border-radius: 15px;
+    margin-left: 20px;
     text-align: center;
-    width: 260px;
+    width: 220px;
     padding: 20px 0;
     background-color: white;
-    margin-bottom: 40px;
 }
 h3.top-link-box{
     font-size: 25px;
     font-weight: bold;
     color: #464E58;
-    margin-bottom: 20px;
+    margin-top: 0;
+    margin-bottom: 10px;
 }
 div.top-contents-title{
     display: flex;
@@ -1449,4 +1455,11 @@ h2.top-use-process{
 }
 p.top-use-process{
     margin-left: 35px;
+}
+.header-back{
+    background-color: white;
+    width: 100%;
+    height: 60px;
+    top: 0;
+    position: absolute;
 }
